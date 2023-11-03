@@ -28,19 +28,36 @@ public class TEST_Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (!PauseMenu.GameIsPaused)
         {
-            TakeDamage(10);
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            GainExperience(15);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                TakeDamage(10);
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                GainExperience(15);
+            }
         }
     }
 
     void TakeDamage(int damage)
     {
         current_health -= damage;
+        healthBar.SetHealth(current_health);
+        if (current_health <= 0)
+        {
+            //die;
+        }
+    }
+
+    void HealDamage(int health)
+    {
+        current_health += health;
+        if (current_health > max_health)
+        {
+            current_health = max_health;
+        }
         healthBar.SetHealth(current_health);
     }
 
