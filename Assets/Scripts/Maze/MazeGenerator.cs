@@ -30,6 +30,9 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] private MazeGrid _mGrid;   // the MazeGrid object // TODO: phase this out ... not necessary for functionality, just useful for testing.
     private int _maxSetValue = 0;               // the current max set value
 
+    [SerializeField] float rightWallProb = 0.5f;
+    [SerializeField] float bottomWallProb = 0.5f;
+
 
     // Use this for initialization
     void Start()
@@ -53,11 +56,16 @@ public class MazeGenerator : MonoBehaviour
         for (int x = 0; x < _mSpawner.width; x++)
         {
             Vector3Int coords = new Vector3Int(x, 0);
-            firstRow.Add(new MazeCell(coords, _maxSetValue));
+            MazeCell newCell = new MazeCell(coords, _maxSetValue);
+            firstRow.Add(newCell);
             _maxSetValue++;
+        }
 
-            
-            DebugDrawMiddleBlock(firstRow[x].GetCoords()); // draw middle block
+        // place walls at the top of the maze...
+        foreach (MazeCell cell in firstRow)
+        {
+            Vector3Int gridCoords = MazeToGridCoords(cell.GetCoords());
+            PlaceBottomWall(gridCoords.x, gridCoords.y + _mSpawner.mazeCellSize);
         }
 
         List<MazeCell> current = firstRow;
@@ -71,9 +79,33 @@ public class MazeGenerator : MonoBehaviour
             // step 4 -- generate bottom walls
             Step4(current);
 
-            // step 5 (+ 2) -- create the next row & clear walls
-            current = Step5(current);
+            // if we're at the end...
+            if (i == _mSpawner.height - 1)
+            {
+                foreach (MazeCell cell in current)
+                {
+                    if (!cell.GetBottomWallStatus())
+                    {
+                        cell.SetBottomWallStatus(true);
+                        Vector3Int gridCoords = MazeToGridCoords(cell.GetCoords());
+                        PlaceBottomWall(gridCoords.x, gridCoords.y);
+                    }
+                }
+            }
+            // otherwise do step 5
+            else
+            {
+                // step 5 (+ 2) -- create the next row & clear walls
+                current = Step5(current);
+            }            
         }
+
+        
+
+        // step 6 -- finalize last wall
+        //Step6(current);
+        //WorldTestRow(current, Color.red);
+
 
         // step 6 -- create boundary walls & bottom walls // TODO: implement me ?
     }
@@ -89,6 +121,10 @@ public class MazeGenerator : MonoBehaviour
     {
         List<MazeCell> target = new List<MazeCell>(row);
 
+        // place the leftmost wall on this row
+        Vector3Int coords = MazeToGridCoords(row[0].GetCoords());
+        PlaceRightWall(coords.x - _mSpawner.mazeCellSize, coords.y);
+
         for (int i = 0; i < _mSpawner.width-1; i++)
         {
             MazeCell current = target[i];
@@ -103,7 +139,7 @@ public class MazeGenerator : MonoBehaviour
             else
             {
                 // 50/50 create a wall
-                if (Random.value > 0.5f)
+                if (Random.value < rightWallProb)
                 {
                     // create a wall
                     Vector3Int gridCoords = MazeToGridCoords(current.GetCoords());
@@ -116,6 +152,10 @@ public class MazeGenerator : MonoBehaviour
                 }
             }
         }
+
+        // place the rightmost wall
+        coords = MazeToGridCoords(row[row.Count - 1].GetCoords());
+        PlaceRightWall(coords.x, coords.y);
 
         return target;
     }
@@ -138,7 +178,7 @@ public class MazeGenerator : MonoBehaviour
                 if (i == 0) continue; // if its the first element skip it
 
                 // otherwise, 50/50 chance whether to add a bottom wall or not.
-                if (Random.value > 0.5f)
+                if (Random.value < bottomWallProb)
                 {
                     set[i].SetBottomWallStatus(true);
                 }
@@ -151,7 +191,7 @@ public class MazeGenerator : MonoBehaviour
             if (current.GetBottomWallStatus())
             {
                 Vector3Int gridCoords = MazeToGridCoords(current.GetCoords());
-                Debug.Log("Placing bottom wall @ " + current.GetCoords());
+                //Debug.Log("Placing bottom wall @ " + current.GetCoords());
                 PlaceBottomWall(gridCoords.x, gridCoords.y);
             }
         }
@@ -181,6 +221,56 @@ public class MazeGenerator : MonoBehaviour
         }
         
         return next;   
+    }
+
+    private void Step6(List<MazeCell> row)
+    {
+        // place the rightmost wall
+        Vector3Int gridCoords = MazeToGridCoords(row[0].GetCoords());
+        PlaceRightWall(gridCoords.x - _mSpawner.mazeCellSize, gridCoords.y);
+
+        for (int i = 0; i < row.Count - 1; i++)
+        {
+            MazeCell current = row[i];
+            MazeCell rightAdjacent = row[i + 1];
+
+            // make sure that every cell has a bottom wall
+            current.SetBottomWallStatus(true);
+            if (!rightAdjacent.GetBottomWallStatus()) rightAdjacent.SetBottomWallStatus(true);
+
+            if (current.GetSetValue() != rightAdjacent.GetSetValue())
+            {
+                // remove the right wall... TODO: figure out if i need to do anything here? more likely, I need to do something elsewhere to add a right wall to others...
+
+                // union the two sets
+                rightAdjacent.SetSetVal(current.GetSetValue());
+            }
+            else
+            {
+                // create a wall if you want...
+                if (Random.value < rightWallProb)
+                {
+                    // create a wall
+                    Vector3Int coords = MazeToGridCoords(current.GetCoords());
+                    PlaceRightWall(coords.x, coords.y);
+                }
+            }
+        }
+
+        // place the rightmost wall
+        gridCoords = MazeToGridCoords(row[row.Count - 1].GetCoords());
+        PlaceRightWall(gridCoords.x, gridCoords.y);
+
+        // places the bottom walls
+        foreach (MazeCell current in row)
+        {
+            if (current.GetBottomWallStatus())
+            {
+                Vector3Int coords = MazeToGridCoords(current.GetCoords());
+                Debug.Log("Placing bottom wall @ " + current.GetCoords());
+                PlaceBottomWall(coords.x, coords.y);
+            }
+        }
     }
 
 
