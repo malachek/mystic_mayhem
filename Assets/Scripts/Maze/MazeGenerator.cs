@@ -21,10 +21,11 @@ using System.Linq;
 
 public class MazeGenerator : MonoBehaviour
 {
-    [SerializeField] Grid grid;                 // the actual grid that tiles exist on
+    Grid grid;                 // the actual grid that tiles exist on
     Tilemap tilemap;			                // the tilemap that tiles exist on
     [SerializeField] TileBase wallTile;         // the tile used to generate walls
     [SerializeField] bool generate = false;     // Used for testing, determines whether the map should be generated.
+    [SerializeField] bool bottomRowEmpty = false;
 
     [SerializeField] MazeGridSpawner _mSpawner; // the spawner object
     [SerializeField] private MazeGrid _mGrid;   // the MazeGrid object // TODO: phase this out ... not necessary for functionality, just useful for testing.
@@ -33,20 +34,32 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] float rightWallProb = 0.5f;
     [SerializeField] float bottomWallProb = 0.5f;
 
+    [SerializeField] bool doDebug = false;
+
 
     // Use this for initialization
     void Start()
     {
         _mGrid = _mSpawner.grid;
+        grid = _mSpawner.g;
         tilemap = grid.GetComponentInChildren<Tilemap>();
 
-        if (generate) GenerateMaze();
+        if (generate)
+        {
+            if (bottomRowEmpty) GenerateMazeBottomRowEmpty();
+            else GenerateMaze();
+        }
     }
 
 
     /** 
      * Generates the maze via the steps of Eller's Algorithm
      * 
+     * NOTE: this function does generate the entine maze, 
+     * but currently exhibits some buggy behavior on the final
+     * row. 
+     * 
+     * For testing with pathfinding, use GenerateMazeBottomRowEmpty().
      */
     public void GenerateMaze()
     {
@@ -74,7 +87,7 @@ public class MazeGenerator : MonoBehaviour
         {
             // step 3 -- create right walls & merge sets
             List<MazeCell> currentJoined = Step3(current);
-            WorldTestRow(currentJoined, Color.red);
+            if (doDebug) WorldTestRow(currentJoined, Color.red);
 
             // step 4 -- generate bottom walls
             Step4(current);
@@ -100,14 +113,64 @@ public class MazeGenerator : MonoBehaviour
             }            
         }
 
-        
+        // step 6 -- create boundary walls & bottom walls // TODO: make this remove impossible walls
+        // Step6()
+    }
 
-        // step 6 -- finalize last wall
-        //Step6(current);
-        //WorldTestRow(current, Color.red);
+    public void GenerateMazeBottomRowEmpty()
+    {
+        // Step 1 -- create the first row of empty cells ( this also includes step 2 for the first run... )
+        List<MazeCell> firstRow = new List<MazeCell>();
 
+        for (int x = 0; x < _mSpawner.width; x++)
+        {
+            Vector3Int coords = new Vector3Int(x, 0);
+            MazeCell newCell = new MazeCell(coords, _maxSetValue);
+            firstRow.Add(newCell);
+            _maxSetValue++;
+        }
 
-        // step 6 -- create boundary walls & bottom walls // TODO: implement me ?
+        // place walls at the top of the maze...
+        foreach (MazeCell cell in firstRow)
+        {
+            Vector3Int gridCoords = MazeToGridCoords(cell.GetCoords());
+            PlaceBottomWall(gridCoords.x, gridCoords.y + _mSpawner.mazeCellSize);
+        }
+
+        List<MazeCell> current = firstRow;
+        // generation loop
+        for (int i = 0; i < _mSpawner.height; i++)
+        {
+            if (i != _mSpawner.height - 1)
+            {
+                // step 3 -- create right walls & merge sets
+                List<MazeCell> currentJoined = Step3(current);
+                if (doDebug) WorldTestRow(currentJoined, Color.red);
+
+                // step 4 -- generate bottom walls
+                Step4(current);
+                current = Step5(current);
+            }
+        }
+
+        // place leftmost wall for last row
+        Vector3Int wallCoords = MazeToGridCoords(current[0].GetCoords());
+        PlaceRightWall(wallCoords.x - _mSpawner.mazeCellSize, wallCoords.y);
+
+        // places the bottommost walls
+        foreach (MazeCell cell in current)
+        {
+            if (!cell.GetBottomWallStatus())
+            {
+                cell.SetBottomWallStatus(true);
+                Vector3Int gridCoords = MazeToGridCoords(cell.GetCoords());
+                PlaceBottomWall(gridCoords.x, gridCoords.y);
+            }
+        }
+
+        // place the rightmost wall
+        wallCoords = MazeToGridCoords(current[current.Count - 1].GetCoords());
+        PlaceRightWall(wallCoords.x, wallCoords.y);
     }
 
     #region Steps
@@ -267,7 +330,7 @@ public class MazeGenerator : MonoBehaviour
             if (current.GetBottomWallStatus())
             {
                 Vector3Int coords = MazeToGridCoords(current.GetCoords());
-                Debug.Log("Placing bottom wall @ " + current.GetCoords());
+                if (doDebug) Debug.Log("Placing bottom wall @ " + current.GetCoords());
                 PlaceBottomWall(coords.x, coords.y);
             }
         }
