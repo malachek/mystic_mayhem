@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UpgradeMenu : MonoBehaviour
 {
-    public static bool UpgradeMenuIsOpen = false;
+    //public static bool UpgradeMenuIsOpen = false;
 
     public GameObject upgradeMenuUI;
 
@@ -20,18 +20,15 @@ public class UpgradeMenu : MonoBehaviour
         
     }
 
-    void OpenUpgradeMenu()
+    public void OpenUpgradeMenu()
     {
+        PauseManager.Pause();
         upgradeMenuUI.SetActive(true);
-        Time.timeScale = 0f;
     }
 
-    void CloseUpgradeMenu()
+    public void CloseUpgradeMenu()
     {
+        PauseManager.Unpause();
         upgradeMenuUI.SetActive(false);
-        if (PauseMenu.GameIsPaused == false)
-        {
-            Time.timeScale = 1f;
-        }
     }
 }
