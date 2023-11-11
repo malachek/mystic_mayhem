@@ -9,10 +9,14 @@ public class PlayerMove : MonoBehaviour
     Vector3 movementVector;
     [SerializeField]float player_speed = 10f;
 
+    public Animator animator;
+    public SpriteRenderer spriteRenderer; 
+
     void Start()
     {
         rgb2d = GetComponent<Rigidbody2D>();
         movementVector = new Vector3();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -24,5 +28,17 @@ public class PlayerMove : MonoBehaviour
         movementVector *= player_speed;
 
         rgb2d.velocity = movementVector;
+
+        // Animator control
+        animator.SetFloat("Speed", rgb2d.velocity.magnitude);
+        // Flip animations horizontally based on the last player movement command
+        if (movementVector.x < 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (movementVector.x > 0)
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 }
