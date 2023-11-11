@@ -28,6 +28,8 @@ public class Pathfinder : MonoBehaviour
     public Tilemap CollisionMap;
     public bool isInitialized = false;
     public enum DoubleBakeRule { PaintEmpties, PaintWalls, PaintFull }; //When double baking, should only empty squares be painted, only obstacles, or everything.
+    public enum StartUpBakeAction {DoNothing,BakeNow,BakeInABit};// Actions to do when Pathfinder.Start() is called.
+    public StartUpBakeAction OnStartUp; 
     public DoubleBakeRule BakeRule = DoubleBakeRule.PaintFull;
     public Vector2 SubTileOffset = new Vector2(0.5f, 0.5f); //All pathfinding paths point to the bottom left most part of a tile by default, this shifts it to the middle.
     private RoyT.AStar.Grid grid;
@@ -60,7 +62,20 @@ public class Pathfinder : MonoBehaviour
     private void Start()
     {
         ResetGrid();
-        if(CollisionMap!=null)
+
+        if (CollisionMap != null)
+        {
+            if (OnStartUp == StartUpBakeAction.BakeNow)
+                BakeMap();
+            else if (OnStartUp== StartUpBakeAction.BakeInABit)
+                StartCoroutine(BakeInASec());
+        }
+    }
+    public IEnumerator BakeInASec()
+    {
+        yield return new WaitForSecondsRealtime(1);
+
+        if (CollisionMap != null)
             BakeMap();
     }
     public List<Vector2> getPathTo(Vector2 start, Vector2 location)
@@ -72,10 +87,24 @@ public class Pathfinder : MonoBehaviour
         //Returns a list of locations as a path to location if it can be made, empty if no such path exists.
         if(isPosInBounds(toPos(start)) && isPosInBounds(toPos(location)))
         {
-           RoyT.AStar.Position[] royPath= grid.GetPath(toPos(start), toPos(location));
-            
-            if (royPath.Length <= 0)
+            if(grid.GetCellCost(toPos(location))==float.PositiveInfinity)
+            {
+                Debug.LogWarning("Cannot create paths that end inside of a wall!");
                 return new List<Vector2>();
+            }
+            else if (grid.GetCellCost(toPos(start)) == float.PositiveInfinity)
+            {
+                Debug.LogWarning("Cannot create paths that start inside of a wall!");
+                return new List<Vector2>();
+            }
+            RoyT.AStar.Position[] royPath= grid.GetPath(toPos(start), toPos(location));
+
+            if (royPath.Length <= 0)
+            {
+                if (Vector2.Distance(start, location) > 1)
+                    Debug.LogWarning("Lagilly tried to create a path to an inaccessable location, perhaps the maze is bad?");
+                return new List<Vector2>();
+            }
 
             List<Vector2> path = new List<Vector2>();
             foreach (RoyT.AStar.Position p in royPath)
@@ -105,13 +134,12 @@ public class Pathfinder : MonoBehaviour
         {
             //Loop through all positions in the world grid, and if there is a tile there, follow the selected choices to set cell cost accordingly, if nothing is there do the same but for the empty cell rules.
             Vector2Int startPos = Vector2Int.FloorToInt((Vector2)transform.position + (Vector2)GridOffset);
-            for(int x= startPos.x;x<GridSize.x/2;x++)
+            for(int x= 0; x< GridSize.x;x++)
             {
-                for (int y = startPos.y; y < GridSize.y/2; y++)
+                for (int y =0; y < GridSize.y; y++)
                 {
-                    RoyT.AStar.Position pos = toPos(new Vector2(x, y));
-
-                    if (CollisionMap.GetTile(new Vector3Int(x,y))!=null)
+                    RoyT.AStar.Position pos = toPos(startPos+new Vector2(x, y));
+                    if (CollisionMap.GetTile(new Vector3Int(startPos.x+x,startPos.y + y))!=null)
                     {
                         if (BakeRule == DoubleBakeRule.PaintFull || BakeRule == DoubleBakeRule.PaintWalls)
                         {
@@ -142,7 +170,7 @@ public class Pathfinder : MonoBehaviour
                                 {
                                     for (int dy = -1; dy <= 1; dy++)
                                     {
-                                        if(CollisionMap.GetTile(new Vector3Int(x+dx, y+dy)) != null)
+                                        if(CollisionMap.GetTile(new Vector3Int(startPos.x+ x +dx, startPos.y+ y +dy)) != null)
                                         {
                                             proximityCost+=NeighboringWallCellCost;
                                         }
