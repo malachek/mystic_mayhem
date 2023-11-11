@@ -36,6 +36,8 @@ public class MazeGenerator : MonoBehaviour
 
     [SerializeField] bool doDebug = false;
 
+    bool doneGenerating = false;
+
 
     // Use this for initialization
     void Start()
@@ -49,8 +51,14 @@ public class MazeGenerator : MonoBehaviour
             if (bottomRowEmpty) GenerateMazeBottomRowEmpty();
             else GenerateMaze();
         }
+
+        doneGenerating = true;
     }
 
+    public bool isDoneGenerating()
+    {
+        return doneGenerating;
+    }
 
     /** 
      * Generates the maze via the steps of Eller's Algorithm
