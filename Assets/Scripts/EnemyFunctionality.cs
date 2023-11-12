@@ -33,14 +33,11 @@ public class EnemyFunctionality : MonoBehaviour
 
     //enemy can take damage here. Object destroyed upon reaching 0 health, implement later
     public void TakeDamage(int damage){
-        if (hp > 0){
-            hp -= damage;
-            Debug.Log("Monster takes a hit.\n");
-            Debug.Log(hp);
-        }else{
-            hp = 0;
-            Debug.Log("Monster is dead.");
-            //destroy object here
+        hp -= damage;
+        // Debug.Log("Monster takes a hit.\n");
+        // Debug.Log(hp);
+        if(hp < 1){
+            Destroy(gameObject);
         }
     }
 
