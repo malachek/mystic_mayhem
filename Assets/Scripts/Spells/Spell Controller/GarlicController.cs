@@ -13,7 +13,7 @@ public class BasicMeleeController : SpellController
     protected override void Attack()
     {
         base.Attack();
-        GameObject spawnedBasicMelee = Instantiate(prefab);
+        GameObject spawnedBasicMelee = Instantiate(spellData.Prefab);
         spawnedBasicMelee.transform.position = transform.position;
         spawnedBasicMelee.transform.parent = transform;
     }

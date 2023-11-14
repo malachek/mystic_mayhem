@@ -6,16 +6,30 @@ using UnityEngine;
 
 public class ProjectileSpellBehavior : MonoBehaviour
 {
+    public SpellSciptableObject spellData;
     protected Vector3 direction;
     public float destroyAfterSeconds;
 
-    // Start is called before the first frame update
+
+    //Current stats
+    protected float currentDamage;
+    protected float currentSpeed;
+    protected float currentMaxCooldownDuration;
+    protected int currentPierce;
+
+    private void Awake()
+    {
+        currentDamage = spellData.Damage;
+        currentSpeed = spellData.Speed;
+        currentMaxCooldownDuration = spellData.MaxCooldownDuration;
+        currentPierce = spellData.Pierce;
+    }
+
     protected virtual void Start()
     {
         Destroy(gameObject, destroyAfterSeconds);
     }
 
-    // Update is called once per frame
 
     public void DirectionChecker(Vector3 dir)
     {
@@ -25,4 +39,25 @@ public class ProjectileSpellBehavior : MonoBehaviour
         transform.up = direction; //sets direction of image to direction of movement
 
     }
+
+    protected virtual void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.CompareTag("Enemy"))
+        {
+            EnemyFunctionality enemy = col.GetComponent<EnemyFunctionality>();
+            enemy.TakeDamage((int)currentDamage); //Make sure to use currentDamage instead of weaponData.damage in case of any damage multipliers
+            reducePiere();
+        }
+
+    }
+
+    void reducePiere()
+    {
+        currentPierce--;
+        if(currentPierce <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }

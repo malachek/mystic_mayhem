@@ -5,12 +5,8 @@ using UnityEngine;
 public class SpellController : MonoBehaviour
 {
     [Header("SpellStats")]
-    public GameObject prefab;
-    public float damage;
-    public float speed;
-    public float maxCooldownDuration;
+    public SpellSciptableObject spellData;
     float currentCooldown;
-    public int pierce;
 
     protected CastDirection castDir;
 
@@ -18,7 +14,7 @@ public class SpellController : MonoBehaviour
     protected virtual void Start()
     {
         castDir = FindObjectOfType<CastDirection>();
-        currentCooldown = maxCooldownDuration; //Resets cooldown
+        currentCooldown = spellData.MaxCooldownDuration; //Resets cooldown
     }
 
     // Update is called once per frame
@@ -33,6 +29,6 @@ public class SpellController : MonoBehaviour
 
     protected virtual void Attack()
     {
-        currentCooldown = maxCooldownDuration;
+        currentCooldown = spellData.MaxCooldownDuration;
     }
 }
