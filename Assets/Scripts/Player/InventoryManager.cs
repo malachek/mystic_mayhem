@@ -15,6 +15,7 @@ public class InventoryManager : MonoBehaviour
     public void AddSpell(int slotIndex, SpellController spell) //Add a spell to a specific slot
     {
         spellSlots[slotIndex] = spell;
+        spellLevels[slotIndex] = spell.spellData.Level;
     }
 
     public void LevelUpSpell(int slotIndex)

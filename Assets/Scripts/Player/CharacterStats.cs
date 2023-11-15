@@ -16,19 +16,22 @@ public class CharacterStats : MonoBehaviour
     InventoryManager inventory;
     public int spellIndex;
 
+
     private void Awake()
     {
         //Spawn the starting weapon
-        SpawnSpell(startingSpell);
 
         inventory = GetComponent<InventoryManager>();
+
+        SpawnSpell(startingSpell);
+
     }
 
     public void TakeDamage(int damage){
 
         Hp -= damage;
-        Debug.Log("Player takes a hit.\n");
-        Debug.Log(Hp);
+        //Debug.Log("Player takes a hit.\n");
+        //Debug.Log(Hp);
         if(Hp < 1){
             Debug.Log("Player is dead.");
         }
@@ -36,8 +39,18 @@ public class CharacterStats : MonoBehaviour
 
     public void SpawnSpell(GameObject spell)
     {
+        //checking if the slots are full, and returning if it is
+        if(spellIndex >= inventory.spellSlots.Count -1)
+        {
+            Debug.LogError("Inventory slots already full");
+            return;
+        }
+
+        //Spawn the starting spell
         GameObject spawnedSpell = Instantiate(spell, transform.position, Quaternion.identity);
         spawnedSpell.transform.SetParent(transform);
-        spawnedSpells.Add(spawnedSpell);
+        inventory.AddSpell(spellIndex, spawnedSpell.GetComponent<SpellController>());
+
+        spellIndex++;
     }
 }
