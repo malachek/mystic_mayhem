@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 131810153}
   - component: {fileID: 131810152}
   - component: {fileID: 131810151}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,7 +733,7 @@ GameObject:
   - component: {fileID: 277643473}
   - component: {fileID: 277643472}
   - component: {fileID: 277643471}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1285,7 +1285,7 @@ GameObject:
   - component: {fileID: 361402810}
   - component: {fileID: 361402809}
   - component: {fileID: 361402808}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1470,7 +1470,7 @@ GameObject:
   - component: {fileID: 399804925}
   - component: {fileID: 399804924}
   - component: {fileID: 399804923}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1702,13 +1702,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d16499ea540eb44be4f56b74b94c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyMazeGrid: {fileID: 1538966079}
-  GridSize: {x: 402, y: 402}
-  GridOffset: {x: 0, y: -381}
+  GridSize: {x: 100, y: 100}
+  GridOffset: {x: -2, y: -79}
   DefaultCellCost: 999
   FreeCellCost: 1
   NeighboringWallCellCost: 10
-  NeighboringWallMaxDist: 1
   ObstacleCost: 2
   CollisionMap: {fileID: 1292598294}
   isInitialized: 0
@@ -1732,8 +1730,8 @@ GameObject:
   - component: {fileID: 520359212}
   - component: {fileID: 520359213}
   - component: {fileID: 520359215}
-  - component: {fileID: 520359217}
-  m_Layer: 6
+  - component: {fileID: 520359216}
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1994,7 +1992,7 @@ GameObject:
   - component: {fileID: 531481671}
   - component: {fileID: 531481670}
   - component: {fileID: 531481669}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2245,7 +2243,7 @@ GameObject:
   - component: {fileID: 649407206}
   - component: {fileID: 649407205}
   - component: {fileID: 649407204}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2430,7 +2428,7 @@ GameObject:
   - component: {fileID: 762539933}
   - component: {fileID: 762539932}
   - component: {fileID: 762539931}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2892,7 +2890,7 @@ GameObject:
   - component: {fileID: 982097638}
   - component: {fileID: 982097637}
   - component: {fileID: 982097636}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3286,7 +3284,7 @@ GameObject:
   - component: {fileID: 1046897875}
   - component: {fileID: 1046897874}
   - component: {fileID: 1046897873}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3472,7 +3470,7 @@ GameObject:
   - component: {fileID: 1094830614}
   - component: {fileID: 1094830613}
   - component: {fileID: 1094830615}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3673,7 +3671,7 @@ GameObject:
   - component: {fileID: 1121731068}
   - component: {fileID: 1121731067}
   - component: {fileID: 1121731066}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3856,7 +3854,8 @@ GameObject:
   - component: {fileID: 1292598294}
   - component: {fileID: 1292598293}
   - component: {fileID: 1292598295}
-  m_Layer: 7
+  - component: {fileID: 1292598296}
+  m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4083,7 +4082,7 @@ GameObject:
   - component: {fileID: 1334904029}
   - component: {fileID: 1334904028}
   - component: {fileID: 1334904027}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4268,7 +4267,7 @@ GameObject:
   - component: {fileID: 1372392687}
   - component: {fileID: 1372392686}
   - component: {fileID: 1372392685}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4453,7 +4452,7 @@ GameObject:
   - component: {fileID: 1383138844}
   - component: {fileID: 1383138843}
   - component: {fileID: 1383138842}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4772,7 +4771,7 @@ GameObject:
   - component: {fileID: 1464565167}
   - component: {fileID: 1464565166}
   - component: {fileID: 1464565165}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4957,7 +4956,7 @@ GameObject:
   - component: {fileID: 1524321091}
   - component: {fileID: 1524321090}
   - component: {fileID: 1524321089}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5142,7 +5141,7 @@ GameObject:
   - component: {fileID: 1534821534}
   - component: {fileID: 1534821533}
   - component: {fileID: 1534821532}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5581,7 +5580,7 @@ GameObject:
   - component: {fileID: 1569374068}
   - component: {fileID: 1569374067}
   - component: {fileID: 1569374066}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5868,7 +5867,7 @@ GameObject:
   - component: {fileID: 1684254206}
   - component: {fileID: 1684254205}
   - component: {fileID: 1684254204}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6254,7 +6253,7 @@ GameObject:
   - component: {fileID: 2068817696}
   - component: {fileID: 2068817695}
   - component: {fileID: 2068817694}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6514,7 +6513,7 @@ GameObject:
   - component: {fileID: 2105139882}
   - component: {fileID: 2105139881}
   - component: {fileID: 2105139880}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
