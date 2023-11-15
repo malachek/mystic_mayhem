@@ -28,6 +28,7 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] bool bottomRowEmpty = false;
 
     [SerializeField] MazeGridSpawner _mSpawner; // the spawner object
+    [SerializeField] private MazeObjectSpawner objSpawner; // object spawner object
     [SerializeField] private MazeGrid _mGrid;   // the MazeGrid object // TODO: phase this out ... not necessary for functionality, just useful for testing.
     private int _maxSetValue = 0;               // the current max set value
 
@@ -36,8 +37,9 @@ public class MazeGenerator : MonoBehaviour
 
     [SerializeField] bool doDebug = false;
 
-    bool doneGenerating = false;
+    //private MazeCell keyLocation;
 
+    bool doneGenerating = false;
 
     // Use this for initialization
     void Start()
@@ -52,13 +54,16 @@ public class MazeGenerator : MonoBehaviour
             else GenerateMaze();
         }
 
+        //keyLocation = new MazeCell(new Vector3Int(_mSpawner.keySpawnLocation.x, _mSpawner.keySpawnLocation.y));
+
         doneGenerating = true;
+
+        // generate key
+        objSpawner.SpawnKey();
+        
     }
 
-    public bool isDoneGenerating()
-    {
-        return doneGenerating;
-    }
+    #region MazeGeneration
 
     /** 
      * Generates the maze via the steps of Eller's Algorithm
@@ -78,6 +83,7 @@ public class MazeGenerator : MonoBehaviour
         {
             Vector3Int coords = new Vector3Int(x, 0);
             MazeCell newCell = new MazeCell(coords, _maxSetValue);
+
             firstRow.Add(newCell);
             _maxSetValue++;
         }
@@ -180,6 +186,8 @@ public class MazeGenerator : MonoBehaviour
         wallCoords = MazeToGridCoords(current[current.Count - 1].GetCoords());
         PlaceRightWall(wallCoords.x, wallCoords.y);
     }
+
+    #endregion
 
     #region Steps
 
@@ -344,11 +352,15 @@ public class MazeGenerator : MonoBehaviour
         }
     }
 
+    #endregion
 
+    #region ObjectSpawning
+
+    
 
     #endregion
 
-    #region Helper_Functions
+    #region HelperFunctions
 
     /*
      * From https://www.youtube.com/watch?v=5nWUX2TMJrY.
@@ -452,6 +464,11 @@ public class MazeGenerator : MonoBehaviour
         return sets;
     }
 
+    public bool isDoneGenerating()
+    {
+        return doneGenerating;
+    }
+
     /*
      * this uses a little bit of Linq magic that I don't totally understand...
      * TODO: look into System.Linq!
@@ -466,6 +483,7 @@ public class MazeGenerator : MonoBehaviour
         }
         return shuffled;
     }
+
 
     // here in case the above function doesn't work w/ Random.Range...
     // private static System.Random rng = new System.Random();
