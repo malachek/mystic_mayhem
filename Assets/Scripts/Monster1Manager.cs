@@ -20,8 +20,12 @@ public class Monster1Manager : MonoBehaviour
 
     private Vector2 screenBounds;
 
+    private Pathfinder WorldGrid;
+    private GameObject Player;
     void Start(){
-        
+
+        WorldGrid=GameObject.FindObjectOfType<Pathfinder>();
+        Player = GameObject.Find("Player");
         timer = 0;
         halfed_height = Screen.height/scaleability / 2;
         halfed_width = Screen.width/scaleability / 2;
@@ -30,14 +34,17 @@ public class Monster1Manager : MonoBehaviour
 
     private void SpawnEnemy(int amt)
     {
-        var playerPos = GameObject.Find("Player").transform.position;
+        var playerPos = Player.transform.position;
 
         float screenie_north = playerPos.y + halfed_height;
         float screenie_south = playerPos.y - halfed_height;
         float screenie_east  = playerPos.x + halfed_width;
         float screenie_west  = playerPos.x - halfed_width;
 
-        Debug.Log(screenie_north + " - " + screenie_south + " - " + screenie_east + " - " + screenie_west);
+        //Debug.Log(screenie_north + " - " + screenie_south + " - " + screenie_east + " - " + screenie_west);
+
+        int failedAttempts=0;
+        
         for (int i=0; i<amt; i++)
         {
             int direction = Random.Range(0, 4); //gets range between 0 and 3 inc
@@ -79,13 +86,42 @@ public class Monster1Manager : MonoBehaviour
                 y = UnityEngine.Random.Range(screenie_south - spawnlimit, screenie_south);
                 
             }
-            Debug.Log(x + " --- " + y);
+            //Debug.Log(x + " --- " + y);
             Vector3 position = new Vector3(x, y, 0f);
-            GameObject newEnemy = Instantiate(monster);
-            newEnemy.SetActive(true);
-            newEnemy.transform.position = position;
+
+
+            //isPosOk checks to see if the position is not out of bounds or in a wall
+            //PositionCanSeePlayer forces the enemy to spawn with beeline capablities to the player (For no lag)
+            if (WorldGrid.isPosOk(position)&&PositionCanSeePlayer(position))
+            {
+                GameObject newEnemy = Instantiate(monster);
+                newEnemy.SetActive(true);
+                newEnemy.transform.position = position;
+            }
+            else
+            {
+                i--;
+                failedAttempts++; //i-- on its own could cause infinite loop, which is kinda bad, so we use a failsafe timeout if there is literally no spot to spawn :(.
+                if(failedAttempts>9999999)
+                {
+                    Debug.LogWarning("No possible location found for spawning enemies!");
+                    break;
+                }
+            }
 
         }
+
+    }
+    public bool PositionCanSeePlayer(Vector2 from)
+    {
+        Vector2 target = Player.transform.position;
+        RaycastHit2D hit = Physics2D.Raycast(from, (target - from).normalized, Vector2.Distance(from, target), LayerMask.GetMask("Wall"));
+        //Debug.DrawRay(from, (target -from).normalized * (Vector2.Distance(from, target)-1), Color.blue, 10);
+        if (hit.collider == null)
+        {
+            return true; //If I can see the player and I'm not blocked by any walls, I like this spawn spot!
+        }
+        return false;
     }
 
     void Update(){
