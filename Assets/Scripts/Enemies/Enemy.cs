@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            if (PlayerTarget != null)
+            if (PlayerTarget != null&&!pathfinderAgent.ListensForMouseDebug)
             {
                 if (Vector2.Distance(transform.position, PlayerTarget.transform.position) > StoppingDistance)
                 {
@@ -48,8 +48,8 @@ public class Enemy : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
-    private const int MAX_PATHTENSION = 100; // The max amount of temporary extensions allowed before a full recacluation is needed.
-    private const int SHORTPATH_CUTOFF = 5; //No Tension Optimization will be performed if the enemy is closer than this from the player.
+    private const int MAX_PATHTENSION = int.MaxValue; // The max amount of temporary extensions allowed before a full recacluation is needed.
+    private const int SHORTPATH_CUTOFF = 10; //No Tension Optimization will be performed if the enemy is closer than this from the player.
 
     public void Follow()
     {

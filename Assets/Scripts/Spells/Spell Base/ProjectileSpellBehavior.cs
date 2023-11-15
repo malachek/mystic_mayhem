@@ -42,14 +42,27 @@ public class ProjectileSpellBehavior : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D col)
     {
+        Debug.Log("collided w/ "  + col.gameObject.name);
+        if (col.CompareTag("Maze"))
+        {
+            Destroy(gameObject);
+        }
+
         if(col.CompareTag("Enemy"))
         {
             EnemyFunctionality enemy = col.GetComponent<EnemyFunctionality>();
             enemy.TakeDamage((int)currentDamage); //Make sure to use currentDamage instead of weaponData.damage in case of any damage multipliers
             reducePiere();
         }
-
     }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Maze"))
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 
     void reducePiere()
     {
