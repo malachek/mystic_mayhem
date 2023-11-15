@@ -5,15 +5,46 @@ public class MazeObjectSpawner : MonoBehaviour
 {
     [SerializeField] MazeGridSpawner _mSpawner;
 
+    [Header("Key Settings")]
     [SerializeField] GameObject keyPrefab;
+    [Tooltip("Key radius should not be larger than 0.5 * min(maze width, maze height) (sorry to make you do math)")]
     [SerializeField] int keyRadius;
 
+    [Header("Boss Settings")]
     [SerializeField] GameObject bossPrefab;
+    [Tooltip("Boss radius should not be larger than 0.5 * min(maze width, maze height) (sorry to make you do math)")]
     [SerializeField] int bossRadius;
 
+    private GameObject player;
+
+    private void Awake()
+    {
+        player = GameObject.Find("Player");
+    }
+
+    /*
+     * Randomly generate key location as grid coordinates 
+     */
     public Vector3Int GenerateKeyGridCoords()
     {
-        return new Vector3Int(0, 0);
+        Vector3Int keyLocation = Vector3Int.zero;
+        bool generated = false;
+
+        while (!generated)
+        {
+            // choose a random spot
+            int x = Mathf.FloorToInt(Random.value * _mSpawner.width);
+            int y = Mathf.FloorToInt(Random.value * _mSpawner.height);
+
+            keyLocation = new Vector3Int(x, y);
+
+            if ((keyLocation - Vector3Int.FloorToInt(player.transform.position)).magnitude > keyRadius)
+            {
+                generated = true;
+            }
+        }
+        
+        return keyLocation;
     }
 
     public Vector3Int GenerateBossGridCoods()
@@ -24,9 +55,10 @@ public class MazeObjectSpawner : MonoBehaviour
     public void SpawnKey()
     {
         Vector3 keyWorldPosition = GetCellMidpointAsWorldPosition(GenerateKeyGridCoords());
+        GameObject key = keyPrefab;
+        key.transform.position = keyWorldPosition;
         Instantiate(keyPrefab);
         Debug.Log("Spawned Key @ " + keyWorldPosition);
-        keyPrefab.transform.position = keyWorldPosition;
     }
 
     /*

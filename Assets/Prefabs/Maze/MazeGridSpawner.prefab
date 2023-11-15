@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4287627827131706489}
   - component: {fileID: 1896041694647166627}
+  - component: {fileID: 6544516971561202013}
   m_Layer: 0
   m_Name: MazeGridSpawner
   m_TagString: Untagged
@@ -49,3 +50,21 @@ MonoBehaviour:
   mazeCellSize: 4
   origin: {fileID: 0}
   g: {fileID: 0}
+  keyPrefab: {fileID: 0}
+--- !u!114 &6544516971561202013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2249284585035689631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91e2b95d07f549a48e74694fdfeada6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mSpawner: {fileID: 1896041694647166627}
+  keyPrefab: {fileID: 4589165984700617184, guid: c3aa554cf17b44c25a5b15ca8cd892f0, type: 3}
+  keyRadius: 40
+  bossPrefab: {fileID: 0}
+  bossRadius: 0
