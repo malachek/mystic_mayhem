@@ -1702,11 +1702,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d16499ea540eb44be4f56b74b94c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MyMazeGrid: {fileID: 0}
   GridSize: {x: 100, y: 100}
   GridOffset: {x: -2, y: -79}
   DefaultCellCost: 999
   FreeCellCost: 1
   NeighboringWallCellCost: 10
+  NeighboringWallMaxDist: 1
   ObstacleCost: 2
   CollisionMap: {fileID: 1292598294}
   isInitialized: 0
@@ -1730,7 +1732,7 @@ GameObject:
   - component: {fileID: 520359212}
   - component: {fileID: 520359213}
   - component: {fileID: 520359215}
-  - component: {fileID: 520359216}
+  - component: {fileID: 520359217}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3854,7 +3856,6 @@ GameObject:
   - component: {fileID: 1292598294}
   - component: {fileID: 1292598293}
   - component: {fileID: 1292598295}
-  - component: {fileID: 1292598296}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -6083,10 +6084,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 1094830608}
-  scaleability: 0
+  scaleability: 20
   spawnAmount: 10
-  spawnlimit: 0
-  spawnTimer: 0
+  spawnlimit: 5
+  spawnTimer: 5
 --- !u!1001 &1824354707
 PrefabInstance:
   m_ObjectHideFlags: 0
