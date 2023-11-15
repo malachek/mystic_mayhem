@@ -14,6 +14,7 @@ public class Monster1Manager : MonoBehaviour
 
     void Start(){
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(screenBounds.x, screenBounds.y, 0f));
+        timer = 0;
     }
 
     void LateUpdate(){
@@ -70,17 +71,21 @@ public class Monster1Manager : MonoBehaviour
         }
 
     }
-    // [SerializeField] float spawnTimer;
+    [SerializeField] float spawnTimer;
 
-    // float timer;
+    float timer;
 
-    // private void Update(){
-    //     timer -= Time.deltaTime;
-    //     if(timer<0f){
-    //         SpawnEnemy();
-    //         timer = spawnTimer;
-    //     }
-    // }
+    private void Update(){
+        Debug.Log(timer);
+        if(timer <= spawnTimer){
+            timer += Time.deltaTime;
+        }
+        else{
+            timer = 0;
+            SpawnEnemy(spawnAmount);
+            Debug.Log("AAAAH");
+        }
+    }
 
     // private void SpawnEnemy(){
     //     Vector3 position = new Vector3(

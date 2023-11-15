@@ -1239,6 +1239,7 @@ GameObject:
   - component: {fileID: 520359213}
   - component: {fileID: 520359214}
   - component: {fileID: 520359215}
+  - component: {fileID: 520359216}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1357,8 +1358,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_speed: 20
-  animator: {fileID: 0}
-  spriteRenderer: {fileID: 0}
+  animator: {fileID: 520359216}
+  spriteRenderer: {fileID: 520359208}
 --- !u!58 &520359212
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1437,6 +1438,27 @@ MonoBehaviour:
   aoeCircle: {fileID: 0}
   circleRadius: 3.385
   circleDMG: 10
+--- !u!95 &520359216
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520359206}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 54175ff8f3bfbd048830ac3aca95f545, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &531481667
 GameObject:
   m_ObjectHideFlags: 0
@@ -4828,6 +4850,7 @@ MonoBehaviour:
   monster: {fileID: 1094830608}
   spawnArea: {x: 20, y: 20}
   spawnAmount: 10
+  spawnTimer: 5
 --- !u!1001 &1824354707
 PrefabInstance:
   m_ObjectHideFlags: 0
