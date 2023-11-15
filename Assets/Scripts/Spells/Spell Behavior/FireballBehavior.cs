@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicMeleeBehavior : MeleeSpellBehavior
+public class FireballBehavior : ProjectileSpellBehavior
 {
-    // Start is called before the first frame update
+
+
+
     protected override void Start()
     {
         base.Start();
@@ -13,6 +15,6 @@ public class BasicMeleeBehavior : MeleeSpellBehavior
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position += direction * spellData.Speed * Time.deltaTime; //set movement of BasicSpell
     }
 }
