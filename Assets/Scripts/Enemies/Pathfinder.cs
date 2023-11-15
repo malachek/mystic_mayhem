@@ -57,10 +57,6 @@ public class Pathfinder : MonoBehaviour
         npos += Vector2Int.FloorToInt(transform.position);
         return npos;
     }
-    public bool isPosOk(Vector2 position)
-    {
-        return isPosInBounds(toPos(position))&&(grid.GetCellCost(toPos(position)) != float.PositiveInfinity);
-    }
     private bool isPosInBounds(RoyT.AStar.Position pos)
     {
         return ((pos.X >= 0 && pos.Y >= 1) && (pos.X < GridSize.x-1&& pos.Y < GridSize.y));

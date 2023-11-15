@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireballBehavior : ProjectileSpellBehavior
+public class AKBehavior : ProjectileSpellBehavior
 {
 
     protected override void Start()
@@ -15,5 +15,4 @@ public class FireballBehavior : ProjectileSpellBehavior
     {
         transform.position += direction * spellData.Speed * Time.deltaTime; //set movement of BasicSpell
     }
-
 }

@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
 
     public void Follow()
     {
+        //TODO: Implement Resource Saving Optimization for Bee-Line walking.
 
         if(!pathfinderAgent.isPathing())
         {
