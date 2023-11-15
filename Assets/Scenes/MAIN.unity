@@ -228,7 +228,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 8.799999}
+  m_AnchoredPosition: {x: 0, y: 8.799988}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &63456172
@@ -1038,7 +1038,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -88.2, y: 8.8}
+  m_AnchoredPosition: {x: -88.2, y: 8.799988}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &326611796
@@ -1732,7 +1732,7 @@ GameObject:
   - component: {fileID: 520359212}
   - component: {fileID: 520359213}
   - component: {fileID: 520359215}
-  - component: {fileID: 520359216}
+  - component: {fileID: 520359217}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -1849,7 +1849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_speed: 20
-  animator: {fileID: 0}
+  animator: {fileID: 520359217}
   spriteRenderer: {fileID: 0}
 --- !u!58 &520359212
 CircleCollider2D:
@@ -1959,6 +1959,27 @@ MonoBehaviour:
   - {fileID: 875909167}
   - {fileID: 2019764980}
   - {fileID: 2083906417}
+--- !u!95 &520359217
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520359206}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 54175ff8f3bfbd048830ac3aca95f545, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &531481667
 GameObject:
   m_ObjectHideFlags: 0
@@ -2616,7 +2637,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 90.1, y: 8.799999}
+  m_AnchoredPosition: {x: 90.1, y: 8.799988}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &839079938
@@ -3835,7 +3856,6 @@ GameObject:
   - component: {fileID: 1292598294}
   - component: {fileID: 1292598293}
   - component: {fileID: 1292598295}
-  - component: {fileID: 1292598296}
   m_Layer: 7
   m_Name: Tilemap
   m_TagString: Untagged
@@ -6064,8 +6084,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 1094830608}
-  spawnArea: {x: 20, y: 20}
+  scaleability: 0
   spawnAmount: 10
+  spawnlimit: 0
+  spawnTimer: 0
 --- !u!1001 &1824354707
 PrefabInstance:
   m_ObjectHideFlags: 0
