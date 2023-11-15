@@ -2478,7 +2478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1094830609
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2857,7 +2857,6 @@ GameObject:
   - component: {fileID: 1292598293}
   - component: {fileID: 1292598295}
   - component: {fileID: 1292598296}
-  - component: {fileID: 1292598297}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Maze
@@ -3015,33 +3014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b14b784e439c4196ac73c3a8e9538bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &1292598297
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292598291}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 2
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 7
 --- !u!1 &1334904025
 GameObject:
   m_ObjectHideFlags: 0
@@ -4848,8 +4820,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 1094830608}
-  spawnArea: {x: 20, y: 20}
+  scaleability: 20
   spawnAmount: 10
+  spawnlimit: 3
   spawnTimer: 5
 --- !u!1001 &1824354707
 PrefabInstance:
