@@ -524,9 +524,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 322148180}
     - target: {fileID: 1896041694647166627, guid: b2731daf5b0c34f149205f98646a96ac, type: 3}
+      propertyPath: width
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1896041694647166627, guid: b2731daf5b0c34f149205f98646a96ac, type: 3}
+      propertyPath: height
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1896041694647166627, guid: b2731daf5b0c34f149205f98646a96ac, type: 3}
       propertyPath: origin
       value: 
       objectReference: {fileID: 1100636337}
+    - target: {fileID: 1896041694647166627, guid: b2731daf5b0c34f149205f98646a96ac, type: 3}
+      propertyPath: mazeCellSize
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2249284585035689631, guid: b2731daf5b0c34f149205f98646a96ac, type: 3}
       propertyPath: m_Name
       value: MazeGridSpawner
