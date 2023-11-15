@@ -4848,8 +4848,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 1094830608}
-  spawnArea: {x: 20, y: 20}
+  spawnArea: {x: 5, y: 5}
   spawnAmount: 10
+  spawnlimit: 0
   spawnTimer: 5
 --- !u!1001 &1824354707
 PrefabInstance:

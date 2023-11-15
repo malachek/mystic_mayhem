@@ -7,6 +7,7 @@ public class Monster1Manager : MonoBehaviour
     [SerializeField] GameObject monster;
     [SerializeField] Vector2 spawnArea;
     [SerializeField] int spawnAmount;
+    [SerializeField] int spawnlimit;
 
     bool spawned = false;
 
@@ -38,20 +39,20 @@ public class Monster1Manager : MonoBehaviour
             float x = 0f;
             float y = 0f;
             if (direction == 0){
-                x = UnityEngine.Random.Range(screenBounds.x - 10, screenBounds.x-2);
+                x = UnityEngine.Random.Range(screenBounds.x - spawnlimit, screenBounds.x);
                 y = UnityEngine.Random.Range(-spawnArea.y, spawnArea.y);
                 
             }else if(direction == 1){
                 x = UnityEngine.Random.Range(-spawnArea.x, spawnArea.x);
-                y = UnityEngine.Random.Range((screenBounds.y*-1) +10, (screenBounds.y*-1)+2);
+                y = UnityEngine.Random.Range((screenBounds.y*-1) + spawnlimit, (screenBounds.y*-1));
                 
             }else if(direction == 2){
-                x = UnityEngine.Random.Range(screenBounds.x*-1 + 10, screenBounds.x*-1 +2);
+                x = UnityEngine.Random.Range(screenBounds.x*-1 + spawnlimit, screenBounds.x*-1);
                 y = UnityEngine.Random.Range(-spawnArea.y, spawnArea.y);
                
             }else{
                 x = UnityEngine.Random.Range(-spawnArea.x, spawnArea.x);
-                y = UnityEngine.Random.Range(screenBounds.y -10, screenBounds.y -2);
+                y = UnityEngine.Random.Range(screenBounds.y - spawnlimit, screenBounds.y);
                 
             }
             Vector3 position = new Vector3(x, y, 0f);
