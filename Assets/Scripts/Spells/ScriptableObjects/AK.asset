@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6623417038561152597, guid: 729313be887194b3f9c103a4693b768d, type: 3}
   damage: 1
-  speed: 50
+  speed: 70
   maxCooldownDuration: 0.2
-  pierce: 1
+  pierce: 0
+  level: 0
+  nextLevelPrefab: {fileID: 0}
