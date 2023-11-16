@@ -81,6 +81,10 @@ public class Pathfinder : MonoBehaviour
                 StartCoroutine(BakeInASec());
         }
     }
+    public bool isPosOk(Vector2 position)
+    {
+        return isPosInBounds(toPos(position)) && (grid.GetCellCost(toPos(position)) != float.PositiveInfinity);
+    }
     public IEnumerator BakeInASec()
     {
         yield return new WaitForSecondsRealtime(1);
