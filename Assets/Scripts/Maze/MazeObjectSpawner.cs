@@ -9,6 +9,7 @@ public class MazeObjectSpawner : MonoBehaviour
     [SerializeField] GameObject keyPrefab;
     [Tooltip("Key radius should not be larger than 0.5 * min(maze width, maze height) (sorry to make you do math)")]
     [SerializeField] int keyRadius;
+    [SerializeField] bool debugSpawnAtOrigin = false;
 
     [Header("Boss Settings")]
     [SerializeField] GameObject bossPrefab;
@@ -28,16 +29,18 @@ public class MazeObjectSpawner : MonoBehaviour
     public void SpawnKey()
     {
         Vector3 keyWorldPosition = GetCellMidpointAsWorldPosition(GenerateKeyGridCoords());
-        GameObject key = Instantiate(keyPrefab);
-        key.transform.position = keyWorldPosition;
+        //GameObject key = Instantiate(keyPrefab);
+        keyPrefab.transform.position = keyWorldPosition;
+        //keyPrefab.name = "Key";
         //Debug.Log("Spawned Key @ " + keyWorldPosition);
     }
 
     public void SpawnBoss()
     {
         Vector3 bossWorldPosition = GetCellMidpointAsWorldPosition(GenerateBossGridCoords());
-        GameObject boss = Instantiate(bossPrefab);
-        boss.transform.position = bossWorldPosition;
+        //GameObject boss = Instantiate(bossPrefab);
+        bossPrefab.transform.position = bossWorldPosition;
+        //bossPrefab.name = "Boss";
         //Debug.Log("Spawned Boss (disabled) @ " + bossWorldPosition);
     }
 
@@ -48,6 +51,7 @@ public class MazeObjectSpawner : MonoBehaviour
     private Vector3Int GenerateKeyGridCoords()
     {
         Vector3Int keyLocation = Vector3Int.zero;
+        if (debugSpawnAtOrigin) return keyLocation;
         bool generated = false;
         int times = 0;
 
