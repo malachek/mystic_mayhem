@@ -1212,11 +1212,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d16499ea540eb44be4f56b74b94c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MyMazeGrid: {fileID: 0}
   GridSize: {x: 100, y: 100}
   GridOffset: {x: -2, y: -79}
   DefaultCellCost: 999
   FreeCellCost: 1
   NeighboringWallCellCost: 10
+  NeighboringWallMaxDist: 1
   ObstacleCost: 2
   CollisionMap: {fileID: 1292598294}
   isInitialized: 0
@@ -1421,6 +1423,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 10
+  startingSpell: {fileID: 0}
+  spawnedSpells: []
+  spellIndex: 0
 --- !u!114 &520359215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4186,9 +4191,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mSpawner: {fileID: 1538966079}
   keyPrefab: {fileID: 4589165984700617184, guid: c3aa554cf17b44c25a5b15ca8cd892f0, type: 3}
-  keyRadius: 10
-  bossPrefab: {fileID: 0}
-  bossRadius: 0
+  keyRadius: 15
+  bossPrefab: {fileID: 4589165984700617184, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
+  bossRadius: 15
 --- !u!1 &1554748873
 GameObject:
   m_ObjectHideFlags: 0
@@ -4874,8 +4879,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 1094830608}
-  spawnArea: {x: 20, y: 20}
+  scaleability: 0
   spawnAmount: 10
+  spawnlimit: 0
   spawnTimer: 5
 --- !u!1001 &1824354707
 PrefabInstance:
@@ -4949,7 +4955,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6544516971561202013, guid: b2731daf5b0c34f149205f98646a96ac, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

@@ -16,6 +16,7 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine.Tilemaps;
 using System.Linq;
 
@@ -58,9 +59,16 @@ public class MazeGenerator : MonoBehaviour
 
         doneGenerating = true;
 
-        // generate key
+        // spawn key & boss
+        StartCoroutine(SpawnItems());
+
+    }
+
+    IEnumerator SpawnItems()
+    {
         objSpawner.SpawnKey();
-        
+        objSpawner.SpawnBoss();
+        yield return null;
     }
 
     #region MazeGeneration

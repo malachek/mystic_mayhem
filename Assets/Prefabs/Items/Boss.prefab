@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 5028358151388715497}
   - component: {fileID: 2662847963063978505}
   m_Layer: 0
-  m_Name: Key
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5028358151388715497
 Transform:
   m_ObjectHideFlags: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 447f577639f4e4bb0b00a53594935b11, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cb490633da8d74a358251fe6a379ca61, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
