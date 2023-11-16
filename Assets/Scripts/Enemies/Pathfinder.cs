@@ -13,7 +13,11 @@ public class Pathfinder : MonoBehaviour
     //A* pathfinding attempts to find the "cheapest" path between each point, to do this we assign a grid of points with those costs first.
 
     [Header("Static Info (Mostly Locked At Creation)")]
+    
+    public MazeGridSpawner MyMazeGrid; // Will ovveride gridsize/offset to match this MazeGridSpawner's values.
+    [HideInInspector]
     public Vector2Int GridSize=new Vector2Int(10,10);
+    [HideInInspector]
     public Vector2Int GridOffset = Vector2Int.zero;
     [Min(1)]
     public int DefaultCellCost=9999; //Default tiles in the universe are set to this cost.
@@ -21,6 +25,8 @@ public class Pathfinder : MonoBehaviour
     public int FreeCellCost = 1; //Empty tiles are set to this cost.
     [Min(0)]
     public int NeighboringWallCellCost=0; //If a tile is one tile away from a wall, how much more does this tile cost.
+    [Min(1)]
+    public int NeighboringWallMaxDist=1;
     public enum WallCost {FreeCellCost,DefaultCellCost,InfiniteCellCost}; //Should obstacles be ignored, avoided but passed over if need be, or never crossed ever.
     public WallCost ObstacleCost = WallCost.InfiniteCellCost;
 
@@ -53,7 +59,7 @@ public class Pathfinder : MonoBehaviour
     }
     private bool isPosInBounds(RoyT.AStar.Position pos)
     {
-        return ((pos.X >= 0 && pos.Y >= 0) && (pos.X < GridSize.x&& pos.Y < GridSize.y));
+        return ((pos.X >= 0 && pos.Y >= 1) && (pos.X < GridSize.x-1&& pos.Y < GridSize.y));
     }
     public void ResetGrid()
     {
@@ -61,6 +67,10 @@ public class Pathfinder : MonoBehaviour
     }
     private void Start()
     {
+        if (MyMazeGrid != null)
+        {
+            SnapToGrid(MyMazeGrid);
+        }
         ResetGrid();
 
         if (CollisionMap != null)
@@ -70,6 +80,10 @@ public class Pathfinder : MonoBehaviour
             else if (OnStartUp== StartUpBakeAction.BakeInABit)
                 StartCoroutine(BakeInASec());
         }
+    }
+    public bool isPosOk(Vector2 position)
+    {
+        return isPosInBounds(toPos(position)) && (grid.GetCellCost(toPos(position)) != float.PositiveInfinity);
     }
     public IEnumerator BakeInASec()
     {
@@ -134,9 +148,9 @@ public class Pathfinder : MonoBehaviour
         {
             //Loop through all positions in the world grid, and if there is a tile there, follow the selected choices to set cell cost accordingly, if nothing is there do the same but for the empty cell rules.
             Vector2Int startPos = Vector2Int.FloorToInt((Vector2)transform.position + (Vector2)GridOffset);
-            for(int x= 0; x< GridSize.x;x++)
+            for(int x= 0; x< GridSize.x-1;x++)
             {
-                for (int y =0; y < GridSize.y; y++)
+                for (int y =1; y < GridSize.y; y++)
                 {
                     RoyT.AStar.Position pos = toPos(startPos+new Vector2(x, y));
                     if (CollisionMap.GetTile(new Vector3Int(startPos.x+x,startPos.y + y))!=null)
@@ -166,9 +180,9 @@ public class Pathfinder : MonoBehaviour
                             int proximityCost = 0;
                             if(NeighboringWallCellCost!=0)
                             {
-                                for(int dx=-1; dx <= 1; dx++)
+                                for(int dx=-NeighboringWallMaxDist; dx <= NeighboringWallMaxDist; dx++)
                                 {
-                                    for (int dy = -1; dy <= 1; dy++)
+                                    for (int dy = -NeighboringWallMaxDist; dy <= NeighboringWallMaxDist; dy++)
                                     {
                                         if(CollisionMap.GetTile(new Vector3Int(startPos.x+ x +dx, startPos.y+ y +dy)) != null)
                                         {
@@ -189,9 +203,28 @@ public class Pathfinder : MonoBehaviour
             Debug.LogWarning("Cannot bake pathfinding without a tilemap!");
         }
     }
+    public void SnapToGrid(MazeGridSpawner gridSpawner)
+    {
+        GridSize.x = gridSpawner.width * gridSpawner.mazeCellSize+1;
+        GridSize.y = gridSpawner.height * gridSpawner.mazeCellSize+1;
+        GridOffset.x = 0;
+        GridOffset.y = -GridSize.y+gridSpawner.mazeCellSize;
 
+        if (GridSize.x % 2 == 1)
+        {
+            GridSize.x += 1;
+        }
+        if (GridSize.y % 2 == 1)
+        {
+            GridSize.y += 1;
+        }
+    }
     private void OnDrawGizmosSelected()
     {
+        if(MyMazeGrid != null&&!Application.isPlaying)
+        {
+            SnapToGrid(MyMazeGrid);
+        }
         if(GridSize.x%2==1)
         {
             GridSize.x += 1;
@@ -201,6 +234,6 @@ public class Pathfinder : MonoBehaviour
             GridSize.y += 1;
         }
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube((Vector2)transform.position+(Vector2)GridOffset + (Vector2)(GridSize / 2), (Vector2)GridSize);
+        Gizmos.DrawWireCube((Vector2)transform.position+(Vector2)GridOffset + (Vector2)(new Vector2(GridSize.x -1, GridSize.y+1) / 2), new Vector2(GridSize.x-1,GridSize.y-1));
     }
 }

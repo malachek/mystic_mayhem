@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3642588a7616748459766be46cd89649, type: 3}
-  m_Name: Fireball
+  m_Name: Garlic Level 2
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7191764902000688093, guid: dd3fea26d0d699e429b4e491e582b1a3, type: 3}
+  prefab: {fileID: 2401487121502457501, guid: ed4e1a681b6b98144b0a6096150a3349, type: 3}
   damage: 5
-  speed: 30
-  maxCooldownDuration: 0.5
-  pierce: 5
+  speed: 1
+  maxCooldownDuration: 2.5
+  pierce: 0
+  level: 2
+  nextLevelPrefab: {fileID: 0}
+  icon: {fileID: -2040685801, guid: 347f46dd41a4e5f41b6be72dee926bef, type: 3}
