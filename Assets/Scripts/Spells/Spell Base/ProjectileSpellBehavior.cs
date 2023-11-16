@@ -42,7 +42,7 @@ public class ProjectileSpellBehavior : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("collided w/ "  + col.gameObject.name);
+        //Debug.Log("collided w/ "  + col.gameObject.name);
         if (col.CompareTag("Maze"))
         {
             Destroy(gameObject);
