@@ -6083,7 +6083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90881a6de4b2a9c46ae88ceeec69ba2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 1094830608}
+  monster: {fileID: 7102055852793968142, guid: ee756ee1b09dd0c459dd3bfd4482b129, type: 3}
   scaleability: 20
   spawnAmount: 10
   spawnlimit: 5
