@@ -69,7 +69,8 @@ public class PlayerMove : MonoBehaviour
                 rgb2d.transform.position = hit.point;
 
                 //set Ignore Ray to everything to tp over walls and stuff. These are the things that it will ignore.
-                //Its like it shoots out a laser beam to the position your mouse is. If nothing, tp to the end. If there is a object in the way, teleport to the point of contact.
+                //Its like it shoots out a laser beam to the position your mouse is. If nothing, tp to the end. If there is a object in the way, teleport to the point of contact. HOWEVER, IT DOES NOT WORK (lol ;3)
+                //Just Ignore Ray to everything.
                 if (hit)
                 {
                     rgb2d.transform.position = hit.point;
