@@ -44,7 +44,7 @@ public class MazeGenerator : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        grid = _mSpawner.g;
+        grid = _mSpawner.grid;
         tilemap = grid.GetComponentInChildren<Tilemap>();
 
         if (generate)

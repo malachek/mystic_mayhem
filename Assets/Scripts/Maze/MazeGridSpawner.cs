@@ -9,5 +9,5 @@ public class MazeGridSpawner : MonoBehaviour
     public int mazeCellSize;
     public GameObject origin;
 
-    public Grid g; // sorry, i know this variable name is terrible. it's temporary though; the MazeGrid class will be phased out p soon.
+    public Grid grid; // sorry, i know this variable name is terrible. it's temporary though; the MazeGrid class will be phased out p soon.
 }

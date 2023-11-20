@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     [Min(0)]
     public float MaxHP; // The maximum amount of health this enemy has.
 
-    public float DamagePerHit = 1;
+    [SerializeField] private bool isBoss;
     [Min(0)]
     public float StoppingDistance = 1;
     
@@ -55,16 +55,21 @@ public class Enemy : MonoBehaviour
         // Debug.Log(hp);
         if (LiveHP < 1)
         {
-            // Debug.Log(gameObject);
-            DropEXP();
-            Destroy(gameObject);
-
+            Die();
         }
     }
     public void Die()
     {
-        Destroy(this.gameObject);
-        DropEXP();
+        if (isBoss)
+        {
+            // switch scenes here...
+            Debug.Log("yeah");
+        } 
+        else
+        {
+            Destroy(this.gameObject);
+            DropEXP();
+        }
     }
     private const int MAX_PATHTENSION = int.MaxValue; // The max amount of temporary extensions allowed before a full recacluation is needed.
     private const int SHORTPATH_CUTOFF = 10; //No Tension Optimization will be performed if the enemy is closer than this from the player.
