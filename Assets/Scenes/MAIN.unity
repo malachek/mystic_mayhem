@@ -1750,6 +1750,7 @@ MonoBehaviour:
   SubTileOffset: {x: 0.5, y: 0.5}
   EmptySpace: {fileID: 922871642}
   PaintGround:
+  - {fileID: 11400000, guid: 072d7323dbe21bd46ae5da4f9c37c628, type: 2}
   - {fileID: 11400000, guid: 21aa6e41b59f57d4b87e2c9e606d9a6a, type: 2}
 --- !u!1 &520359206
 GameObject:
@@ -3047,7 +3048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
       propertyPath: wallTiles.Array.size
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
       propertyPath: wallTiles.Array.data[0]
@@ -3072,7 +3073,43 @@ PrefabInstance:
     - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
       propertyPath: wallTiles.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: c47d06ccef9ad644dabbb79efca434f7, type: 2}
+      objectReference: {fileID: 11400000, guid: a001936a9ce43f743bd7fff9d76d0b1b, type: 2}
+    - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
+      propertyPath: wallTiles.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: f9450fc2e1f950749864c81be4c97cc7, type: 2}
+    - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
+      propertyPath: wallTiles.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2cea9d4d48fb52a4fb16bd7236e0c58c, type: 2}
+    - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
+      propertyPath: wallTiles.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 69d0c31d862e8a54896b2bc04466788a, type: 2}
+    - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
+      propertyPath: wallTiles.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: ee2a0a42aaf7c4341a61dbffbcf27f7a, type: 2}
+    - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
+      propertyPath: wallTiles.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: a3c0074285ef91f4f9909e2d4f116177, type: 2}
+    - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
+      propertyPath: wallTiles.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: aca2464fc5a60f14c8aa5bbbff2b9839, type: 2}
+    - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
+      propertyPath: wallTiles.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 65172c341c38def4aa689194f40625a0, type: 2}
+    - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
+      propertyPath: wallTiles.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: 96530e3e3f5d3b446ae894548476c46f, type: 2}
+    - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
+      propertyPath: wallTiles.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: 96530e3e3f5d3b446ae894548476c46f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5827,7 +5864,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.084905684, g: 0.020583197, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.10588236, g: 0.04705883, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
