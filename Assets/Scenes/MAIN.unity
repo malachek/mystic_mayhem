@@ -1961,7 +1961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 4
   timer: 0
-  aoeCircle: {fileID: 0}
+  aoeCircle: {fileID: 1646951876}
   circleRadius: 3.385
   circleDMG: 10
 --- !u!114 &520359216

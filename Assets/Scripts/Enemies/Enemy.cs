@@ -103,6 +103,6 @@ public class Enemy : MonoBehaviour
 
     public void DropEXP(){
         killCounter.kills_amt += EXP;
-        Debug.Log("DROP XP");
+        // Debug.Log("DROP XP");
     }
 }
