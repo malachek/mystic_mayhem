@@ -2244,7 +2244,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20.9, y: -20.9}
+  m_AnchoredPosition: {x: 20.900024, y: -20.899994}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &588844802
@@ -3047,28 +3047,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
       propertyPath: wallTiles.Array.size
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
       propertyPath: wallTiles.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: ee2a0a42aaf7c4341a61dbffbcf27f7a, type: 2}
+      objectReference: {fileID: 11400000, guid: 9c53320e7a044404b84f69769b0eddf5, type: 2}
     - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
       propertyPath: wallTiles.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: a3c0074285ef91f4f9909e2d4f116177, type: 2}
+      objectReference: {fileID: 11400000, guid: 328ba90c6b53b0e42a1bc1563aab67e3, type: 2}
     - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
       propertyPath: wallTiles.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: aca2464fc5a60f14c8aa5bbbff2b9839, type: 2}
+      objectReference: {fileID: 11400000, guid: ef98280e3cce29f42a211a0ca192137d, type: 2}
     - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
       propertyPath: wallTiles.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 65172c341c38def4aa689194f40625a0, type: 2}
+      objectReference: {fileID: 11400000, guid: 71bde99836f739e488c6a8a80751e6a4, type: 2}
     - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
       propertyPath: wallTiles.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 96530e3e3f5d3b446ae894548476c46f, type: 2}
+      objectReference: {fileID: 11400000, guid: 22d5bf7d991d985458b32f5aad5a9317, type: 2}
+    - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
+      propertyPath: wallTiles.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: c47d06ccef9ad644dabbb79efca434f7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

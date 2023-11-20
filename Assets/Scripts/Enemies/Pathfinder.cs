@@ -156,6 +156,11 @@ public class Pathfinder : MonoBehaviour
                 for (int y =1; y < GridSize.y; y++)
                 {
                     RoyT.AStar.Position pos = toPos(startPos+new Vector2(x, y));
+
+                    if (EmptySpace != null)
+                    {
+                        EmptySpace.SetTile(new Vector3Int(startPos.x + x, startPos.y + y), PaintGround[Random.Range(0, PaintGround.Length)]);
+                    }
                     if (CollisionMap.GetTile(new Vector3Int(startPos.x+x,startPos.y + y))!=null)
                     {
                         if (BakeRule == DoubleBakeRule.PaintFull || BakeRule == DoubleBakeRule.PaintWalls)
