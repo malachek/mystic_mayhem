@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public string gameScene = "PathfindingWithUITest";
+    public string gameScene = "AddUITest";
 
     public void StartGame(string gameScene)
     {
