@@ -128,7 +128,7 @@ public class Monster1Manager : MonoBehaviour
             {
                 i--;
                 failedAttempts++; //i-- on its own could cause infinite loop, which is kinda bad, so we use a failsafe timeout if there is literally no spot to spawn :(.
-                if (failedAttempts > 9999999)
+                if (failedAttempts > 999)
                 {
                     Debug.LogWarning("No possible location found for spawning enemies!");
                     break;
