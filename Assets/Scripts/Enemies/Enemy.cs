@@ -44,6 +44,19 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+    public void TakeDamage(int damage)
+    {
+        LiveHP -= damage;
+        Debug.Log("Monster takes a hit.\n");
+        // Debug.Log(hp);
+        if (LiveHP < 1)
+        {
+            Debug.Log(gameObject);
+            //DropEXP();
+            Destroy(gameObject);
+
+        }
+    }
     public void Die()
     {
         Destroy(this.gameObject);

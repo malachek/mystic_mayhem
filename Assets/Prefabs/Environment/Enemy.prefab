@@ -201,4 +201,6 @@ MonoBehaviour:
   hp: 10
   strength: 1
   cooldown: 1
+  EXP: 1
   player: {fileID: 0}
+  killCounter: {fileID: 0}
