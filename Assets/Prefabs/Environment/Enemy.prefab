@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 0}
   LiveHP: 0
-  MaxHP: 20
+  MaxHP: 10
   DamagePerHit: 1
   StoppingDistance: 2
 --- !u!50 &1319029063592873517
@@ -201,4 +201,6 @@ MonoBehaviour:
   hp: 10
   strength: 1
   cooldown: 1
+  EXP: 1
   player: {fileID: 0}
+  killCounter: {fileID: 0}

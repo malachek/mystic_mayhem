@@ -1278,9 +1278,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d16499ea540eb44be4f56b74b94c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyMazeGrid: {fileID: 0}
-  GridSize: {x: 100, y: 100}
-  GridOffset: {x: -2, y: -79}
+  MyMazeGrid: {fileID: 1538966079}
+  GridSize: {x: 402, y: 402}
+  GridOffset: {x: 0, y: -381}
   DefaultCellCost: 999
   FreeCellCost: 1
   NeighboringWallCellCost: 10
@@ -1308,9 +1308,9 @@ GameObject:
   - component: {fileID: 520359214}
   - component: {fileID: 520359215}
   - component: {fileID: 520359216}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2557,13 +2557,13 @@ GameObject:
   - component: {fileID: 1094830614}
   - component: {fileID: 1094830613}
   - component: {fileID: 1094830615}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1094830609
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2943,7 +2943,7 @@ GameObject:
   - component: {fileID: 1292598295}
   - component: {fileID: 1292598296}
   - component: {fileID: 1292598297}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tilemap
   m_TagString: Maze
   m_Icon: {fileID: 0}
@@ -4914,6 +4914,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3524747691669280435, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 520359214}
+    - target: {fileID: 4506109369595044084, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
+      propertyPath: MaxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506109369595044084, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
+      propertyPath: DamagePerHit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506109369595044084, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
+      propertyPath: PlayerTarget
+      value: 
+      objectReference: {fileID: 520359206}
+    - target: {fileID: 4506109369595044084, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
+      propertyPath: StoppingDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4589165984700617184, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
       propertyPath: m_Name
       value: Boss
@@ -4960,6 +4980,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5028358151388715497, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281587157795601642, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
+      propertyPath: WorldGrid
+      value: 
+      objectReference: {fileID: 495886156}
+    - target: {fileID: 9033225675861399348, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9033225675861399348, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
+      propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5012,9 +5044,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 1094830608}
-  scaleability: 0
+  scaleability: 20
   spawnAmount: 10
-  spawnlimit: 0
+  spawnlimit: 5
   spawnTimer: 5
 --- !u!1001 &1824354707
 PrefabInstance:

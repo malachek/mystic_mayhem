@@ -11,6 +11,7 @@ public class Key : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             boss.SetActive(true); // waoh...
+            gameObject.SetActive(false);
         }
     }
 }

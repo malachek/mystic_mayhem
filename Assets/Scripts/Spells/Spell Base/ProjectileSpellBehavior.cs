@@ -50,7 +50,7 @@ public class ProjectileSpellBehavior : MonoBehaviour
 
         if(col.CompareTag("Enemy"))
         {
-            EnemyFunctionality enemy = col.GetComponent<EnemyFunctionality>();
+            Enemy enemy = col.GetComponent<Enemy>();
             enemy.TakeDamage((int)currentDamage); //Make sure to use currentDamage instead of weaponData.damage in case of any damage multipliers
             reducePiere();
         }

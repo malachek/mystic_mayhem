@@ -13,11 +13,11 @@ public class GarlicBehavior : MeleeSpellBehavior
         markedEnemies = new List<GameObject>();
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    protected override void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Enemy") && !markedEnemies.Contains(col.gameObject))
         {
-            EnemyFunctionality enemy = col.GetComponent<EnemyFunctionality>();
+            Enemy enemy = col.GetComponent<Enemy>();
             enemy.TakeDamage((int)currentDamage);
 
             markedEnemies.Add(col.gameObject);//mark the enemy so it won't take another instance of damage from this garlic

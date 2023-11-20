@@ -440,6 +440,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &131810154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -834,6 +838,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &277643474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1147,6 +1155,7 @@ GameObject:
   - component: {fileID: 345185134}
   - component: {fileID: 345185133}
   - component: {fileID: 345185132}
+  - component: {fileID: 345185136}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1233,6 +1242,7 @@ RectTransform:
   - {fileID: 326611795}
   - {fileID: 63456171}
   - {fileID: 839079937}
+  - {fileID: 1256899214}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1240,6 +1250,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &345185136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345185131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385f3d9b579d9de418f8ed6afac983a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textmeshpro_kills: {fileID: 1256899213}
+  kills_amt: 0
 --- !u!1 &357216633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,6 +1410,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &361402811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1571,6 +1599,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &399804926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1922,14 +1954,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520359206}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 692b86deec15d8a4791fc83e359a7a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 4
   timer: 0
-  aoeCircle: {fileID: 0}
+  aoeCircle: {fileID: 1646951876}
   circleRadius: 3.385
   circleDMG: 10
 --- !u!114 &520359216
@@ -2095,6 +2127,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &531481672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2346,6 +2382,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &649407207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2531,6 +2571,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &762539934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2993,6 +3037,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &982097639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3387,6 +3435,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1046897876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3471,7 +3523,6 @@ GameObject:
   - component: {fileID: 1094830612}
   - component: {fileID: 1094830614}
   - component: {fileID: 1094830613}
-  - component: {fileID: 1094830615}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -3581,6 +3632,10 @@ MonoBehaviour:
   MaxHP: 20
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 345185136}
+  player: {fileID: 520359214}
 --- !u!58 &1094830613
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3643,22 +3698,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1094830615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094830608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff625de4c125f124cb662766197ec782, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 10
-  strength: 1
-  cooldown: 1
-  player: {fileID: 520359214}
 --- !u!1 &1121731064
 GameObject:
   m_ObjectHideFlags: 0
@@ -3774,6 +3813,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1121731069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3844,6 +3887,140 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1256899213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1256899214}
+  - component: {fileID: 1256899216}
+  - component: {fileID: 1256899215}
+  m_Layer: 5
+  m_Name: KILL COUNT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1256899214
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256899213}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 345185135}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -300, y: -200}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1256899215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256899213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: New Text
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1256899216
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256899213}
+  m_CullTransparentMesh: 1
 --- !u!1 &1292598291
 GameObject:
   m_ObjectHideFlags: 0
@@ -4184,6 +4361,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1334904030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4369,6 +4550,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1372392688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4554,6 +4739,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1383138845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4873,6 +5062,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1464565168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5058,6 +5251,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1524321092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5243,6 +5440,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1534821535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5682,6 +5883,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1569374069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5969,6 +6174,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1684254207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6083,7 +6292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90881a6de4b2a9c46ae88ceeec69ba2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 7102055852793968142, guid: ee756ee1b09dd0c459dd3bfd4482b129, type: 3}
+  monster: {fileID: 1094830608}
   scaleability: 20
   spawnAmount: 10
   spawnlimit: 5
@@ -6355,6 +6564,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &2068817697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6615,6 +6828,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &2105139883
 MonoBehaviour:
   m_ObjectHideFlags: 0
