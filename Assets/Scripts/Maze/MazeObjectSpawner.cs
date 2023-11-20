@@ -24,6 +24,7 @@ public class MazeObjectSpawner : MonoBehaviour
     {
         player = GameObject.Find("Player");
         playerpos = Vector3Int.zero;
+        Debug.Log("MazeObjectSpawner Initialized...");
     }
 
     public void SpawnKey()

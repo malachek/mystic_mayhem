@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 912d3db4bbde34dfaba294ccba3d1c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 0}
-  wallTile: {fileID: 11400000, guid: 206464ef4f3de9a449f99a906067d452, type: 2}
+  wallTiles: []
   generate: 1
   bottomRowEmpty: 0
-  _mSpawner: {fileID: 0}
+  _mSpawner: {fileID: 1896041694647166627, guid: b2731daf5b0c34f149205f98646a96ac, type: 3}
+  objSpawner: {fileID: 6544516971561202013, guid: b2731daf5b0c34f149205f98646a96ac, type: 3}
   rightWallProb: 0.5
   bottomWallProb: 0.8
+  doDebug: 0
