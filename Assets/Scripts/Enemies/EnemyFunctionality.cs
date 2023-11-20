@@ -10,9 +10,12 @@ public class EnemyFunctionality : MonoBehaviour
     float lastAttack;
     [SerializeField] float cooldown = 1; //bigger cooldown, slower attacks
 
+    public int EXP = 1;
+
     public CharacterStats player; //declare whatever the permanent character class is here later
     //permanent character class must have method TakeDamage() for attack to work
 
+    public KillCount killCounter;
 
     //attack will happen every second of contact with the player
     //can change rate of attack by changing 'cooldown' var
@@ -37,8 +40,14 @@ public class EnemyFunctionality : MonoBehaviour
         // Debug.Log("Monster takes a hit.\n");
         // Debug.Log(hp);
         if(hp < 1){
+            DropEXP();
             Destroy(gameObject);
+
         }
+    }
+
+    public void DropEXP(){
+        killCounter.kills_amt += EXP;
     }
 
 }
