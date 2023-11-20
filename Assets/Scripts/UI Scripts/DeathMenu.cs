@@ -18,9 +18,11 @@ public class DeathMenu : MonoBehaviour
     {
 
     }
-
+    [HideInInspector]
+    public bool isOpened;
     public void OpenDeathMenu()
     {
+        isOpened = true;
         PauseManager.Pause();
         deathMenuUI.SetActive(true);
     }
