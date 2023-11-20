@@ -24,7 +24,7 @@ public class MazeGenerator : MonoBehaviour
 {
     Grid grid;                 // the actual grid that tiles exist on
     Tilemap tilemap;			                // the tilemap that tiles exist on
-    [SerializeField] TileBase wallTile;         // the tile used to generate walls
+    [SerializeField] TileBase[] wallTiles;         // the tile used to generate walls
     [SerializeField] bool generate = false;     // Used for testing, determines whether the map should be generated.
     [SerializeField] bool bottomRowEmpty = false;
 
@@ -369,7 +369,7 @@ public class MazeGenerator : MonoBehaviour
         for (int i = 0; i < _mSpawner.mazeCellSize; i++) // if there's overlap, try mazeCellSize-1
         {
             Vector3Int pos = new Vector3Int(x + _mSpawner.mazeCellSize, y+i);
-            tilemap.SetTile(pos, wallTile);
+            tilemap.SetTile(pos, wallTiles[Random.Range(0,wallTiles.Length)]);
         }
     }
 
@@ -382,7 +382,7 @@ public class MazeGenerator : MonoBehaviour
         for (int i = 0; i < _mSpawner.mazeCellSize + 1; i++)
         {
             Vector3Int pos = new Vector3Int(x + i, y);
-            tilemap.SetTile(pos, wallTile);
+            tilemap.SetTile(pos, wallTiles[Random.Range(0, wallTiles.Length)]);
         }
     }
 

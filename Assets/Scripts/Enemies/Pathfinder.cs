@@ -40,6 +40,9 @@ public class Pathfinder : MonoBehaviour
     public Vector2 SubTileOffset = new Vector2(0.5f, 0.5f); //All pathfinding paths point to the bottom left most part of a tile by default, this shifts it to the middle.
     private RoyT.AStar.Grid grid;
 
+    [Header("Extra Crud (Will Be Run During Baking)")]
+    public Tilemap EmptySpace;
+    public Tile[] PaintGround;
     private RoyT.AStar.Position toPos(Vector2 pos)
     {
         return toPos(Vector2Int.FloorToInt(pos));
@@ -175,6 +178,10 @@ public class Pathfinder : MonoBehaviour
                     {
                         if(BakeRule==DoubleBakeRule.PaintFull|| BakeRule == DoubleBakeRule.PaintEmpties)
                         {
+                            if(EmptySpace!=null)
+                            {
+                                EmptySpace.SetTile(new Vector3Int(startPos.x + x, startPos.y + y), PaintGround[Random.Range(0, PaintGround.Length)]);
+                            }
                             grid.UnblockCell(pos);
 
                             int proximityCost = 0;

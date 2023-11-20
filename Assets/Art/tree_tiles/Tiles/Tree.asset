@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
+  m_Name: Tree
+  m_EditorClassIdentifier: 
+  m_DefaultSprite: {fileID: 0}
+  m_DefaultGameObject: {fileID: 0}
+  m_DefaultColliderType: 2
+  m_TilingRules:
+  - m_Id: 0
+    m_Sprites:
+    - {fileID: 21300000, guid: 2de25a5eea5cfad48a3b038126fe97d9, type: 3}
+    - {fileID: 21300000, guid: 16f51cebbd431254c946439b1a4d911d, type: 3}
+    - {fileID: 21300000, guid: ab6a2384ce974d44b9c0ba56c52f1f20, type: 3}
+    - {fileID: 21300000, guid: 1e3438ab776b7d04688948917494f94b, type: 3}
+    - {fileID: 21300000, guid: d3981d747ea44ef47b326415a3484523, type: 3}
+    m_GameObject: {fileID: 0}
+    m_MinAnimationSpeed: 1
+    m_MaxAnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_Output: 1
+    m_ColliderType: 2
+    m_RandomTransform: 2
+    m_Neighbors: 
+    m_NeighborPositions: []
+    m_RuleTransform: 0
