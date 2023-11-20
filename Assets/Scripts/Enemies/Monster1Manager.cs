@@ -105,6 +105,14 @@ public class Monster1Manager : MonoBehaviour
                 GameObject newEnemy = Instantiate(monster);
                 newEnemy.SetActive(true);
                 newEnemy.transform.position = position;
+                if(newEnemy.GetComponent<PathfinderAgent>()!=null)
+                {
+                    newEnemy.GetComponent<PathfinderAgent>().WorldGrid = WorldGrid;
+                }
+                if (newEnemy.GetComponent<Enemy>() != null)
+                {
+                    newEnemy.GetComponent<Enemy>().PlayerTarget = Player;
+                }
             }
             else
             {

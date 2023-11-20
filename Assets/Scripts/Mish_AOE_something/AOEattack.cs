@@ -38,18 +38,18 @@ public class AOEattack : MonoBehaviour
     }
 
     void Attack(){
-        Debug.Log("Aoe Attack");
+        // Debug.Log("Aoe Attack");
         Collider2D[] colliders = Physics2D.OverlapCircleAll(aoeCircle.transform.position, circleRadius);
         timer = cooldown;
-        Debug.Log(colliders.Length);
+        // Debug.Log(colliders.Length);
         ApplyDamage(colliders);
     }
 
     private void ApplyDamage(Collider2D[] colliders){
         for(int i = 0; i<colliders.Length; i++){
-            EnemyFunctionality e = colliders[i].GetComponent<EnemyFunctionality>();
+            Enemy e = colliders[i].GetComponent<Enemy>();
             if (e != null){
-                colliders[i].GetComponent<EnemyFunctionality>().TakeDamage(circleDMG);
+                colliders[i].GetComponent<Enemy>().TakeDamage(circleDMG);
             }
             
         }

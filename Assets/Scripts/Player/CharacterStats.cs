@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] int Hp = 10;
+    public int Hp = 100;
+    public int MaxHp = 100;
+    public int Xp = 0;
+    public int MaxXp = 100;
+    public int Level = 1;
     // [SerializeField] int Strength = 1;
 
     [SerializeField]
@@ -15,7 +18,14 @@ public class CharacterStats : MonoBehaviour
 
     InventoryManager inventory;
     public int spellIndex;
-
+    
+    void Start()
+    {
+        Hp = 100;
+        MaxHp = 100;
+        Xp = 0;
+        MaxXp = 20;
+    }
 
     private void Awake()
     {
@@ -27,13 +37,29 @@ public class CharacterStats : MonoBehaviour
 
     }
 
+    public void GainExperience(int experience)
+    {
+        Xp += experience;
+        if (Xp >= MaxXp)
+        {
+            Xp -= MaxXp;
+            MaxXp += 10;
+            Level++;
+        }
+    }
+
     public void TakeDamage(int damage){
 
         Hp -= damage;
-        //Debug.Log("Player takes a hit.\n");
+        Debug.Log("Player takes a hit.\n");
         //Debug.Log(Hp);
+        //if(Hp > MaxHp)
+        //{
+        //    Hp = MaxHp;
+        //}
         if(Hp < 1){
             Debug.Log("Player is dead.");
+            Hp = 0;
         }
     }
 

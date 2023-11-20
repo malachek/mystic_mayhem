@@ -312,6 +312,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &131810154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,6 +501,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &277643474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -917,6 +925,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &361402811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1102,6 +1114,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &399804926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1278,9 +1294,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d16499ea540eb44be4f56b74b94c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyMazeGrid: {fileID: 0}
-  GridSize: {x: 100, y: 100}
-  GridOffset: {x: -2, y: -79}
+  MyMazeGrid: {fileID: 1538966079}
+  GridSize: {x: 402, y: 402}
+  GridOffset: {x: 0, y: -381}
   DefaultCellCost: 999
   FreeCellCost: 1
   NeighboringWallCellCost: 10
@@ -1291,6 +1307,8 @@ MonoBehaviour:
   OnStartUp: 1
   BakeRule: 2
   SubTileOffset: {x: 0.5, y: 0.5}
+  EmptySpace: {fileID: 0}
+  PaintGround: []
 --- !u!1 &520359206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,9 +1326,9 @@ GameObject:
   - component: {fileID: 520359214}
   - component: {fileID: 520359215}
   - component: {fileID: 520359216}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1650,6 +1668,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &531481672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1840,6 +1862,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &649407207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2025,6 +2051,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &762539934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2167,6 +2197,14 @@ PrefabInstance:
       propertyPath: bottomRowEmpty
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
+      propertyPath: wallTiles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193179372821476129, guid: d26e28bfd2ed44fa98f260aad182d669, type: 3}
+      propertyPath: wallTiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 206464ef4f3de9a449f99a906067d452, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2287,6 +2325,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &982097639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2472,6 +2514,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1046897876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2557,13 +2603,13 @@ GameObject:
   - component: {fileID: 1094830614}
   - component: {fileID: 1094830613}
   - component: {fileID: 1094830615}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1094830609
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2666,6 +2712,10 @@ MonoBehaviour:
   MaxHP: 20
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!58 &1094830613
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2740,10 +2790,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff625de4c125f124cb662766197ec782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
-  strength: 1
-  cooldown: 1
-  player: {fileID: 520359214}
 --- !u!1 &1121731064
 GameObject:
   m_ObjectHideFlags: 0
@@ -2859,6 +2905,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1121731069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2943,7 +2993,7 @@ GameObject:
   - component: {fileID: 1292598295}
   - component: {fileID: 1292598296}
   - component: {fileID: 1292598297}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tilemap
   m_TagString: Maze
   m_Icon: {fileID: 0}
@@ -3242,6 +3292,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1334904030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3427,6 +3481,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1372392688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3612,6 +3670,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1383138845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3797,6 +3859,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1464565168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3982,6 +4048,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1524321092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4167,6 +4237,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1534821535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4549,6 +4623,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1569374069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4836,6 +4914,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1684254207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4914,6 +4996,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3524747691669280435, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 520359214}
+    - target: {fileID: 4506109369595044084, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
+      propertyPath: MaxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506109369595044084, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
+      propertyPath: DamagePerHit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506109369595044084, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
+      propertyPath: PlayerTarget
+      value: 
+      objectReference: {fileID: 520359206}
+    - target: {fileID: 4506109369595044084, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
+      propertyPath: StoppingDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4589165984700617184, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
       propertyPath: m_Name
       value: Boss
@@ -4960,6 +5062,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5028358151388715497, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281587157795601642, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
+      propertyPath: WorldGrid
+      value: 
+      objectReference: {fileID: 495886156}
+    - target: {fileID: 9033225675861399348, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9033225675861399348, guid: ddd21c7bfac9b4f279d8c78198486677, type: 3}
+      propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5012,9 +5126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 1094830608}
-  scaleability: 0
+  scaleability: 20
   spawnAmount: 10
-  spawnlimit: 0
+  spawnlimit: 5
   spawnTimer: 5
 --- !u!1001 &1824354707
 PrefabInstance:
@@ -5212,6 +5326,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &2068817697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5397,6 +5515,10 @@ MonoBehaviour:
   MaxHP: 1
   DamagePerHit: 1
   StoppingDistance: 2
+  EXP: 1
+  strength: 1
+  killCounter: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &2105139883
 MonoBehaviour:
   m_ObjectHideFlags: 0
