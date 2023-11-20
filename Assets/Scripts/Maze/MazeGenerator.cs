@@ -30,7 +30,6 @@ public class MazeGenerator : MonoBehaviour
 
     [SerializeField] MazeGridSpawner _mSpawner; // the spawner object
     [SerializeField] private MazeObjectSpawner objSpawner; // object spawner object
-    [SerializeField] private MazeGrid _mGrid;   // the MazeGrid object // TODO: phase this out ... not necessary for functionality, just useful for testing.
     private int _maxSetValue = 0;               // the current max set value
 
     [SerializeField] float rightWallProb = 0.5f;
@@ -45,7 +44,6 @@ public class MazeGenerator : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        _mGrid = _mSpawner.grid;
         grid = _mSpawner.g;
         tilemap = grid.GetComponentInChildren<Tilemap>();
 
@@ -60,15 +58,9 @@ public class MazeGenerator : MonoBehaviour
         doneGenerating = true;
 
         // spawn key & boss
-        StartCoroutine(SpawnItems());
-
-    }
-
-    IEnumerator SpawnItems()
-    {
         objSpawner.SpawnKey();
         objSpawner.SpawnBoss();
-        yield return null;
+
     }
 
     #region MazeGeneration
@@ -109,7 +101,6 @@ public class MazeGenerator : MonoBehaviour
         {
             // step 3 -- create right walls & merge sets
             List<MazeCell> currentJoined = Step3(current);
-            if (doDebug) WorldTestRow(currentJoined, Color.red);
 
             // step 4 -- generate bottom walls
             Step4(current);
@@ -167,7 +158,6 @@ public class MazeGenerator : MonoBehaviour
             {
                 // step 3 -- create right walls & merge sets
                 List<MazeCell> currentJoined = Step3(current);
-                if (doDebug) WorldTestRow(currentJoined, Color.red);
 
                 // step 4 -- generate bottom walls
                 Step4(current);
@@ -362,41 +352,7 @@ public class MazeGenerator : MonoBehaviour
 
     #endregion
 
-    #region ObjectSpawning
-
-    
-
-    #endregion
-
     #region HelperFunctions
-
-    /*
-     * From https://www.youtube.com/watch?v=5nWUX2TMJrY.
-     * 
-     * Displays the set value of the current cell in the cell as
-     * a text mesh object.
-     */
-    private void WorldTestRow(List<MazeCell> row, Color textColor)
-    {
-        GameObject rowObj = new GameObject();
-        foreach (MazeCell cell in row)
-        {
-            Vector3Int coords = cell.GetCoords();
-            int setValue = cell.GetSetValue();
-
-            GameObject text = new GameObject();
-            TextMesh tm = text.AddComponent<TextMesh>();
-            tm.text = setValue.ToString();
-            tm.color = textColor;
-
-            // center text
-            Vector3Int worldpos = _mGrid.GetWorldPosition(coords.x, coords.y);
-            worldpos = new Vector3Int(worldpos.x + _mGrid.GetCellSize() / 2, worldpos.y + _mGrid.GetCellSize() / 2);
-
-            text.transform.position = worldpos;
-            text.transform.parent = rowObj.transform;
-        }
-    }
 
 
     private Vector3Int MazeToGridCoords(Vector3Int coords)
@@ -430,14 +386,6 @@ public class MazeGenerator : MonoBehaviour
         }
     }
 
-    /*
-     * Places a single tile at the center of the cell at the given coords.
-     */ 
-    private void DebugDrawMiddleBlock(Vector3Int coords)
-    {
-        Vector3Int gridCoords = MazeToGridCoords(coords);
-        tilemap.SetTile(new Vector3Int(gridCoords.x + (_mSpawner.mazeCellSize / 2), gridCoords.y + (_mSpawner.mazeCellSize / 2)), wallTile);
-    }
 
     /*
      * Separates a list of MazeCells into a list of lists of MazeCells, where
@@ -476,11 +424,6 @@ public class MazeGenerator : MonoBehaviour
     {
         return doneGenerating;
     }
-
-    /*
-     * this uses a little bit of Linq magic that I don't totally understand...
-     * TODO: look into System.Linq!
-     */
 
     private List<List<MazeCell>> ShuffleSets(List<List<MazeCell>> sets)
     {
