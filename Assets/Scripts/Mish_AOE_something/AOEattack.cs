@@ -47,9 +47,9 @@ public class AOEattack : MonoBehaviour
 
     private void ApplyDamage(Collider2D[] colliders){
         for(int i = 0; i<colliders.Length; i++){
-            EnemyFunctionality e = colliders[i].GetComponent<EnemyFunctionality>();
+            Enemy e = colliders[i].GetComponent<Enemy>();
             if (e != null){
-                colliders[i].GetComponent<EnemyFunctionality>().TakeDamage(circleDMG);
+                colliders[i].GetComponent<Enemy>().TakeDamage(circleDMG);
             }
             
         }

@@ -37,9 +37,10 @@ public class EnemyFunctionality : MonoBehaviour
     //enemy can take damage here. Object destroyed upon reaching 0 health, implement later
     public void TakeDamage(int damage){
         hp -= damage;
-        // Debug.Log("Monster takes a hit.\n");
+        Debug.Log("Monster takes a hit.\n");
         // Debug.Log(hp);
         if(hp < 1){
+            Debug.Log(gameObject);
             DropEXP();
             Destroy(gameObject);
 
@@ -49,5 +50,6 @@ public class EnemyFunctionality : MonoBehaviour
     public void DropEXP(){
         killCounter.kills_amt += EXP;
     }
+
 
 }
