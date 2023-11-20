@@ -15,8 +15,12 @@ public class Enemy : MonoBehaviour
     public float DamagePerHit = 1;
     [Min(0)]
     public float StoppingDistance = 1;
-
-
+    
+    [SerializeField] int EXP = 1;
+    [SerializeField] int strength = 1;
+    [SerializeField] KillCount killCounter;
+    [SerializeField] CharacterStats player; //declare whatever the permanent character class is here later
+    //permanent character class must have method TakeDamage() for attack to work
     private PathfinderAgent pathfinderAgent;
     private void Start()
     {
@@ -60,6 +64,7 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         Destroy(this.gameObject);
+        DropEXP();
     }
     private const int MAX_PATHTENSION = int.MaxValue; // The max amount of temporary extensions allowed before a full recacluation is needed.
     private const int SHORTPATH_CUTOFF = 10; //No Tension Optimization will be performed if the enemy is closer than this from the player.
@@ -91,8 +96,11 @@ public class Enemy : MonoBehaviour
             
         }
     }
-    public void Attack()
-    {
-        //TODO Attack Code Here
+    private void Attack(){
+        player.TakeDamage(strength);
+    }
+
+    public void DropEXP(){
+        killCounter.kills_amt += EXP;
     }
 }
