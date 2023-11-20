@@ -5,10 +5,19 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+    public CharacterStats characterStats;
+    public DeathMenu deathMenu;
+
     public Slider slider;
     public Gradient gradient;
     public Image fill;
-    
+
+    void Update()
+    {
+        SetMaxHealth(characterStats.MaxHp);
+        SetHealth(characterStats.Hp);
+    }
+
     public void SetMaxHealth(int health)
     {
         slider.maxValue = health;
@@ -19,5 +28,9 @@ public class HealthBar : MonoBehaviour
     {
         slider.value = health;
         fill.color = gradient.Evaluate(slider.normalizedValue);
+        if (health < 1)
+        {
+            deathMenu.OpenDeathMenu();
+        }
     }
 }
