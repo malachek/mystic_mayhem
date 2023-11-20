@@ -108,6 +108,7 @@ public class Enemy : MonoBehaviour
 
     public void DropEXP(){
         killCounter.kills_amt += EXP;
+        player.GainExperience(EXP);
         // Debug.Log("DROP XP");
     }
 }
