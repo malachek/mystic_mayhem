@@ -38,10 +38,10 @@ public class AOEattack : MonoBehaviour
     }
 
     void Attack(){
-        Debug.Log("Aoe Attack");
+        // Debug.Log("Aoe Attack");
         Collider2D[] colliders = Physics2D.OverlapCircleAll(aoeCircle.transform.position, circleRadius);
         timer = cooldown;
-        Debug.Log(colliders.Length);
+        // Debug.Log(colliders.Length);
         ApplyDamage(colliders);
     }
 
