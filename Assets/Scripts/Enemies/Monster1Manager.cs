@@ -22,11 +22,14 @@ public class Monster1Manager : MonoBehaviour
 
     private Pathfinder WorldGrid;
     private GameObject Player;
+
+    public static int MonsterDespawnedDebt=0;
     void Start()
     {
 
         WorldGrid = GameObject.FindObjectOfType<Pathfinder>();
         Player = GameObject.Find("Player");
+        MonsterDespawnedDebt = 0;
         timer = 0;
         halfed_height = Screen.height / scaleability / 2;
         halfed_width = Screen.width / scaleability / 2;
@@ -36,6 +39,13 @@ public class Monster1Manager : MonoBehaviour
     private void SpawnEnemy(int amt)
     {
         var playerPos = Player.transform.position;
+
+        if(!WorldGrid.isPosOk(playerPos))
+        {
+            timer = spawnTimer + 1;
+            Debug.LogWarning("Can't spawn enemies from an invalid position!");
+            return;
+        }
 
         float screenie_north = playerPos.y + halfed_height;
         float screenie_south = playerPos.y - halfed_height;
@@ -143,7 +153,11 @@ public class Monster1Manager : MonoBehaviour
     void Update()
     {
 
-
+        if(MonsterDespawnedDebt>0)
+        {
+            SpawnEnemy(MonsterDespawnedDebt);
+            MonsterDespawnedDebt = 0;
+        }
         if (timer <= spawnTimer)
         {
             timer += Time.deltaTime;

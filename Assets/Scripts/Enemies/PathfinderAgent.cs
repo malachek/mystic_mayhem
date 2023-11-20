@@ -18,6 +18,9 @@ public class PathfinderAgent : MonoBehaviour
     public int pathTension; //More useful for Enemy scripts, but this holds the amount of times a path has been Unioned with the old one.
     [Min(0)]
     public float minMovementTargDist=0.1f;
+
+    public bool KillWhenNoPath;
+    public bool isBoss;
     private void Update()
     {
         if (ListensForMouseDebug)
@@ -48,25 +51,29 @@ public class PathfinderAgent : MonoBehaviour
                 movementTargets = new List<Vector2>();
                 movementTargets.Add(endLoc);
             }
-            if (Vector2.Distance(transform.position, movementTargets[0]) < minMovementTargDist)
+            if (movementTargets.Count > 0)
             {
-                movementTargets.RemoveAt(0);
-                while (movementTargets.Count>3 && CanSmallRefine(movementTargets[0], movementTargets[3]))
-                {
-                    movementTargets.RemoveAt(1);
-                }
 
-                if(refiningOffset >= 0)
+                if (Vector2.Distance(transform.position, movementTargets[0]) < minMovementTargDist)
                 {
-                    refiningOffset--;
+                    movementTargets.RemoveAt(0);
+                    while (movementTargets.Count > 3 && CanSmallRefine(movementTargets[0], movementTargets[3]))
+                    {
+                        movementTargets.RemoveAt(1);
+                    }
 
-                    if (refiningOffset == 0 && movementTargets.Count > 1)
-                        wantsToRefine = true;
+                    if (refiningOffset >= 0)
+                    {
+                        refiningOffset--;
+
+                        if (refiningOffset == 0 && movementTargets.Count > 1)
+                            wantsToRefine = true;
+                    }
                 }
-            }
-            else
-            {
-                transform.position = Vector2.MoveTowards(transform.position, movementTargets[0], MovementSpeed);
+                else
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, movementTargets[0], MovementSpeed);
+                }
             }
         }
         else
@@ -101,7 +108,24 @@ public class PathfinderAgent : MonoBehaviour
             movementTargets.Add(target);
             return;
         }
-        movementTargets = WorldGrid.getPathTo(transform.position, target);
+        if (isBoss)
+        {
+            movementTargets = WorldGrid.getPathTo(transform.position, target, Pathfinder.MAX_PATHLENGTH * 2,WorldGrid.alt_grid);
+        }
+        else
+        {
+            movementTargets = WorldGrid.getPathTo(transform.position, target);
+        }
+        if(movementTargets==null)
+        {
+            movementTargets=new List<Vector2>();
+            movementTargets.Add(transform.position);
+            movementTargets.Add(hit.point);
+            if (KillWhenNoPath && GetComponent<Enemy>() != null)
+            {
+                GetComponent<Enemy>().Despawn();
+            }
+        }
         if(movementTargets.Count>1)
         {
             if(Vector2.Distance(movementTargets[0], movementTargets[1])> Vector2.Distance(transform.position, movementTargets[1]))
@@ -130,7 +154,28 @@ public class PathfinderAgent : MonoBehaviour
             }
 
             int pt = pathTension;
-            movementTargets = movementTargets.Union(WorldGrid.getPathTo(movementTargets[movementTargets.Count - 1], target)).ToList();
+            List<Vector2> newPaths;
+            if (isBoss)
+            {
+                newPaths = WorldGrid.getPathTo(movementTargets[movementTargets.Count - 1], target,Pathfinder.MAX_PATHLENGTH*2, WorldGrid.alt_grid);
+            }
+            else
+            {
+                newPaths = WorldGrid.getPathTo(movementTargets[movementTargets.Count - 1], target);
+            }
+        
+            if(newPaths==null)
+            {
+                newPaths = new List<Vector2>();
+                newPaths.Add(movementTargets[movementTargets.Count - 1]);
+                newPaths.Add(hit.point);
+
+                if (KillWhenNoPath&&GetComponent<Enemy>()!=null)
+                {
+                    GetComponent<Enemy>().Despawn();
+                }
+            }
+            movementTargets = movementTargets.Union(newPaths).ToList();
 
             pathTension = pt + 1;
         }

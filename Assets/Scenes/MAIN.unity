@@ -991,6 +991,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &131810155
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1948,6 +1950,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &277643475
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2781,6 +2785,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &361402812
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2970,6 +2976,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &399804927
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4148,6 +4156,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &531481673
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4703,6 +4713,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &649407208
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5275,6 +5287,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &762539935
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6599,6 +6613,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &982097640
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7222,6 +7238,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &1046897877
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7381,6 +7399,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 1
+  isBoss: 0
 --- !u!114 &1094830612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7622,6 +7642,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &1121731070
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8456,7 +8478,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -8850,6 +8872,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &1334904031
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9115,6 +9139,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &1372392689
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9304,6 +9330,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &1383138846
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9910,6 +9938,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &1464565169
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10507,6 +10537,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &1524321093
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10696,6 +10728,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &1534821536
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11150,6 +11184,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &1569374070
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11610,6 +11646,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &1684254208
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13151,6 +13189,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &2068817698
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13565,6 +13605,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 0
 --- !u!212 &2105139884
 SpriteRenderer:
   m_ObjectHideFlags: 0

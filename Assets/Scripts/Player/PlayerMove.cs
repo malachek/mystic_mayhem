@@ -19,9 +19,11 @@ public class PlayerMove : MonoBehaviour
     public LayerMask ignoreRay;
     public Transform rayStartPoint;
 
+    private Pathfinder WorldGrid;
 
     void Start()
     {
+        WorldGrid=GameObject.FindObjectOfType<Pathfinder>();    
         rgb2d = GetComponent<Rigidbody2D>();
         movementVector = new Vector3();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -66,22 +68,43 @@ public class PlayerMove : MonoBehaviour
                 Vector2 end  = rgb2d.transform.position + (direction * dashDistance);
 
                 RaycastHit2D hit = Physics2D.Raycast(rayStartPoint.position, direction, dashDistance, ignoreRay);
-                rgb2d.transform.position = hit.point;
+
+                if (WorldGrid.isPosOk(hit.point))//Make sure we can actually be here
+                    rgb2d.transform.position = hit.point;
 
                 //set Ignore Ray to everything to tp over walls and stuff. These are the things that it will ignore.
                 //Its like it shoots out a laser beam to the position your mouse is. If nothing, tp to the end. If there is a object in the way, teleport to the point of contact. HOWEVER, IT DOES NOT WORK (lol ;3)
                 //Just Ignore Ray to everything.
                 if (hit)
                 {
-                    rgb2d.transform.position = hit.point;
+                    if (WorldGrid.isPosOk(hit.point)) 
+                    {
+                        rgb2d.transform.position = hit.point;
+                    }
                 }
                 else
                 {
-                    rgb2d.transform.position = end;
+                    if (WorldGrid.isPosOk(end))
+                    {
+                        rgb2d.transform.position = end;
+                    }
                 }
                 
             }
     
         }
+         
+        if(!WorldGrid.isPosOk(transform.position)) //Save Me if I am out of bounds.
+        {
+            for(int i=0;i<20;i++)
+            {
+                Vector2 randPos=transform.position+new Vector3(Random.Range(-4,4),Random.Range(-4,4),0);
+                if(WorldGrid.isPosOk(randPos))
+                {
+                    transform.position = randPos;
+                }
+            }
+        }
+
     }
 }

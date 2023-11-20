@@ -75,6 +75,14 @@ public class Enemy : MonoBehaviour
             DropEXP();
         }
     }
+    public void Despawn()
+    {
+        if(!isBoss)
+        {
+            Monster1Manager.MonsterDespawnedDebt++;
+            Destroy(gameObject);
+        }
+    }
     private const int MAX_PATHTENSION = int.MaxValue; // The max amount of temporary extensions allowed before a full recacluation is needed.
     private const int SHORTPATH_CUTOFF = 10; //No Tension Optimization will be performed if the enemy is closer than this from the player.
 

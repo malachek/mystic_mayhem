@@ -106,6 +106,8 @@ MonoBehaviour:
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
+  KillWhenNoPath: 0
+  isBoss: 1
 --- !u!114 &6449522688704626596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +123,7 @@ MonoBehaviour:
   PlayerTarget: {fileID: 0}
   LiveHP: 0
   MaxHP: 20
-  DamagePerHit: 1
+  isBoss: 1
   StoppingDistance: 2
   EXP: 1
   strength: 1
