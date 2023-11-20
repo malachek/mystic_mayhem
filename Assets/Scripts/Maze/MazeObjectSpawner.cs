@@ -29,19 +29,13 @@ public class MazeObjectSpawner : MonoBehaviour
     public void SpawnKey()
     {
         Vector3 keyWorldPosition = GetCellMidpointAsWorldPosition(GenerateKeyGridCoords());
-        //GameObject key = Instantiate(keyPrefab);
         keyPrefab.transform.position = keyWorldPosition;
-        //keyPrefab.name = "Key";
-        //Debug.Log("Spawned Key @ " + keyWorldPosition);
     }
 
     public void SpawnBoss()
     {
         Vector3 bossWorldPosition = GetCellMidpointAsWorldPosition(GenerateBossGridCoords());
-        //GameObject boss = Instantiate(bossPrefab);
         bossPrefab.transform.position = bossWorldPosition;
-        //bossPrefab.name = "Boss";
-        //Debug.Log("Spawned Boss (disabled) @ " + bossWorldPosition);
     }
 
     #region HelperFunctions
@@ -60,7 +54,6 @@ public class MazeObjectSpawner : MonoBehaviour
             if (times > 1000)
             {
                 Debug.Log("Couldn't generate key with radius " + keyRadius + ", try something lower.");
-                //Debug.Log("Key generated " + DistanceBetween(Vector3Int.FloorToInt(playerpos), keyLocation) + " units away from player.");
                 return Vector3Int.zero;
             }
             // choose a random spot
@@ -69,15 +62,12 @@ public class MazeObjectSpawner : MonoBehaviour
 
             keyLocation = new Vector3Int(x, y);
 
-            if (DistanceBetween(Vector3Int.FloorToInt(playerpos), keyLocation) > keyRadius)
+            if (Vector3Int.Distance(Vector3Int.FloorToInt(playerpos), keyLocation) > keyRadius)
             {
                 generated = true;
             }
             times++;
         }
-
-        //Debug.Log("skipped " + (times-1) + " locations while generating key.");
-        //Debug.Log("Key generated " + DistanceBetween(Vector3Int.FloorToInt(playerpos), keyLocation) + " units away from player.");
 
         keyFinalLocation = keyLocation;
         return keyLocation;
@@ -104,14 +94,12 @@ public class MazeObjectSpawner : MonoBehaviour
 
             bossLocation = new Vector3Int(x, y);
 
-            if (DistanceBetween(bossLocation, keyFinalLocation) > bossRadius)
+            if (Vector3Int.Distance(bossLocation, keyFinalLocation) > bossRadius)
             {
                 generated = true;
             }
             times++;
         }
-
-        //Debug.Log("skipped " + times + " locations while generating boss.");
 
         return bossLocation;
     }
@@ -139,10 +127,5 @@ public class MazeObjectSpawner : MonoBehaviour
         return coords * _mSpawner.mazeCellSize + Vector3Int.FloorToInt(_mSpawner.origin.transform.position);
     }
 
-    private float DistanceBetween(Vector3Int a, Vector3Int b)
-    {
-        //Debug.Log("Distance between " + a + " and " + b + " is " + Vector3Int.Distance(a, b));
-        return Vector3Int.Distance(a, b);
-    }
     #endregion
 }
