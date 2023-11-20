@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] int EXP = 1;
     [SerializeField] int strength = 1;
     [SerializeField] KillCount killCounter;
-    [SerializeField] CharacterStats player; //declare whatever the permanent character class is here later
+    public CharacterStats player; //declare whatever the permanent character class is here later
     //permanent character class must have method TakeDamage() for attack to work
     private PathfinderAgent pathfinderAgent;
     private void Start()
@@ -51,12 +51,12 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         LiveHP -= damage;
-        Debug.Log("Monster takes a hit.\n");
+        // Debug.Log("Monster takes a hit.\n");
         // Debug.Log(hp);
         if (LiveHP < 1)
         {
-            Debug.Log(gameObject);
-            //DropEXP();
+            // Debug.Log(gameObject);
+            DropEXP();
             Destroy(gameObject);
 
         }
@@ -97,10 +97,12 @@ public class Enemy : MonoBehaviour
         }
     }
     private void Attack(){
+
         player.TakeDamage(strength);
     }
 
     public void DropEXP(){
         killCounter.kills_amt += EXP;
+        Debug.Log("DROP XP");
     }
 }

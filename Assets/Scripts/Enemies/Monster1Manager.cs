@@ -109,7 +109,7 @@ public class Monster1Manager : MonoBehaviour
                 {
                     newEnemy.GetComponent<PathfinderAgent>().WorldGrid = WorldGrid;
                 }
-                if (newEnemy.GetComponent<EnemyFunctionality>() != null)
+                if (newEnemy.GetComponent<Enemy>() != null)
                 {
                     newEnemy.GetComponent<Enemy>().PlayerTarget = Player;
                 }

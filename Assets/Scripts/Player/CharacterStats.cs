@@ -30,7 +30,7 @@ public class CharacterStats : MonoBehaviour
     public void TakeDamage(int damage){
 
         Hp -= damage;
-        //Debug.Log("Player takes a hit.\n");
+        Debug.Log("Player takes a hit.\n");
         //Debug.Log(Hp);
         if(Hp < 1){
             Debug.Log("Player is dead.");

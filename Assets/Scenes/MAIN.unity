@@ -1954,7 +1954,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520359206}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 692b86deec15d8a4791fc83e359a7a14, type: 3}
   m_Name: 
@@ -3523,7 +3523,6 @@ GameObject:
   - component: {fileID: 1094830612}
   - component: {fileID: 1094830614}
   - component: {fileID: 1094830613}
-  - component: {fileID: 1094830615}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -3699,24 +3698,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1094830615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094830608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff625de4c125f124cb662766197ec782, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 10
-  strength: 1
-  cooldown: 1
-  EXP: 1
-  player: {fileID: 520359214}
-  killCounter: {fileID: 0}
 --- !u!1 &1121731064
 GameObject:
   m_ObjectHideFlags: 0
@@ -6311,7 +6292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90881a6de4b2a9c46ae88ceeec69ba2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 7102055852793968142, guid: ee756ee1b09dd0c459dd3bfd4482b129, type: 3}
+  monster: {fileID: 1094830608}
   scaleability: 20
   spawnAmount: 10
   spawnlimit: 5
