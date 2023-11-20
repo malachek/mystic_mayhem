@@ -19,4 +19,4 @@ MonoBehaviour:
   pierce: 5
   level: 2
   nextLevelPrefab: {fileID: 0}
-  icon: {fileID: 1441082634, guid: 347f46dd41a4e5f41b6be72dee926bef, type: 3}
+  icon: {fileID: 21300000, guid: 9a7f78536057a7841a19c90b62c811d6, type: 3}

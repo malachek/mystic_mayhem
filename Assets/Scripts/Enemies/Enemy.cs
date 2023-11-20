@@ -22,6 +22,10 @@ public class Enemy : MonoBehaviour
     public CharacterStats player; //declare whatever the permanent character class is here later
     //permanent character class must have method TakeDamage() for attack to work
     private PathfinderAgent pathfinderAgent;
+
+    private float _nextShot = 0.25f;
+    private float _fireDelay = 0.5f;
+
     private void Start()
     {
         LiveHP = MaxHP;
@@ -102,8 +106,12 @@ public class Enemy : MonoBehaviour
         }
     }
     private void Attack(){
-
-        player.TakeDamage(strength);
+        
+        if (Time.time > _nextShot)
+        {
+            _nextShot = Time.time + _fireDelay;
+            player.TakeDamage(strength);
+        }
     }
 
     public void DropEXP(){
