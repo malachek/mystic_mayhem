@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class CastDirection : MonoBehaviour
 {
+    [SerializeField]
+    PlayerMove playerMove;
     public Vector3 MouseDirection()
     {
         Vector3 mousePosition = Input.mousePosition;
@@ -38,5 +40,11 @@ public class CastDirection : MonoBehaviour
     public Vector3 RandomDirection()
     {
         return Random.insideUnitCircle;
+    }
+
+    public Vector3 Behind()
+    {
+        Vector3 movementVector = playerMove.GetMovementVector();
+        return new(-movementVector.x, -movementVector.y, 0f);
     }
 }

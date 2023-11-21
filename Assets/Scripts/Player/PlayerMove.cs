@@ -107,4 +107,9 @@ public class PlayerMove : MonoBehaviour
         }
 
     }
+
+    public Vector3 GetMovementVector()
+    {
+        return movementVector;
+    }
 }

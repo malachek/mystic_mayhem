@@ -15,7 +15,7 @@ public class IceController: SpellController
         base.Attack();
         GameObject spawnedIce = Instantiate(spellData.Prefab);
         spawnedIce.transform.position = transform.position; //assign position to be same as this object, which is parented to player
-        spawnedIce.GetComponent<IceBehavior>().DirectionChecker(castDir.ClosestEnemyDirection()); // sets direction to that of the mouse
+        spawnedIce.GetComponent<IceBehavior>().DirectionChecker(castDir.MouseDirection()); // sets direction to that of the mouse
     }
 
 }

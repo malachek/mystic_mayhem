@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public GameObject PlayerTarget;
 
     [SerializeField] SpriteRenderer sprite; // to turn red when taking damage
-    private Color currentNoDamageColor = Color.white;
+    private Color currentNoDamageColor = Color.white; // when enemy is damaged, they briefly turn red, this is to know what color to go back to afterwards
 
     [HideInInspector]
     public float LiveHP; // The real amount of health this enemy has.
@@ -78,16 +78,21 @@ public class Enemy : MonoBehaviour
 
     public void SlowBy(float slow, float slowDuration)
     {
-        StartCoroutine(ShowBlueSlow(slowDuration));
-        // enemySpeed = enemyMaxSpeed * slow
-        // ^ pls implement this, i don't wanna mess up the pathfinding code
+        StartCoroutine(Slow(slow, slowDuration));
     }
 
-    private IEnumerator ShowBlueSlow(float slowDuration)
+    private IEnumerator Slow(float slow, float slowDuration)
     {
-        currentNoDamageColor = Color.blue;
+        float OGMovementSpeed = pathfinderAgent.MovementSpeed;
+        pathfinderAgent.MovementSpeed *= slow;
+
+        currentNoDamageColor = new Color(.5f, .9f, 1f);
         sprite.color = currentNoDamageColor;
+        
         yield return new WaitForSeconds(slowDuration);
+
+        pathfinderAgent.MovementSpeed = OGMovementSpeed;
+        
         currentNoDamageColor = Color.white;
         sprite.color = currentNoDamageColor;
     }

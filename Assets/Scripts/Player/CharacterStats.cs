@@ -17,11 +17,14 @@ public class CharacterStats : MonoBehaviour
 
     [SerializeField]
     GameObject startingSpell;
+
+    [Header("For Testing Purposes Only")]
     [SerializeField]
     GameObject spell2;
-
     [SerializeField]
     GameObject spell3;
+    [SerializeField]
+    GameObject spell4;
 
     public List<GameObject> spawnedSpells;
 
@@ -45,7 +48,7 @@ public class CharacterStats : MonoBehaviour
         SpawnSpell(startingSpell);
         SpawnSpell(spell2);
         SpawnSpell(spell3);
-
+        SpawnSpell(spell4);
     }
 
     public void GainExperience(int experience)
