@@ -66,6 +66,9 @@ public class Enemy : MonoBehaviour
     {
         if (isBoss)
         {
+            DeathMenu menu = GameObject.FindObjectOfType<DeathMenu>();
+            menu.OpenWinMenu();
+            gameObject.SetActive(false);
             // switch scenes here...
             Debug.Log("yeah");
         } 
