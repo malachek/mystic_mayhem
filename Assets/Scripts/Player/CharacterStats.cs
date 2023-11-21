@@ -13,6 +13,11 @@ public class CharacterStats : MonoBehaviour
 
     [SerializeField]
     GameObject startingSpell;
+    [SerializeField]
+    GameObject spell2;
+
+    [SerializeField]
+    GameObject spell3;
 
     public List<GameObject> spawnedSpells;
 
@@ -34,6 +39,8 @@ public class CharacterStats : MonoBehaviour
         inventory = GetComponent<InventoryManager>();
 
         SpawnSpell(startingSpell);
+        SpawnSpell(spell2);
+        SpawnSpell(spell3);
 
     }
 
