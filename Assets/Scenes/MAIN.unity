@@ -4112,7 +4112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e7200088bbac34aa94aae98374e00e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_speed: 10
+  characterStats: {fileID: 520359214}
   animator: {fileID: 520359217}
   spriteRenderer: {fileID: 1131438419}
   dashTimer: 0.5
@@ -4181,13 +4181,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643b4d9ab8012c846bc0fe6407d69f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 100
-  MaxHp: 100
+  stats: {fileID: 11400000, guid: 87dd62c6b469c5f42b83ede602e5cc5c, type: 2}
+  sprite: {fileID: 520359208}
+  currentPower: 0
+  currentArmor: 0
+  currentMaxHealth: 0
+  currentHealth: 0
+  currentHealthRegen: 0
+  currentMaxDashCooldown: 0
+  currentProjectileSpeed: 0
+  currentMoveSpeed: 0
+  currentProjectileAmount: 0
+  currentExperienceModifier: 0
   Xp: 0
   MaxXp: 100
   Level: 1
-  sprite: {fileID: 520359208}
-  startingSpell: {fileID: 3346097846772020503, guid: b679acdfcbe99499fa65662d97411af7, type: 3}
   spell2: {fileID: 3727632707740787714, guid: 268ae330e6b64496aa6122b6e77f4523, type: 3}
   spell3: {fileID: 6448676508539258585, guid: be7fa4c1f211343c5a0f5cc2c12024ab, type: 3}
   spell4: {fileID: 3346097846772020503, guid: e671ac125bdc19b4783cf473cf18d727, type: 3}

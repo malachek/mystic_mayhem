@@ -14,8 +14,8 @@ public class HealthBar : MonoBehaviour
 
     void Update()
     {
-        SetMaxHealth(characterStats.MaxHp);
-        SetHealth(characterStats.Hp);
+        SetMaxHealth(characterStats.currentMaxHealth);
+        SetHealth(characterStats.currentHealth);
     }
 
     public void SetMaxHealth(int health)

@@ -5,9 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMove : MonoBehaviour
 {
+    [SerializeField] CharacterStats characterStats;
+
     Rigidbody2D rgb2d;
     Vector3 movementVector;
-    [SerializeField] float player_speed = 10f;
+    float player_speed;
 
     public Animator animator;
     public SpriteRenderer spriteRenderer; 
@@ -20,6 +22,7 @@ public class PlayerMove : MonoBehaviour
     public Transform rayStartPoint;
 
     private Pathfinder WorldGrid;
+
 
     void Start()
     {
@@ -35,7 +38,7 @@ public class PlayerMove : MonoBehaviour
         movementVector.x = Input.GetAxisRaw("Horizontal");
         movementVector.y = Input.GetAxisRaw("Vertical");
 
-        movementVector *= player_speed;
+        movementVector *= characterStats.currentMoveSpeed;
 
         rgb2d.velocity = movementVector;
 

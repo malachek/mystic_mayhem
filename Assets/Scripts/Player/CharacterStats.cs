@@ -1,22 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.U2D;
 
 public class CharacterStats : MonoBehaviour
 {
-    public int Hp = 100;
-    public int MaxHp = 100;
-    public int Xp = 0;
-    public int MaxXp = 100;
-    public int Level = 1;
-    // [SerializeField] int Strength = 1;
-
+    [SerializeField] public CharacterStatsScriptableObject stats;
     [SerializeField] SpriteRenderer sprite; // to turn red when taking damage
-    private float maxRedDuration = .2f;
 
-    [SerializeField]
-    GameObject startingSpell;
+    GameObject currentStartingSpell;
+
+    [HideInInspector] public float currentPower;
+    [HideInInspector] public float currentArmor;
+    [HideInInspector] public int currentMaxHealth;
+    [HideInInspector] public int currentHealth;
+    [HideInInspector] public int currentHealthRegen;
+    [HideInInspector] public float currentMaxDashCooldown;
+    [HideInInspector] public float currentProjectileSpeed;
+    [HideInInspector] public float currentMoveSpeed;
+    [HideInInspector] public int currentProjectileAmount;
+    [HideInInspector] public float currentExperienceModifier;
+
+    [Header("Need to make these private with getter setters")]
+    public int Xp;
+    public int MaxXp;
+    public int Level = 1;
 
     [Header("For Testing Purposes Only")]
     [SerializeField]
@@ -31,24 +40,32 @@ public class CharacterStats : MonoBehaviour
     InventoryManager inventory;
     public int spellIndex;
     
-    void Start()
+    
+    void Awake()
     {
-        Hp = 100;
-        MaxHp = 100;
-        Xp = 0;
-        MaxXp = 20;
-    }
-
-    private void Awake()
-    {
-        //Spawn the starting weapon
+         currentStartingSpell = stats.StartingSpell;
+         currentPower = stats.Power;
+         currentArmor = stats.Armor;
+         currentMaxHealth = stats.MaxHealth;
+         currentHealth = stats.MaxHealth;
+         currentHealthRegen = stats.HealthRegen;
+         currentMaxDashCooldown = stats.MaxDashCooldown;
+         currentProjectileSpeed = stats.ProjectileSpeed;
+         currentMoveSpeed = stats.MoveSpeed;
+         currentProjectileAmount = stats.ProjectileAmount;
+         currentExperienceModifier = stats.ExperienceModifier;
 
         inventory = GetComponent<InventoryManager>();
 
-        SpawnSpell(startingSpell);
+        SpawnSpell(currentStartingSpell);
         SpawnSpell(spell2);
         SpawnSpell(spell3);
         SpawnSpell(spell4);
+    }
+    void Start()
+    {
+        Xp = 0;
+        MaxXp = 20;
     }
 
     public void GainExperience(int experience)
@@ -62,25 +79,26 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
+
     public void TakeDamage(int damage){
         StartCoroutine(ShowRedOnHit());
-        Hp -= damage;
+        currentHealth -= damage;
         Debug.Log("Player takes a hit.\n");
-        //Debug.Log(Hp);
-        //if(Hp > MaxHp)
+        //Debug.Log(currentHealth);
+        //if(currentHealth > stats.MaxHealth)
         //{
-        //    Hp = MaxHp;
+        //    currentHealth = MaxHealth;
         //}
-        if(Hp < 1){
+        if (currentHealth < 1){
             Debug.Log("Player is dead.");
-            Hp = 0;
+            currentHealth = 0;
         }
     }
 
     private IEnumerator ShowRedOnHit()
     {
         sprite.color = Color.red;
-        yield return new WaitForSeconds(maxRedDuration);
+        yield return new WaitForSeconds(.2f);
         sprite.color = Color.white;
     }
 
