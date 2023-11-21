@@ -7,6 +7,9 @@ public class Enemy : MonoBehaviour
 {
     public GameObject PlayerTarget;
 
+    [SerializeField] SpriteRenderer sprite; // to turn red when taking damage
+    private Color currentNoDamageColor = Color.white;
+
     [HideInInspector]
     public float LiveHP; // The real amount of health this enemy has.
     [Min(0)]
@@ -28,6 +31,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        sprite.color = Color.white;
         LiveHP = MaxHP;
         pathfinderAgent = GetComponent<PathfinderAgent>();
     }
@@ -52,8 +56,9 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
+        StartCoroutine(ShowRedOnHit());
         LiveHP -= damage;
         // Debug.Log("Monster takes a hit.\n");
         // Debug.Log(hp);
@@ -61,7 +66,32 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+        
     }
+
+    private IEnumerator ShowRedOnHit()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(.2f);
+        sprite.color = currentNoDamageColor;
+    }
+
+    public void SlowBy(float slow, float slowDuration)
+    {
+        StartCoroutine(ShowBlueSlow(slowDuration));
+        // enemySpeed = enemyMaxSpeed * slow
+        // ^ pls implement this, i don't wanna mess up the pathfinding code
+    }
+
+    private IEnumerator ShowBlueSlow(float slowDuration)
+    {
+        currentNoDamageColor = Color.blue;
+        sprite.color = currentNoDamageColor;
+        yield return new WaitForSeconds(slowDuration);
+        currentNoDamageColor = Color.white;
+        sprite.color = currentNoDamageColor;
+    }
+
     public void Die()
     {
         if (isBoss)

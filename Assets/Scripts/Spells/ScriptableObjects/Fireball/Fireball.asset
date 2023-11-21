@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3642588a7616748459766be46cd89649, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
+  levelUpDescription: Unlock Fireball
   prefab: {fileID: 7191764902000688093, guid: dd3fea26d0d699e429b4e491e582b1a3, type: 3}
   damage: 5
   speed: 30

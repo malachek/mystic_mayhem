@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3642588a7616748459766be46cd89649, type: 3}
+  m_Name: Fireball Level 3
+  m_EditorClassIdentifier: 
+  levelUpDescription: Increase Damage
+  prefab: {fileID: 7191764902000688093, guid: aaca4582a2b7a5b4f8667fe3e55088c5, type: 3}
+  damage: 10
+  speed: 30
+  maxCooldownDuration: 0.5
+  pierce: 5
+  level: 3
+  nextLevelPrefab: {fileID: 3346097846772020503, guid: 2b4685155d1f53e4b926238f55b1afbb, type: 3}
+  icon: {fileID: 21300000, guid: 9a7f78536057a7841a19c90b62c811d6, type: 3}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class CharacterStats : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class CharacterStats : MonoBehaviour
     public int MaxXp = 100;
     public int Level = 1;
     // [SerializeField] int Strength = 1;
+
+    [SerializeField] SpriteRenderer sprite; // to turn red when taking damage
+    private float maxRedDuration = .2f;
 
     [SerializeField]
     GameObject startingSpell;
@@ -56,7 +60,7 @@ public class CharacterStats : MonoBehaviour
     }
 
     public void TakeDamage(int damage){
-
+        StartCoroutine(ShowRedOnHit());
         Hp -= damage;
         Debug.Log("Player takes a hit.\n");
         //Debug.Log(Hp);
@@ -68,6 +72,13 @@ public class CharacterStats : MonoBehaviour
             Debug.Log("Player is dead.");
             Hp = 0;
         }
+    }
+
+    private IEnumerator ShowRedOnHit()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(maxRedDuration);
+        sprite.color = Color.white;
     }
 
     public void SpawnSpell(GameObject spell)

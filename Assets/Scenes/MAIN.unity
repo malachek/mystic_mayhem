@@ -517,7 +517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &63456171
 RectTransform:
   m_ObjectHideFlags: 0
@@ -589,7 +589,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1195,6 +1195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -2154,6 +2155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -2443,7 +2445,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -422, y: 8.799988}
+  m_AnchoredPosition: {x: -92.4, y: 8.799988}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &326611796
@@ -2989,6 +2991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -3180,6 +3183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -4163,7 +4167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc16750af4b4914f8446ded4c3d991e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 0}
 --- !u!114 &520359214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4181,6 +4184,7 @@ MonoBehaviour:
   Xp: 0
   MaxXp: 100
   Level: 1
+  sprite: {fileID: 520359208}
   startingSpell: {fileID: 3346097846772020503, guid: b679acdfcbe99499fa65662d97411af7, type: 3}
   spell2: {fileID: 3727632707740787714, guid: 268ae330e6b64496aa6122b6e77f4523, type: 3}
   spell3: {fileID: 6448676508539258585, guid: be7fa4c1f211343c5a0f5cc2c12024ab, type: 3}
@@ -4362,6 +4366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -4618,7 +4623,7 @@ RectTransform:
   m_GameObject: {fileID: 588844800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1035179172}
@@ -4631,7 +4636,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20.900024, y: -20.900024}
+  m_AnchoredPosition: {x: 60.4, y: -59}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &588844802
@@ -4653,10 +4658,10 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 0
   m_StartCorner: 0
-  m_StartAxis: 0
+  m_StartAxis: 1
   m_CellSize: {x: 32, y: 32}
   m_Spacing: {x: 5, y: 5}
-  m_Constraint: 2
+  m_Constraint: 1
   m_ConstraintCount: 2
 --- !u!1 &634857342
 GameObject:
@@ -4919,6 +4924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -5493,6 +5499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -6024,7 +6031,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &839079937
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6096,7 +6103,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6952,6 +6959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -7577,6 +7585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -7760,7 +7769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
-  MovementSpeed: 0.15
+  MovementSpeed: 0.5
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
@@ -7779,6 +7788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 1094830609}
   LiveHP: 0
   MaxHP: 10
   isBoss: 0
@@ -7981,6 +7991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -9211,6 +9222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -9478,6 +9490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -9669,6 +9682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -10277,6 +10291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -10876,6 +10891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -11067,6 +11083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -11523,6 +11540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -11985,6 +12003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -13678,6 +13697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -14094,6 +14114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0

@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3642588a7616748459766be46cd89649, type: 3}
   m_Name: Garlic Level 2
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2401487121502457501, guid: ed4e1a681b6b98144b0a6096150a3349, type: 3}
-  damage: 5
+  levelUpDescription: Increase Damage
+  prefab: {fileID: 2401487121502457501, guid: f313b1a44c964a942b2866381dde8cb2, type: 3}
+  damage: 1.5
   speed: 1
-  maxCooldownDuration: 2.5
+  maxCooldownDuration: 0.5
   pierce: 0
   level: 2
-  nextLevelPrefab: {fileID: 0}
+  nextLevelPrefab: {fileID: 3727632707740787714, guid: 7190f53d9cbbfa045b8d88d99a64cc60, type: 3}
   icon: {fileID: -2040685801, guid: 347f46dd41a4e5f41b6be72dee926bef, type: 3}

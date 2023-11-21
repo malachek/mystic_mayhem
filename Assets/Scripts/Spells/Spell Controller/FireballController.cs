@@ -15,6 +15,7 @@ public class FireballController : SpellController
         base.Attack();
         GameObject spawnedFireball = Instantiate(spellData.Prefab);
         spawnedFireball.transform.position = transform.position; //assign position to be same as this object, which is parented to player
-        spawnedFireball.GetComponent<FireballBehavior>().DirectionChecker(castDir.direction); // sets direction to that of the mouse
+        spawnedFireball.GetComponent<FireballBehavior>().DirectionChecker(castDir.ClosestEnemyDirection()); // sets direction to that of the mouse
     }
+
 }

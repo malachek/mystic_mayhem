@@ -7,6 +7,9 @@ using UnityEngine;
 public class SpellSciptableObject : ScriptableObject
 {
     [SerializeField]
+    public string levelUpDescription;
+
+    [SerializeField]
     GameObject prefab;
     public GameObject Prefab { get => prefab; private set => prefab = value; }
 
@@ -26,6 +29,14 @@ public class SpellSciptableObject : ScriptableObject
     [SerializeField]
     int pierce;
     public int Pierce { get => pierce; private set => pierce = value; }
+
+    [SerializeField]
+    float slow; // not meant to be modified in game [Only in Editor]
+    public float Slow { get => slow; private set => slow = value; }
+
+    [SerializeField]
+    float slowDuration; // not meant to be modified in game [Only in Editor]
+    public float SlowDuration { get => slowDuration; private set => slowDuration = value; }
 
     [SerializeField]
     int level; // not meant to be modified in game [Only in Editor]

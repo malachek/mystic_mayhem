@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3642588a7616748459766be46cd89649, type: 3}
   m_Name: Garlic
   m_EditorClassIdentifier: 
+  levelUpDescription: Unlock Garlic
   prefab: {fileID: 2401487121502457501, guid: ed4e1a681b6b98144b0a6096150a3349, type: 3}
-  damage: 5
+  damage: 1
   speed: 1
-  maxCooldownDuration: 3
+  maxCooldownDuration: 0.5
   pierce: 0
   level: 1
   nextLevelPrefab: {fileID: 3727632707740787714, guid: 3d60d0deb469e4b75a8d47559ee1f489, type: 3}

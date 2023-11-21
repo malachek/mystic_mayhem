@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3642588a7616748459766be46cd89649, type: 3}
   m_Name: Fireball Level 2
   m_EditorClassIdentifier: 
+  levelUpDescription: Increase Damage
   prefab: {fileID: 7191764902000688093, guid: bc31d37202a06426889b6f3fd11b4fd6, type: 3}
-  damage: 7
+  damage: 7.5
   speed: 30
   maxCooldownDuration: 0.5
   pierce: 5
   level: 2
-  nextLevelPrefab: {fileID: 0}
+  nextLevelPrefab: {fileID: 3346097846772020503, guid: 88cf6d55bc6cce94b9eb4f0f45dd538a, type: 3}
   icon: {fileID: 21300000, guid: 9a7f78536057a7841a19c90b62c811d6, type: 3}

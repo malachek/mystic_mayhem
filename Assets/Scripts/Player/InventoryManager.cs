@@ -29,11 +29,11 @@ public class InventoryManager : MonoBehaviour
             SpellController spell = spellSlots[slotIndex];
             if(!spell.spellData.NextLevelPrefab) //Checks if there is a next level for the current passive item
             {
-                Debug.LogError("NO NET LEVEL FOR " + spell.name);
+                Debug.LogError("NO NEXT LEVEL FOR " + spell.name);
                 return;
             }
             GameObject upgradedSpell = Instantiate(spell.spellData.NextLevelPrefab, transform.position, Quaternion.identity);
-            upgradedSpell.transform.SetParent(transform); //Set the weapon to be a child of the player
+            upgradedSpell.transform.SetParent(transform); //Set the spell to be a child of the player
             AddSpell(slotIndex, upgradedSpell.GetComponent<SpellController>());
             Destroy(spell.gameObject);
             spellLevels[slotIndex] = upgradedSpell.GetComponent<SpellController>().spellData.Level; //To make sure we have the correct weapon level

@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class GarlicBehavior : MeleeSpellBehavior
 {
-    List<GameObject> markedEnemies;
+    public static List<GameObject> markedEnemies;
 
     // Start is called before the first frame update
     protected override void Start()
     {
-        base.Start();
         markedEnemies = new List<GameObject>();
     }
 
@@ -23,4 +22,5 @@ public class GarlicBehavior : MeleeSpellBehavior
             markedEnemies.Add(col.gameObject);//mark the enemy so it won't take another instance of damage from this garlic
         }
     }
+
 }
