@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3642588a7616748459766be46cd89649, type: 3}
   m_Name: Ice
   m_EditorClassIdentifier: 
-  levelUpDescription: Unlock Ice
+  description: Unlock Ice
   prefab: {fileID: 7191764902000688093, guid: 818d6b675ca78964489fede7f78df001, type: 3}
   damage: 3
   speed: 10

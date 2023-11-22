@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingSpell: {fileID: 3346097846772020503, guid: b679acdfcbe99499fa65662d97411af7, type: 3}
   power: 1
-  armor: 0
+  armor: 1
   maxHealth: 100
   healthRegen: 0
-  dashCooldown: 0.5
+  maxDashCooldown: 0
   projectileSpeed: 1
   moveSpeed: 10
   projectileAmount: 1

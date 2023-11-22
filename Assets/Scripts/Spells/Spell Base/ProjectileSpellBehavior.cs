@@ -25,6 +25,11 @@ public class ProjectileSpellBehavior : MonoBehaviour
         currentPierce = spellData.Pierce;
     }
 
+    public float GetCurrentDamage()
+    {
+        return currentDamage *= FindObjectOfType<CharacterStats>().currentPower;
+    }
+
     protected virtual void Start()
     {
         Destroy(gameObject, destroyAfterSeconds);
@@ -44,7 +49,7 @@ public class ProjectileSpellBehavior : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             Enemy enemy = col.GetComponent<Enemy>();
-            enemy.TakeDamage(currentDamage); //Make sure to use currentDamage instead of weaponData.damage in case of any damage multipliers
+            enemy.TakeDamage(GetCurrentDamage()); //Make sure to use currentDamage instead of weaponData.damage in case of any damage multipliers
             reducePiere();
         }
         //Debug.Log("collided w/ "  + col.gameObject.name);

@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3642588a7616748459766be46cd89649, type: 3}
   m_Name: AK Level 2
   m_EditorClassIdentifier: 
-  levelUpDescription: Increase Fire Rate
+  description: Increase Fire Rate
   prefab: {fileID: 6623417038561152597, guid: 729313be887194b3f9c103a4693b768d, type: 3}
   damage: 1
   speed: 60
   maxCooldownDuration: 0.4
   pierce: 1
+  slow: 0
+  slowDuration: 0
   level: 2
   nextLevelPrefab: {fileID: 0}
   icon: {fileID: -1563657355, guid: 347f46dd41a4e5f41b6be72dee926bef, type: 3}

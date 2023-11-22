@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class SpellSciptableObject : ScriptableObject
 {
+    
     [SerializeField]
-    public string levelUpDescription;
+    public string description;
 
     [SerializeField]
     GameObject prefab;

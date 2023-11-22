@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3642588a7616748459766be46cd89649, type: 3}
   m_Name: Ice Level 3
   m_EditorClassIdentifier: 
-  levelUpDescription: Increases Slow Duration
+  description: Increase Slow Duration
   prefab: {fileID: 7191764902000688093, guid: 6e75bf6ce26095a4d8d8ce441af8c1f0, type: 3}
   damage: 3
   speed: 10

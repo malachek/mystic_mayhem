@@ -29,7 +29,7 @@ public class IceBehavior : ProjectileSpellBehavior
         if (col.CompareTag("Enemy"))
         {
             Enemy enemy = col.GetComponent<Enemy>();
-            enemy.TakeDamage(currentDamage); //Make sure to use currentDamage instead of weaponData.damage in case of any damage multipliers
+            enemy.TakeDamage(GetCurrentDamage()); //Make sure to use currentDamage instead of weaponData.damage in case of any damage multipliers
             enemy.SlowBy(currentSlow, slowDuration);
             reducePiere();
         }

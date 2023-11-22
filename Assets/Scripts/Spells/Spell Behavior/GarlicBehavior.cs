@@ -17,7 +17,7 @@ public class GarlicBehavior : MeleeSpellBehavior
         if (col.CompareTag("Enemy") && !markedEnemies.Contains(col.gameObject))
         {
             Enemy enemy = col.GetComponent<Enemy>();
-            enemy.TakeDamage((int)currentDamage);
+            enemy.TakeDamage(GetCurrentDamage());
 
             markedEnemies.Add(col.gameObject);//mark the enemy so it won't take another instance of damage from this garlic
         }
