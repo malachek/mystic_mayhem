@@ -6,6 +6,8 @@ using UnityEngine;
 public class PassiveItemScriptableObject : ScriptableObject
 {
     [SerializeField]
+    string description;
+    [SerializeField]
     float multiplier;
     public float Multiplier { get => multiplier; set => multiplier = value; }
     void Start()
