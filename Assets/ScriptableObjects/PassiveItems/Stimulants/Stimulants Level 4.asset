@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f4300952a1dd8945a48d89951591179, type: 3}
-  m_Name: Drink Booze Passive Item
+  m_Name: Stimulants Level 4
   m_EditorClassIdentifier: 
-  description: Increase Damage
-  multiplier: 15
+  description: Decreases Dash Cooldown
+  multiplier: 75
   flat: 0
-  nextLevelPrefab: {fileID: 1856627016860400445, guid: 64edcc6d13148614b9070e352d0e129f, type: 3}
-  level: 1
-  icon: {fileID: 896820027, guid: 347f46dd41a4e5f41b6be72dee926bef, type: 3}
+  nextLevelPrefab: {fileID: 7092801412286879166, guid: d1d05a499db0c40eea745d416c3a2ced, type: 3}
+  level: 4
+  icon: {fileID: 21300000, guid: 573a86eb4aa6ebe4bad714ed2516bc29, type: 3}

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f4300952a1dd8945a48d89951591179, type: 3}
-  m_Name: Drink Booze Passive Item
+  m_Name: Bulk Up Level 3
   m_EditorClassIdentifier: 
-  description: Increase Damage
-  multiplier: 15
+  description: Increase Max Health
+  multiplier: 20
   flat: 0
-  nextLevelPrefab: {fileID: 1856627016860400445, guid: 64edcc6d13148614b9070e352d0e129f, type: 3}
-  level: 1
-  icon: {fileID: 896820027, guid: 347f46dd41a4e5f41b6be72dee926bef, type: 3}
+  nextLevelPrefab: {fileID: 1142889910996466215, guid: 8c93a47891cca49a8b97495d50b5c8d2, type: 3}
+  level: 3
+  icon: {fileID: -1741415255, guid: 347f46dd41a4e5f41b6be72dee926bef, type: 3}

@@ -9,12 +9,9 @@ public class PlayerMove : MonoBehaviour
 
     Rigidbody2D rgb2d;
     Vector3 movementVector;
-    float player_speed;
 
     public Animator animator;
     public SpriteRenderer spriteRenderer; 
-
-    [SerializeField] float dashTimer;
 
     float timer_dash;
     public float dashDistance;
@@ -26,6 +23,7 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
+        timer_dash = characterStats.currentMaxDashCooldown;
         WorldGrid=GameObject.FindObjectOfType<Pathfinder>();    
         rgb2d = GetComponent<Rigidbody2D>();
         movementVector = new Vector3();
@@ -57,14 +55,14 @@ public class PlayerMove : MonoBehaviour
         
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            if (timer_dash <= dashTimer)
+            if (timer_dash > 0)
             {
-                timer_dash += Time.deltaTime;
+                timer_dash -= Time.deltaTime;
             }
         
             else
             {
-                timer_dash = 0;
+                timer_dash = characterStats.currentMaxDashCooldown;
                 Debug.Log("TP ACTIVATE!");
 
                 Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;

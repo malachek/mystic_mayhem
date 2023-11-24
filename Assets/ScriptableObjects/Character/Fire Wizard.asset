@@ -17,7 +17,7 @@ MonoBehaviour:
   armor: 1
   maxHealth: 100
   healthRegen: 0
-  maxDashCooldown: 0
+  maxDashCooldown: 10
   projectileSpeed: 1
   moveSpeed: 10
   projectileAmount: 1

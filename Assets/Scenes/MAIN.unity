@@ -4526,7 +4526,6 @@ MonoBehaviour:
   characterStats: {fileID: 520359214}
   animator: {fileID: 520359217}
   spriteRenderer: {fileID: 1131438419}
-  dashTimer: 0.5
   dashDistance: 10
   ignoreRay:
     serializedVersion: 2
