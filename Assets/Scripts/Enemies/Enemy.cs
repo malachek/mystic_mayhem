@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator ShowRedOnHit()
     {
         sprite.color = Color.red;
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(.1f);
         sprite.color = currentNoDamageColor;
     }
 
