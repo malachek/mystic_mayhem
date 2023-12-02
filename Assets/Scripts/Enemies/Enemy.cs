@@ -26,16 +26,25 @@ public class Enemy : MonoBehaviour
 
     private float _nextShot = 0.25f;
     private float _fireDelay = 0.5f;
-
+    SpriteRenderer spriteRenderer;
     private void Start()
     {
         LiveHP = MaxHP;
         pathfinderAgent = GetComponent<PathfinderAgent>();
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+
+        lastPos = transform.position;
     }
+    Vector3 lastPos;
     private void FixedUpdate()
     {
-        if(LiveHP<= 0)
+
+        Vector3 movementVector = transform.position - lastPos;
+        spriteRenderer.flipX = (movementVector.x > 0);
+        lastPos = transform.position;
+
+        if (LiveHP<= 0)
         {
             Die();
         }
