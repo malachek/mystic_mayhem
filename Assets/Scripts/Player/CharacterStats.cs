@@ -70,7 +70,12 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    public void SpawnSpell(GameObject spell)
+    public void IncreaseMaxHealth(int health)
+    {
+        MaxHp += health;
+    }
+
+        public void SpawnSpell(GameObject spell)
     {
         //checking if the slots are full, and returning if it is
         if(spellIndex >= inventory.spellSlots.Count -1)
