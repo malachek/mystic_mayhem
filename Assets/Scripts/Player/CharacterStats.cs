@@ -93,13 +93,13 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-
     public void TakeDamage(int damage){
         StartCoroutine(ShowRedOnHit());
         currentHealth -= (int)(damage / currentArmor);
         Debug.Log("Player takes a hit.\n");
         //Debug.Log(currentHealth);
         //if(currentHealth > stats.MaxHealth)
+
         //{
         //    currentHealth = MaxHealth;
         //}

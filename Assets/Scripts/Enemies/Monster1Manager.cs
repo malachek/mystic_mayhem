@@ -36,21 +36,16 @@ public class Monster1Manager : MonoBehaviour
     }
 
 
-    private void SpawnEnemy(int amt)
+    private IEnumerator SpawnEnemy(int amt)
     {
-        var playerPos = Player.transform.position;
 
-        if(!WorldGrid.isPosOk(playerPos))
+        if(!WorldGrid.isPosOk(Player.transform.position))
         {
             timer = spawnTimer + 1;
             Debug.LogWarning("Can't spawn enemies from an invalid position!");
-            return;
+            yield break;
         }
 
-        float screenie_north = playerPos.y + halfed_height;
-        float screenie_south = playerPos.y - halfed_height;
-        float screenie_east = playerPos.x + halfed_width;
-        float screenie_west = playerPos.x - halfed_width;
 
         //Debug.Log(screenie_north + " - " + screenie_south + " - " + screenie_east + " - " + screenie_west);
 
@@ -58,8 +53,13 @@ public class Monster1Manager : MonoBehaviour
 
         for (int i = 0; i < amt; i++)
         {
+            var playerPos = Player.transform.position;
             int direction = Random.Range(0, 4); //gets range between 0 and 3 inc
 
+            float screenie_north = playerPos.y + halfed_height;
+            float screenie_south = playerPos.y - halfed_height;
+            float screenie_east = playerPos.x + halfed_width;
+            float screenie_west = playerPos.x - halfed_width;
 
             // playerpos.x + halfed_width
             // playerpos.x - halfed_width
@@ -134,7 +134,7 @@ public class Monster1Manager : MonoBehaviour
                     break;
                 }
             }
-
+            yield return new WaitForEndOfFrame();
         }
 
     }
@@ -155,7 +155,7 @@ public class Monster1Manager : MonoBehaviour
 
         if(MonsterDespawnedDebt>0)
         {
-            SpawnEnemy(MonsterDespawnedDebt);
+            StartCoroutine(SpawnEnemy(MonsterDespawnedDebt));
             MonsterDespawnedDebt = 0;
         }
         if (timer <= spawnTimer)
@@ -165,7 +165,7 @@ public class Monster1Manager : MonoBehaviour
         else
         {
             timer = 0;
-            SpawnEnemy(spawnAmount);
+            StartCoroutine(SpawnEnemy(spawnAmount));
         }
     }
 
@@ -174,7 +174,7 @@ public class Monster1Manager : MonoBehaviour
 
         if (!(spawned))
         {
-            SpawnEnemy(spawnAmount);
+            StartCoroutine(SpawnEnemy(spawnAmount));
             spawned = true;
         }
     }

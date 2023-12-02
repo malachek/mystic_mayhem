@@ -1,3 +1,4 @@
+using RoyT.AStar;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,16 +29,26 @@ public class Enemy : MonoBehaviour
 
     private float _nextShot = 0.25f;
     private float _fireDelay = 0.5f;
-
+    SpriteRenderer spriteRenderer;
     private void Start()
     {
         sprite.color = Color.white;
         LiveHP = MaxHP;
         pathfinderAgent = GetComponent<PathfinderAgent>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+
+        lastPos = transform.position;
     }
+    Vector3 lastPos;
     private void FixedUpdate()
     {
-        if(LiveHP<= 0)
+
+        Vector3 movementVector = transform.position - lastPos;
+        spriteRenderer.flipX = (movementVector.x > 0);
+        lastPos = transform.position;
+
+        if (LiveHP<= 0)
         {
             Die();
         }
@@ -126,13 +137,21 @@ public class Enemy : MonoBehaviour
 
     public void Follow()
     {
-        //TODO: Implement Resource Saving Optimization for Bee-Line walking.
+        pathfinderAgent.WhenIdleGoTo = PlayerTarget;
+        if(pathfinderAgent.CanSmallRefine(transform.position,PlayerTarget.transform.position))
+        {
+            if (pathfinderAgent.isCalculatingPath)
+            {
+                pathfinderAgent.AbortPathRequest();
+            }
+                pathfinderAgent.movementTargets = new List<Vector2>() { PlayerTarget.transform.position };
+        }
 
         if(!pathfinderAgent.isPathing())
         {
             pathfinderAgent.PathfindTo(PlayerTarget.transform.position);
         }
-        else
+        else if(!pathfinderAgent.isCalculatingPath)
         {
             Vector2 targPos=  pathfinderAgent.movementTargets[pathfinderAgent.movementTargets.Count - 1];
 

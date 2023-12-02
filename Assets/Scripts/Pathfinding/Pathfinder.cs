@@ -40,38 +40,19 @@ public class Pathfinder : MonoBehaviour
     public DoubleBakeRule BakeRule = DoubleBakeRule.PaintFull;
     public Vector2 SubTileOffset = new Vector2(0.5f, 0.5f); //All pathfinding paths point to the bottom left most part of a tile by default, this shifts it to the middle.
     [HideInInspector]
-    public RoyT.AStar.Grid grid;
-    [HideInInspector]
-    public RoyT.AStar.Grid alt_grid;
-
+    public World grid;
+   
     [Header("Extra Crud (Will Be Run During Baking)")]
     public Tilemap EmptySpace;
     public Tile[] PaintGround;
-    private RoyT.AStar.Position toPos(Vector2 pos)
+
+    private bool isPosInBounds(Vector3Int pos)
     {
-        return toPos(Vector2Int.FloorToInt(pos));
-    }
-    private RoyT.AStar.Position toPos(Vector2Int pos)
-    {
-        pos -= GridOffset;
-        pos -= Vector2Int.FloorToInt(transform.position);
-        return new RoyT.AStar.Position(pos.x, pos.y);
-    }
-    private Vector2Int toVector(RoyT.AStar.Position pos)
-    {
-        Vector2Int npos = new Vector2Int(pos.X, pos.Y);
-        npos += GridOffset;
-        npos += Vector2Int.FloorToInt(transform.position);
-        return npos;
-    }
-    private bool isPosInBounds(RoyT.AStar.Position pos)
-    {
-        return ((pos.X >= 0 && pos.Y >= 1) && (pos.X < GridSize.x-1&& pos.Y < GridSize.y));
+        return grid.isPos(pos);
     }
     public void ResetGrid()
     {
-        grid = new RoyT.AStar.Grid(GridSize.x, GridSize.y,DefaultCellCost);
-        alt_grid= new RoyT.AStar.Grid(GridSize.x, GridSize.y, DefaultCellCost); 
+        grid = new World(1,GridSize.x, GridSize.x, DefaultCellCost);
     }
     private void Start()
     {
@@ -89,9 +70,22 @@ public class Pathfinder : MonoBehaviour
                 StartCoroutine(BakeInASec());
         }
     }
+    public Vector3Int toPos(Vector2 pos)
+    {
+        pos -= GridOffset;
+        pos -= Vector2Int.FloorToInt(transform.position);
+        return new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), 0);
+    }
+    public Vector2 toVector(Vector3Int pos)
+    {
+        Vector2 npos = new Vector2(pos.x,(pos.y));
+        npos += new Vector2(GridOffset.x, GridOffset.y);
+        npos += Vector2Int.FloorToInt(transform.position);
+        return npos;
+    }
     public bool isPosOk(Vector2 position)
     {
-        return isPosInBounds(toPos(position)) && (grid.GetCellCost(toPos(position)) != float.PositiveInfinity);
+        return isPosInBounds(toPos(position)) && (grid.getTile(toPos(position)).pathCost != -1);
     }
     public IEnumerator BakeInASec()
     {
@@ -101,76 +95,15 @@ public class Pathfinder : MonoBehaviour
             BakeMap();
     }
 
-    public static int MAX_PATHLENGTH=255;
 
-    public List<Vector2> getPathTo(Vector2 start, Vector2 location,RoyT.AStar.Grid m_grid)
-    {
-        return getPathTo(start, location, MAX_PATHLENGTH,m_grid);
-    }
-    public List<Vector2> getPathTo(Vector2 start, Vector2 location, int maxIterations, RoyT.AStar.Grid m_grid)
-    {
-        return getPathTo(Vector2Int.FloorToInt(start), Vector2Int.FloorToInt(location), maxIterations,m_grid);
-    }
-
-
-
-    public List<Vector2> getPathTo(Vector2 start, Vector2 location)
-    {
-        return getPathTo(start,location, MAX_PATHLENGTH);
-    }
-    public List<Vector2> getPathTo(Vector2 start, Vector2 location, int maxIterations)
-    {
-        return getPathTo(Vector2Int.FloorToInt(start), Vector2Int.FloorToInt(location), maxIterations);
-    }
-
-    public List<Vector2> getPathTo(Vector2Int start, Vector2Int location, int maxIterations)
-    {
-        return getPathTo(start, location, maxIterations, grid);
-    }
-
-
-    public List<Vector2> getPathTo(Vector2Int start,Vector2Int location,int maxIterations,RoyT.AStar.Grid m_grid)
-    {
-        //Returns a list of locations as a path to location if it can be made, empty if no such path exists.
-        if(isPosInBounds(toPos(start)) && isPosInBounds(toPos(location)))
-        {
-            if(m_grid.GetCellCost(toPos(location))==float.PositiveInfinity)
-            {
-                Debug.LogWarning("Cannot create paths that end inside of a wall!");
-                return new List<Vector2>();
-            }
-            else if (m_grid.GetCellCost(toPos(start)) == float.PositiveInfinity)
-            {
-                Debug.LogWarning("Cannot create paths that start inside of a wall!");
-                return new List<Vector2>();
-            }
-            RoyT.AStar.Position[] royPath= m_grid.GetPath(toPos(start), toPos(location),MovementPatterns.Full, maxIterations);
-
-            if (royPath.Length <= 0)
-            {
-                //  if (Vector2.Distance(start, location) > 1)
-                //      Debug.LogError("Lagilly tried to create a path to an inaccessable location, perhaps the maze is bad?");
-                return null;
-            }
-
-            List<Vector2> path = new List<Vector2>();
-            foreach (RoyT.AStar.Position p in royPath)
-            {
-                path.Add(toVector(p)+ SubTileOffset);
-            }
-           return path;
-        }
-        else
-        {
-            Debug.LogWarning("Cannot create paths that go beyond the given pathfinding scope!");
-            return new List<Vector2>();
-        }
-    }
     public void BakeMap(Tilemap tilemap)
     {
         //Only the last collision map is stored (Really should only be one as of now), but you can double bake if you want.
         CollisionMap = tilemap;
         BakeMap();
+
+        CollisionMap.gameObject.isStatic = true;
+        EmptySpace.gameObject.isStatic = true;
     }
    
     public void BakeMap()
@@ -185,7 +118,7 @@ public class Pathfinder : MonoBehaviour
             {
                 for (int y =1; y < GridSize.y; y++)
                 {
-                    RoyT.AStar.Position pos = toPos(startPos+new Vector2(x, y));
+                    Vector3Int pos = toPos(startPos+new Vector2(x, y));
 
                     if (EmptySpace != null)
                     {
@@ -198,21 +131,21 @@ public class Pathfinder : MonoBehaviour
                             if (ObstacleCost == WallCost.InfiniteCellCost)
                             {
                                 grid.BlockCell(pos);
-                                alt_grid.SetCellCost(pos, DefaultCellCost);
+                             //   alt_grid.SetCellCost(pos, DefaultCellCost);
                             }
                             else
                             {
                                 grid.UnblockCell(pos); //If you double bake, you might have blocked cells that are now free
-                                alt_grid.UnblockCell(pos);
+                              //  alt_grid.UnblockCell(pos);
                                 if (ObstacleCost == WallCost.FreeCellCost)
                                 {
                                     grid.SetCellCost(pos, FreeCellCost);
-                                    alt_grid.SetCellCost(pos,FreeCellCost);
+                                  //  alt_grid.SetCellCost(pos,FreeCellCost);
                                 }
                                 else if (ObstacleCost == WallCost.DefaultCellCost)
                                 {
                                     grid.SetCellCost(pos, DefaultCellCost);
-                                    alt_grid.SetCellCost(pos, DefaultCellCost);
+                                 //   alt_grid.SetCellCost(pos, DefaultCellCost);
                                 }
                             }
 
@@ -228,7 +161,7 @@ public class Pathfinder : MonoBehaviour
                                 EmptySpace.SetTile(new Vector3Int(startPos.x + x, startPos.y + y), PaintGround[Random.Range(0, PaintGround.Length)]);
                             }
                             grid.UnblockCell(pos);
-                            alt_grid.UnblockCell(pos);
+                          //  alt_grid.UnblockCell(pos);
 
                             int proximityCost = 0;
                             if(NeighboringWallCellCost!=0)
@@ -239,13 +172,16 @@ public class Pathfinder : MonoBehaviour
                                     {
                                         if(CollisionMap.GetTile(new Vector3Int(startPos.x+ x +dx, startPos.y+ y +dy)) != null)
                                         {
-                                            proximityCost+=NeighboringWallCellCost;
+                                            float dist = Vector2.Distance(Vector2.zero, new Vector2(dx, dy));
+                                            if (dist == 0)
+                                                dist = 1;
+                                            proximityCost +=Mathf.RoundToInt(NeighboringWallCellCost/dist);
                                         }
                                     }
                                 }
                             }
                             grid.SetCellCost(pos, FreeCellCost+ proximityCost);
-                            alt_grid.SetCellCost(pos, FreeCellCost + proximityCost);
+                           // alt_grid.SetCellCost(pos, FreeCellCost + proximityCost);
                         }
                     }
                 }
@@ -256,7 +192,8 @@ public class Pathfinder : MonoBehaviour
         {
             Debug.LogWarning("Cannot bake pathfinding without a tilemap!");
         }
-    }
+
+}
     public void SnapToGrid(MazeGridSpawner gridSpawner)
     {
         GridSize.x = gridSpawner.width * gridSpawner.mazeCellSize+1;
