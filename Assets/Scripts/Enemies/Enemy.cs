@@ -45,7 +45,17 @@ public class Enemy : MonoBehaviour
     {
 
         Vector3 movementVector = transform.position - lastPos;
-        spriteRenderer.flipX = (movementVector.x > 0);
+        if (movementVector.x > 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (movementVector.x < 0)
+        {
+            spriteRenderer.flipX =false;
+        }
+        //Dont change when we stop moving ^^^
+
+
         lastPos = transform.position;
 
         if (LiveHP<= 0)

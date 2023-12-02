@@ -6,37 +6,42 @@ public class LightningBehavior : ProjectileSpellBehavior
 {
     private List<Enemy> markedEnemies;
     private List<Transform> points;
-    private LineRenderer lr;
+    public static LineRenderer lr;
 
     protected override void Start()
     { 
         base.Start();
         markedEnemies = new List<Enemy>();
         points = new List<Transform>();
-        lr = FindObjectOfType<LineRenderer>().GetComponent<LineRenderer>();
+        if(lr==null)
+            lr = FindObjectOfType<LineRenderer>().GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
+    bool destroyed;
     void Update()
     {
-        if (direction == Vector3.zero)
+        if (!destroyed)
         {
-            Destroy(gameObject);
+            if (direction == Vector3.zero)
+            {
+                destroyed = true;
+                Destroy(gameObject, 1f);
+            }
+            transform.position += direction * spellData.Speed * Time.deltaTime; //set movement of BasicSpell
+
         }
-        transform.position += direction * spellData.Speed * Time.deltaTime; //set movement of BasicSpell
-
     }
-
     protected override void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Enemy"))
+        if (col.CompareTag("Enemy")&&!destroyed)
         {
             Enemy enemy = col.GetComponent<Enemy>();
             //Vector3 thisEnemyPosition = enemy.transform.position;
 
             //enemy.TakeDamage(GetCurrentDamage()); //Make sure to use currentDamage instead of weaponData.damage in case of any damage multipliers
-            Destroy(gameObject);
-
+            Destroy(gameObject,1f);
+            destroyed = true;
             RunLightning(enemy);
             //Vector3 nextFace = NextEnemy(thisEnemyPosition);
             //DirectionChecker(nextFace);
@@ -72,16 +77,21 @@ public class LightningBehavior : ProjectileSpellBehavior
             enemy.TakeDamage(currentDamage);
         }
     }
-
     private IEnumerator ShowLightningLines()
     {
+        lr.startWidth = 0.5f;
+        lr.endWidth = 0;
         lr.enabled = true;
         lr.positionCount = points.Count;
         for (int i = 0; i < points.Count; i++)
         {
             lr.SetPosition(i, points[i].position);
         }
-        yield return new WaitForSeconds(.2f);
+        for(int i=0;i<8;i++)
+        {
+            lr.startWidth*=0.75f;
+            yield return new WaitForSeconds(.1f);
+        }
         lr.positionCount = 0;
         lr.enabled = false; //This isn't working, idk why - that's why lightning stays
     }
