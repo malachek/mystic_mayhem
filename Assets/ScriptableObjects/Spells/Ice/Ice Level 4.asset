@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3642588a7616748459766be46cd89649, type: 3}
+  m_Name: Ice Level 4
+  m_EditorClassIdentifier: 
+  description: Increase Slow
+  prefab: {fileID: 7191764902000688093, guid: 6367516903a236d468193983f6011b54, type: 3}
+  damage: 3
+  speed: 10
+  maxCooldownDuration: 1.5
+  pierce: 5
+  slow: 0.6
+  slowDuration: 1.5
+  level: 4
+  nextLevelPrefab: {fileID: 3346097846772020503, guid: b0c368b18f8aca94487d5ba81f27a46e, type: 3}
+  icon: {fileID: -116596015, guid: 347f46dd41a4e5f41b6be72dee926bef, type: 3}

@@ -25,6 +25,11 @@ public class ProjectileSpellBehavior : MonoBehaviour
         currentPierce = spellData.Pierce;
     }
 
+    public float GetCurrentDamage()
+    {
+        return currentDamage *= FindObjectOfType<CharacterStats>().currentPower;
+    }
+
     protected virtual void Start()
     {
         Destroy(gameObject, destroyAfterSeconds);
@@ -35,36 +40,28 @@ public class ProjectileSpellBehavior : MonoBehaviour
     {
         direction = dir;
         direction.Normalize();
-
         transform.up = direction; //sets direction of image to direction of movement
 
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D col)
     {
-        //Debug.Log("collided w/ "  + col.gameObject.name);
-        if (col.CompareTag("Maze"))
-        {
-            Destroy(gameObject);
-        }
-
-        if(col.CompareTag("Enemy"))
+        if (col.CompareTag("Enemy"))
         {
             Enemy enemy = col.GetComponent<Enemy>();
-            enemy.TakeDamage((int)currentDamage); //Make sure to use currentDamage instead of weaponData.damage in case of any damage multipliers
+            enemy.TakeDamage(GetCurrentDamage()); //Make sure to use currentDamage instead of weaponData.damage in case of any damage multipliers
             reducePiere();
         }
+        //Debug.Log("collided w/ "  + col.gameObject.name);
+        //if (col.CompareTag("Maze"))
+        //{
+        //    Destroy(gameObject);
+        //}
+
+
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Maze"))
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
-
-    void reducePiere()
+    protected void reducePiere()
     {
         currentPierce--;
         if(currentPierce <= 0)

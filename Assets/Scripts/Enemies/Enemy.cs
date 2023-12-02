@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
 {
     public GameObject PlayerTarget;
 
+    [SerializeField] SpriteRenderer sprite; // to turn red when taking damage
+    private Color currentNoDamageColor = Color.white; // when enemy is damaged, they briefly turn red, this is to know what color to go back to afterwards
+
     [HideInInspector]
     public float LiveHP; // The real amount of health this enemy has.
     [Min(0)]
@@ -29,6 +32,7 @@ public class Enemy : MonoBehaviour
     SpriteRenderer spriteRenderer;
     private void Start()
     {
+        sprite.color = Color.white;
         LiveHP = MaxHP;
         pathfinderAgent = GetComponent<PathfinderAgent>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -63,8 +67,9 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
+        StartCoroutine(ShowRedOnHit());
         LiveHP -= damage;
         // Debug.Log("Monster takes a hit.\n");
         // Debug.Log(hp);
@@ -72,7 +77,37 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+        
     }
+
+    private IEnumerator ShowRedOnHit()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(.1f);
+        sprite.color = currentNoDamageColor;
+    }
+
+    public void SlowBy(float slow, float slowDuration)
+    {
+        StartCoroutine(Slow(slow, slowDuration));
+    }
+
+    private IEnumerator Slow(float slow, float slowDuration)
+    {
+        float OGMovementSpeed = pathfinderAgent.MovementSpeed;
+        pathfinderAgent.MovementSpeed *= slow;
+
+        currentNoDamageColor = new Color(.5f, .9f, 1f);
+        sprite.color = currentNoDamageColor;
+        
+        yield return new WaitForSeconds(slowDuration);
+
+        pathfinderAgent.MovementSpeed = OGMovementSpeed;
+        
+        currentNoDamageColor = Color.white;
+        sprite.color = currentNoDamageColor;
+    }
+
     public void Die()
     {
         if (isBoss)
