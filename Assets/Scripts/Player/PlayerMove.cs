@@ -32,6 +32,8 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         movementVector.x = Input.GetAxisRaw("Horizontal");
         movementVector.y = Input.GetAxisRaw("Vertical");
 
@@ -62,7 +64,7 @@ public class PlayerMove : MonoBehaviour
             else
             {
                 timer_dash = 0;
-                Debug.Log("TP ACTIVATE!");
+                //Debug.Log("TP ACTIVATE!");
 
                 Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
                 Vector2 end  = rgb2d.transform.position + (direction * dashDistance);
