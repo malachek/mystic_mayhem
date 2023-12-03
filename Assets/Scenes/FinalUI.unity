@@ -975,6 +975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -1452,6 +1453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -2064,6 +2066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -2257,6 +2260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -3039,10 +3043,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e7200088bbac34aa94aae98374e00e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_speed: 10
+  characterStats: {fileID: 520359214}
   animator: {fileID: 520359217}
   spriteRenderer: {fileID: 1131438419}
-  dashTimer: 0.5
   dashDistance: 10
   ignoreRay:
     serializedVersion: 2
@@ -3095,7 +3098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc16750af4b4914f8446ded4c3d991e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 0}
+  playerMove: {fileID: 0}
 --- !u!114 &520359214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3108,16 +3111,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643b4d9ab8012c846bc0fe6407d69f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 100
-  MaxHp: 100
+  stats: {fileID: 11400000, guid: 87dd62c6b469c5f42b83ede602e5cc5c, type: 2}
+  sprite: {fileID: 520359208}
+  spawner: {fileID: 1788999131}
+  currentPower: 0
+  currentArmor: 0
+  currentMaxHealth: 0
+  currentHealthRegen: 0
+  currentMaxDashCooldown: 0
+  currentProjectileSpeed: 0
+  currentMoveSpeed: 0
+  currentProjectileAmount: 0
+  currentExperienceModifier: 0
+  currentHealth: 0
   Xp: 0
   MaxXp: 100
   Level: 1
-  startingSpell: {fileID: 3346097846772020503, guid: b679acdfcbe99499fa65662d97411af7, type: 3}
   spell2: {fileID: 3727632707740787714, guid: 268ae330e6b64496aa6122b6e77f4523, type: 3}
   spell3: {fileID: 6448676508539258585, guid: be7fa4c1f211343c5a0f5cc2c12024ab, type: 3}
-  spawnedSpells: []
+  spell4: {fileID: 0}
+  passiveItem1: {fileID: 0}
+  passiveItem2: {fileID: 0}
   spellIndex: 0
+  passiveItemIndex: 0
 --- !u!114 &520359215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3162,6 +3178,9 @@ MonoBehaviour:
   - {fileID: 875909167}
   - {fileID: 2019764980}
   - {fileID: 2083906417}
+  passiveItemSlots: []
+  passiveItemLevels: 000000000000000000000000000000000000000000000000
+  passiveItemUISlots: []
 --- !u!95 &520359217
 Animator:
   serializedVersion: 5
@@ -3294,6 +3313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -3553,6 +3573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -3821,6 +3842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -4768,6 +4790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -5245,6 +5268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -5451,6 +5475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 10
   isBoss: 0
@@ -5653,6 +5678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -6484,6 +6510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -6677,6 +6704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -6870,6 +6898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -7480,6 +7509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -7787,6 +7817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -7980,6 +8011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -8438,6 +8470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -8902,6 +8935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -9029,10 +9063,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 1094830608}
+  monster2: {fileID: 0}
   scaleability: 20
   spawnAmount: 12
+  monster2_amt: 0
   spawnlimit: 5
   spawnTimer: 5
+  start_spawning_2: 0
 --- !u!1 &1809415517
 GameObject:
   m_ObjectHideFlags: 0
@@ -9837,6 +9874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0
@@ -10105,6 +10143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTarget: {fileID: 520359206}
+  sprite: {fileID: 0}
   LiveHP: 0
   MaxHP: 1
   isBoss: 0

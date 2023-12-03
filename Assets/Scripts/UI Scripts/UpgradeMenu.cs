@@ -60,7 +60,7 @@ public class UpgradeMenu : MonoBehaviour
         }
         
         Debug.Log("randomized");
-
+        // select 4 random upgrades then call createupgradebutton with the params for the prefab
         // for (j=0; j<4; j++) choose an upgrade
         CreateUpgradeButton(upgradeFireball, 0);
     }
