@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Increase Fire Rate
   prefab: {fileID: 6623417038561152597, guid: 729313be887194b3f9c103a4693b768d, type: 3}
-  damage: 1
+  damage: 10
   speed: 70
   maxCooldownDuration: 0.3
   pierce: 1

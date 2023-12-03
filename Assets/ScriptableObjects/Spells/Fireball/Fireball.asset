@@ -15,9 +15,9 @@ MonoBehaviour:
   description: Unlock Fireball
   prefab: {fileID: 7191764902000688093, guid: dd3fea26d0d699e429b4e491e582b1a3, type: 3}
   damage: 5
-  speed: 30
-  maxCooldownDuration: 0.5
-  pierce: 5
+  speed: 15
+  maxCooldownDuration: 1
+  pierce: 10
   slow: 0
   slowDuration: 0
   level: 1

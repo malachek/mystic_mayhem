@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51104f99eda35374697c12a0479a6aea, type: 3}
-  m_Name: Fire Wizard
+  m_Name: Basic Wizard
   m_EditorClassIdentifier: 
-  startingSpell: {fileID: 3346097846772020503, guid: b679acdfcbe99499fa65662d97411af7, type: 3}
+  startingSpell: {fileID: 6448676508539258585, guid: 647152ba88c1843689de766644e7c601, type: 3}
   power: 1
   armor: 1
   maxHealth: 100

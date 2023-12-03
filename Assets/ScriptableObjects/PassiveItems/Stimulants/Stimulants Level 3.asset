@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stimulants Level 3
   m_EditorClassIdentifier: 
   description: Decreases Dash Cooldown
-  multiplier: 75
+  multiplier: 55
   flat: 0
   nextLevelPrefab: {fileID: 7092801412286879166, guid: 7dcfd821c18d14f81948d45e1afcd386, type: 3}
   level: 3

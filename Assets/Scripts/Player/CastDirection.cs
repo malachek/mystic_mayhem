@@ -22,7 +22,7 @@ public class CastDirection : MonoBehaviour
         if (AllEnemies.Length == 0) return Vector3.zero;
         
         GameObject NearestEnemy = null;
-        float NearestDistance = float.MaxValue;
+        float NearestDistance = 20f;
 
         foreach (GameObject enemy in AllEnemies)
         {
