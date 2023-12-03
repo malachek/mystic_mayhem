@@ -9,6 +9,7 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] public CharacterStatsScriptableObject stats;
     [SerializeField] SpriteRenderer sprite; // to turn red when taking damage
 
+    [SerializeField] public GameObject spawner;
     GameObject currentStartingSpell;
 
     [HideInInspector] public float currentPower;
@@ -46,11 +47,12 @@ public class CharacterStats : MonoBehaviour
     public int spellIndex;
     public int passiveItemIndex;
 
-    
+    private bool trig;
     
     
     void Awake()
     {
+        trig = false;
          currentStartingSpell = stats.StartingSpell;
          currentPower = stats.Power;
          currentArmor = stats.Armor;
@@ -82,6 +84,7 @@ public class CharacterStats : MonoBehaviour
         MaxXp = 20;
     }
 
+
     public void GainExperience(int experience)
     {
         Xp += experience;
@@ -90,6 +93,12 @@ public class CharacterStats : MonoBehaviour
             Xp -= MaxXp;
             MaxXp += 10;
             Level++;
+            
+            if(Level > 2 & !(trig))
+            {
+                trig = true;
+                spawner.GetComponent<Monster1Manager>().start_spawning_2 = true;
+            }
         }
     }
 
