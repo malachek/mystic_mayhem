@@ -5,8 +5,10 @@ using UnityEngine;
 public class Monster1Manager : MonoBehaviour
 {
     [SerializeField] GameObject monster;
+    [SerializeField] GameObject monster2;
     [SerializeField] float scaleability;
     [SerializeField] int spawnAmount;
+    [SerializeField] int monster2_amt;
     [SerializeField] int spawnlimit;
     [SerializeField] float spawnTimer;
 
@@ -24,9 +26,13 @@ public class Monster1Manager : MonoBehaviour
     private GameObject Player;
 
     public static int MonsterDespawnedDebt=0;
+
+    
+    public bool start_spawning_2;
+
     void Start()
     {
-
+        start_spawning_2 = false;
         WorldGrid = GameObject.FindObjectOfType<Pathfinder>();
         Player = GameObject.Find("Player");
         MonsterDespawnedDebt = 0;
@@ -36,7 +42,7 @@ public class Monster1Manager : MonoBehaviour
     }
 
 
-    private IEnumerator SpawnEnemy(int amt)
+    private IEnumerator SpawnEnemy(GameObject the_monster, int amt)
     {
 
         if(!WorldGrid.isPosOk(Player.transform.position))
@@ -112,7 +118,7 @@ public class Monster1Manager : MonoBehaviour
             //PositionCanSeePlayer forces the enemy to spawn with beeline capablities to the player (For no lag)
             if (WorldGrid.isPosOk(position) && PositionCanSeePlayer(position))
             {
-                GameObject newEnemy = Instantiate(monster);
+                GameObject newEnemy = Instantiate(the_monster);
                 newEnemy.SetActive(true);
                 newEnemy.transform.position = position;
                 if(newEnemy.GetComponent<PathfinderAgent>()!=null)
@@ -152,10 +158,11 @@ public class Monster1Manager : MonoBehaviour
 
     void Update()
     {
-
+        
         if(MonsterDespawnedDebt>0)
         {
-            StartCoroutine(SpawnEnemy(MonsterDespawnedDebt));
+            StartCoroutine(SpawnEnemy(monster, MonsterDespawnedDebt));
+            
             MonsterDespawnedDebt = 0;
         }
         if (timer <= spawnTimer)
@@ -165,7 +172,12 @@ public class Monster1Manager : MonoBehaviour
         else
         {
             timer = 0;
-            StartCoroutine(SpawnEnemy(spawnAmount));
+            StartCoroutine(SpawnEnemy(monster, spawnAmount));
+            if(start_spawning_2)
+            {
+                Debug.Log("IM FREE!");
+                StartCoroutine(SpawnEnemy(monster2, monster2_amt));
+            }
         }
     }
 
@@ -174,7 +186,11 @@ public class Monster1Manager : MonoBehaviour
 
         if (!(spawned))
         {
-            StartCoroutine(SpawnEnemy(spawnAmount));
+            if(start_spawning_2)
+            {
+                StartCoroutine(SpawnEnemy(monster2, monster2_amt));
+            }
+            StartCoroutine(SpawnEnemy(monster, spawnAmount));
             spawned = true;
         }
     }
