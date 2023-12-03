@@ -1128,12 +1128,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &131810155
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2207,12 +2209,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &277643475
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2782,12 +2786,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &361402812
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3048,12 +3054,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &399804927
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3808,6 +3816,9 @@ MonoBehaviour:
   OnStartUp: 1
   BakeRule: 2
   SubTileOffset: {x: 0.5, y: 0.5}
+  grid:
+    WorldSize: {x: 0, y: 0}
+    WorldHeight: 0
   EmptySpace: {fileID: 0}
   PaintGround: []
 --- !u!1 &507465903
@@ -4218,6 +4229,10 @@ MonoBehaviour:
   - {fileID: 875909167}
   - {fileID: 2019764980}
   - {fileID: 2083906417}
+  learnableSpells:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!95 &520359217
 Animator:
   serializedVersion: 5
@@ -4372,12 +4387,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &531481673
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5303,12 +5320,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &649407208
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6159,12 +6178,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &762539935
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7939,12 +7960,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &982097640
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8566,12 +8589,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &1046897877
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8801,12 +8826,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!114 &1094830612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9098,12 +9125,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &1121731070
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10631,12 +10660,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &1334904031
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10973,12 +11004,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &1372392689
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11164,12 +11197,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &1383138846
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11564,12 +11599,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &1464565169
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11905,12 +11942,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &1524321093
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12246,12 +12285,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &1534821536
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12841,12 +12882,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &1569374070
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13886,12 +13929,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &1684254208
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16481,12 +16526,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &2068817698
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17051,12 +17098,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldGrid: {fileID: 495886156}
   movementTargets: []
+  WhenIdleGoTo: {fileID: 0}
   MovementSpeed: 0.3
   ListensForMouseDebug: 0
   pathTension: 0
   minMovementTargDist: 0.3
   KillWhenNoPath: 0
   isBoss: 0
+  isCalculatingPath: 0
 --- !u!212 &2105139884
 SpriteRenderer:
   m_ObjectHideFlags: 0
