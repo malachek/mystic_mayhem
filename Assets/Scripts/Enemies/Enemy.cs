@@ -145,39 +145,58 @@ public class Enemy : MonoBehaviour
     private const int MAX_PATHTENSION = int.MaxValue; // The max amount of temporary extensions allowed before a full recacluation is needed.
     private const int SHORTPATH_CUTOFF = 10; //No Tension Optimization will be performed if the enemy is closer than this from the player.
 
+    bool wasCheating;
+    private const int MAX_CHEATCUTOFF = 29;
     public void Follow()
     {
         pathfinderAgent.WhenIdleGoTo = PlayerTarget;
-        if(pathfinderAgent.CanSmallRefine(transform.position,PlayerTarget.transform.position))
-        {
-            if (pathfinderAgent.isCalculatingPath)
-            {
-                pathfinderAgent.AbortPathRequest();
-            }
-                pathfinderAgent.movementTargets = new List<Vector2>() { PlayerTarget.transform.position };
-        }
 
-        if(!pathfinderAgent.isPathing())
+        if (isBoss && !((Vector2.Distance(transform.position, PlayerTarget.transform.position) < MAX_CHEATCUTOFF) || (pathfinderAgent.CanSmallRefine(transform.position, PlayerTarget.transform.position))))
         {
-            pathfinderAgent.PathfindTo(PlayerTarget.transform.position);
-        }
-        else if(!pathfinderAgent.isCalculatingPath)
-        {
-            Vector2 targPos=  pathfinderAgent.movementTargets[pathfinderAgent.movementTargets.Count - 1];
-
-
-            if (Vector2.Distance(targPos, PlayerTarget.transform.position) > StoppingDistance)
-            {
-                if (pathfinderAgent.pathTension >= MAX_PATHTENSION || Vector2.Distance(transform.position, PlayerTarget.transform.position) < SHORTPATH_CUTOFF)
-                {
-                    pathfinderAgent.PathfindTo(PlayerTarget.transform.position);
-                }
-                else
-                {
-                    pathfinderAgent.UnionPathfindTo(PlayerTarget.transform.position);
-                }
-            }
+            wasCheating = true;
             
+            pathfinderAgent.movementTargets = new List<Vector2>() { PlayerTarget.transform.position };
+            GetComponent<Collider2D>().enabled = false;
+        }
+        else
+        {
+            if(wasCheating)
+            {
+                pathfinderAgent.movementTargets = new List<Vector2>() { };
+                GetComponent<Collider2D>().enabled = true;
+                wasCheating = false;
+            }
+            if (pathfinderAgent.CanSmallRefine(transform.position, PlayerTarget.transform.position))
+            {
+                if (pathfinderAgent.isCalculatingPath)
+                {
+                    pathfinderAgent.AbortPathRequest();
+                }
+                pathfinderAgent.movementTargets = new List<Vector2>() { PlayerTarget.transform.position };
+            }
+
+            if (!pathfinderAgent.isPathing())
+            {
+                pathfinderAgent.PathfindTo(PlayerTarget.transform.position);
+            }
+            else if (!pathfinderAgent.isCalculatingPath)
+            {
+                Vector2 targPos = pathfinderAgent.movementTargets[pathfinderAgent.movementTargets.Count - 1];
+
+
+                if (Vector2.Distance(targPos, PlayerTarget.transform.position) > StoppingDistance)
+                {
+                    if (pathfinderAgent.pathTension >= MAX_PATHTENSION || Vector2.Distance(transform.position, PlayerTarget.transform.position) < SHORTPATH_CUTOFF)
+                    {
+                        pathfinderAgent.PathfindTo(PlayerTarget.transform.position);
+                    }
+                    else
+                    {
+                        pathfinderAgent.UnionPathfindTo(PlayerTarget.transform.position);
+                    }
+                }
+
+            }
         }
     }
     private void Attack(){
