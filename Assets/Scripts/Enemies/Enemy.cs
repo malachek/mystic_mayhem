@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
 {
     public GameObject PlayerTarget;
 
+    [SerializeField] SpriteRenderer sprite; // to turn red when taking damage
+    private Color currentNoDamageColor = Color.white; // when enemy is damaged, they briefly turn red, this is to know what color to go back to afterwards
+
     [HideInInspector]
     public float LiveHP; // The real amount of health this enemy has.
     [Min(0)]
@@ -26,16 +29,36 @@ public class Enemy : MonoBehaviour
 
     private float _nextShot = 0.25f;
     private float _fireDelay = 0.5f;
-
+    SpriteRenderer spriteRenderer;
     private void Start()
     {
+        sprite.color = Color.white;
         LiveHP = MaxHP;
         pathfinderAgent = GetComponent<PathfinderAgent>();
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+
+        lastPos = transform.position;
     }
+    Vector3 lastPos;
     private void FixedUpdate()
     {
-        if(LiveHP<= 0)
+
+        Vector3 movementVector = transform.position - lastPos;
+        if (movementVector.x > 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (movementVector.x < 0)
+        {
+            spriteRenderer.flipX =false;
+        }
+        //Dont change when we stop moving ^^^
+
+
+        lastPos = transform.position;
+
+        if (LiveHP<= 0)
         {
             Die();
         }
@@ -54,8 +77,9 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
+        StartCoroutine(ShowRedOnHit());
         LiveHP -= damage;
         // Debug.Log("Monster takes a hit.\n");
         // Debug.Log(hp);
@@ -63,7 +87,37 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+        
     }
+
+    private IEnumerator ShowRedOnHit()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(.1f);
+        sprite.color = currentNoDamageColor;
+    }
+
+    public void SlowBy(float slow, float slowDuration)
+    {
+        StartCoroutine(Slow(slow, slowDuration));
+    }
+
+    private IEnumerator Slow(float slow, float slowDuration)
+    {
+        float OGMovementSpeed = pathfinderAgent.MovementSpeed;
+        pathfinderAgent.MovementSpeed *= slow;
+
+        currentNoDamageColor = new Color(.5f, .9f, 1f);
+        sprite.color = currentNoDamageColor;
+        
+        yield return new WaitForSeconds(slowDuration);
+
+        pathfinderAgent.MovementSpeed = OGMovementSpeed;
+        
+        currentNoDamageColor = Color.white;
+        sprite.color = currentNoDamageColor;
+    }
+
     public void Die()
     {
         if (isBoss)
@@ -91,39 +145,58 @@ public class Enemy : MonoBehaviour
     private const int MAX_PATHTENSION = int.MaxValue; // The max amount of temporary extensions allowed before a full recacluation is needed.
     private const int SHORTPATH_CUTOFF = 10; //No Tension Optimization will be performed if the enemy is closer than this from the player.
 
+    bool wasCheating;
+    private const int MAX_CHEATCUTOFF = 29;
     public void Follow()
     {
         pathfinderAgent.WhenIdleGoTo = PlayerTarget;
-        if(pathfinderAgent.CanSmallRefine(transform.position,PlayerTarget.transform.position))
-        {
-            if (pathfinderAgent.isCalculatingPath)
-            {
-                pathfinderAgent.AbortPathRequest();
-            }
-                pathfinderAgent.movementTargets = new List<Vector2>() { PlayerTarget.transform.position };
-        }
 
-        if(!pathfinderAgent.isPathing())
+        if (isBoss && !((Vector2.Distance(transform.position, PlayerTarget.transform.position) < MAX_CHEATCUTOFF) || (pathfinderAgent.CanSmallRefine(transform.position, PlayerTarget.transform.position))))
         {
-            pathfinderAgent.PathfindTo(PlayerTarget.transform.position);
-        }
-        else if(!pathfinderAgent.isCalculatingPath)
-        {
-            Vector2 targPos=  pathfinderAgent.movementTargets[pathfinderAgent.movementTargets.Count - 1];
-
-
-            if (Vector2.Distance(targPos, PlayerTarget.transform.position) > StoppingDistance)
-            {
-                if (pathfinderAgent.pathTension >= MAX_PATHTENSION || Vector2.Distance(transform.position, PlayerTarget.transform.position) < SHORTPATH_CUTOFF)
-                {
-                    pathfinderAgent.PathfindTo(PlayerTarget.transform.position);
-                }
-                else
-                {
-                    pathfinderAgent.UnionPathfindTo(PlayerTarget.transform.position);
-                }
-            }
+            wasCheating = true;
             
+            pathfinderAgent.movementTargets = new List<Vector2>() { PlayerTarget.transform.position };
+            GetComponent<Collider2D>().enabled = false;
+        }
+        else
+        {
+            if(wasCheating)
+            {
+                pathfinderAgent.movementTargets = new List<Vector2>() { };
+                GetComponent<Collider2D>().enabled = true;
+                wasCheating = false;
+            }
+            if (pathfinderAgent.CanSmallRefine(transform.position, PlayerTarget.transform.position))
+            {
+                if (pathfinderAgent.isCalculatingPath)
+                {
+                    pathfinderAgent.AbortPathRequest();
+                }
+                pathfinderAgent.movementTargets = new List<Vector2>() { PlayerTarget.transform.position };
+            }
+
+            if (!pathfinderAgent.isPathing())
+            {
+                pathfinderAgent.PathfindTo(PlayerTarget.transform.position);
+            }
+            else if (!pathfinderAgent.isCalculatingPath)
+            {
+                Vector2 targPos = pathfinderAgent.movementTargets[pathfinderAgent.movementTargets.Count - 1];
+
+
+                if (Vector2.Distance(targPos, PlayerTarget.transform.position) > StoppingDistance)
+                {
+                    if (pathfinderAgent.pathTension >= MAX_PATHTENSION || Vector2.Distance(transform.position, PlayerTarget.transform.position) < SHORTPATH_CUTOFF)
+                    {
+                        pathfinderAgent.PathfindTo(PlayerTarget.transform.position);
+                    }
+                    else
+                    {
+                        pathfinderAgent.UnionPathfindTo(PlayerTarget.transform.position);
+                    }
+                }
+
+            }
         }
     }
     private void Attack(){

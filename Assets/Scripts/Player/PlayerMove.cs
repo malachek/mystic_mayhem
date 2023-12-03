@@ -5,14 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMove : MonoBehaviour
 {
+    [SerializeField] CharacterStats characterStats;
+
     Rigidbody2D rgb2d;
     Vector3 movementVector;
-    [SerializeField] float player_speed = 10f;
 
     public Animator animator;
     public SpriteRenderer spriteRenderer; 
-
-    [SerializeField] float dashTimer;
 
     float timer_dash;
     public float dashDistance;
@@ -21,8 +20,10 @@ public class PlayerMove : MonoBehaviour
 
     private Pathfinder WorldGrid;
 
+
     void Start()
     {
+        timer_dash = characterStats.currentMaxDashCooldown;
         WorldGrid=GameObject.FindObjectOfType<Pathfinder>();    
         rgb2d = GetComponent<Rigidbody2D>();
         movementVector = new Vector3();
@@ -37,7 +38,7 @@ public class PlayerMove : MonoBehaviour
         movementVector.x = Input.GetAxisRaw("Horizontal");
         movementVector.y = Input.GetAxisRaw("Vertical");
 
-        movementVector *= player_speed;
+        movementVector *= characterStats.currentMoveSpeed;
 
         rgb2d.velocity = movementVector;
 
@@ -56,15 +57,15 @@ public class PlayerMove : MonoBehaviour
         
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            if (timer_dash <= dashTimer)
+            if (timer_dash > 0)
             {
-                timer_dash += Time.deltaTime;
+                timer_dash -= Time.deltaTime;
             }
         
             else
             {
-                timer_dash = 0;
-                //Debug.Log("TP ACTIVATE!");
+                timer_dash = characterStats.currentMaxDashCooldown;
+                Debug.Log("TP ACTIVATE!");
 
                 Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
                 Vector2 end  = rgb2d.transform.position + (direction * dashDistance);
@@ -108,5 +109,10 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+    }
+
+    public Vector3 GetMovementVector()
+    {
+        return movementVector;
     }
 }

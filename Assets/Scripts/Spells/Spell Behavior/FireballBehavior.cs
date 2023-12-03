@@ -13,7 +13,13 @@ public class FireballBehavior : ProjectileSpellBehavior
     // Update is called once per frame
     void Update()
     {
+        if (direction == Vector3.zero)
+        {
+            Destroy(gameObject);
+        }
         transform.position += direction * spellData.Speed * Time.deltaTime; //set movement of BasicSpell
     }
+
+    
 
 }

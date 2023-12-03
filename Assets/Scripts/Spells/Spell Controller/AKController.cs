@@ -15,6 +15,6 @@ public class AKController : SpellController
         base.Attack();
         GameObject spawnedAK = Instantiate(spellData.Prefab);
         spawnedAK.transform.position = transform.position; //assign position to be same as this object, which is parented to player
-        spawnedAK.GetComponent<AKBehavior>().DirectionChecker(castDir.direction); // sets direction to that of the mouse
+        spawnedAK.GetComponent<AKBehavior>().DirectionChecker(castDir.MouseDirection()); // sets direction to that of the mouse
     }
 }

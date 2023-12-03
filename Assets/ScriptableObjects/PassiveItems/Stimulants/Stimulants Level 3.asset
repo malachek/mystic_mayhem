@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f4300952a1dd8945a48d89951591179, type: 3}
+  m_Name: Stimulants Level 3
+  m_EditorClassIdentifier: 
+  description: Decreases Dash Cooldown
+  multiplier: 75
+  flat: 0
+  nextLevelPrefab: {fileID: 7092801412286879166, guid: 7dcfd821c18d14f81948d45e1afcd386, type: 3}
+  level: 3
+  icon: {fileID: 21300000, guid: 573a86eb4aa6ebe4bad714ed2516bc29, type: 3}

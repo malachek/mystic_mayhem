@@ -1,48 +1,89 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class CharacterStats : MonoBehaviour
 {
-    public int Hp = 100;
-    public int MaxHp = 100;
-    public int Xp = 0;
-    public int MaxXp = 100;
-    public int Level = 1;
-    // [SerializeField] int Strength = 1;
+    [SerializeField] public CharacterStatsScriptableObject stats;
+    [SerializeField] SpriteRenderer sprite; // to turn red when taking damage
 
-    [SerializeField]
-    GameObject startingSpell;
+    [SerializeField] public GameObject spawner;
+    GameObject currentStartingSpell;
+
+    [HideInInspector] public float currentPower;
+    [HideInInspector] public float currentArmor;
+    [HideInInspector] public int currentMaxHealth;
+    [HideInInspector] public int currentHealthRegen;
+    [HideInInspector] public float currentMaxDashCooldown;
+    [HideInInspector] public float currentProjectileSpeed;
+    [HideInInspector] public float currentMoveSpeed;
+    [HideInInspector] public int currentProjectileAmount;
+    [HideInInspector] public float currentExperienceModifier;
+
+    public int currentHealth;
+
+    [Header("Need to make these private with getter setters")]
+    public int Xp;
+    public int MaxXp;
+    public int Level = 1;
+
+    [Header("For Testing Purposes Only")]
     [SerializeField]
     GameObject spell2;
-
     [SerializeField]
     GameObject spell3;
+    [SerializeField]
+    GameObject spell4;
+    [SerializeField]
+    GameObject passiveItem1;
+    [SerializeField]
+    GameObject passiveItem2;
 
-    public List<GameObject> spawnedSpells;
+    //public List<GameObject> spawnedSpells;
 
     InventoryManager inventory;
     public int spellIndex;
+    public int passiveItemIndex;
+
+    private bool trig;
     
+    
+    void Awake()
+    {
+        trig = false;
+         currentStartingSpell = stats.StartingSpell;
+         currentPower = stats.Power;
+         currentArmor = stats.Armor;
+         currentMaxHealth = stats.MaxHealth;
+         currentHealth = stats.MaxHealth;
+         currentHealthRegen = stats.HealthRegen;
+         currentMaxDashCooldown = stats.MaxDashCooldown;
+         currentProjectileSpeed = stats.ProjectileSpeed;
+         currentMoveSpeed = stats.MoveSpeed;
+         currentProjectileAmount = stats.ProjectileAmount;
+         currentExperienceModifier = stats.ExperienceModifier;
+
+        inventory = GetComponent<InventoryManager>();
+
+        SpawnSpell(currentStartingSpell);
+
+
+        //TESTING
+        SpawnSpell(spell2);
+        SpawnSpell(spell3);
+        SpawnSpell(spell4);
+
+        SpawnPassiveItem(passiveItem1);
+        SpawnPassiveItem(passiveItem2);
+    }
     void Start()
     {
-        Hp = 100;
-        MaxHp = 100;
         Xp = 0;
         MaxXp = 20;
     }
 
-    private void Awake()
-    {
-        //Spawn the starting weapon
-
-        inventory = GetComponent<InventoryManager>();
-
-        SpawnSpell(startingSpell);
-        SpawnSpell(spell2);
-        SpawnSpell(spell3);
-
-    }
 
     public void GainExperience(int experience)
     {
@@ -52,30 +93,39 @@ public class CharacterStats : MonoBehaviour
             Xp -= MaxXp;
             MaxXp += 10;
             Level++;
+            
+            if(Level > 2 & !(trig))
+            {
+                trig = true;
+                spawner.GetComponent<Monster1Manager>().start_spawning_2 = true;
+            }
         }
     }
 
     public void TakeDamage(int damage){
+        StartCoroutine(ShowRedOnHit());
+        currentHealth -= (int)(damage / currentArmor);
+        Debug.Log("Player takes a hit.\n");
+        //Debug.Log(currentHealth);
+        //if(currentHealth > stats.MaxHealth)
 
-        Hp -= damage;
-        //Debug.Log("Player takes a hit.\n");
-        //Debug.Log(Hp);
-        //if(Hp > MaxHp)
         //{
-        //    Hp = MaxHp;
+        //    currentHealth = MaxHealth;
         //}
-        if(Hp < 1){
+        if (currentHealth < 1){
             Debug.Log("Player is dead.");
-            Hp = 0;
+            currentHealth = 0;
         }
     }
 
-    public void IncreaseMaxHealth(int health)
+    private IEnumerator ShowRedOnHit()
     {
-        MaxHp += health;
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(.2f);
+        sprite.color = Color.white;
     }
 
-        public void SpawnSpell(GameObject spell)
+    public void SpawnSpell(GameObject spell)
     {
         //checking if the slots are full, and returning if it is
         if(spellIndex >= inventory.spellSlots.Count -1)
@@ -84,11 +134,25 @@ public class CharacterStats : MonoBehaviour
             return;
         }
 
-        //Spawn the starting spell
         GameObject spawnedSpell = Instantiate(spell, transform.position, Quaternion.identity);
         spawnedSpell.transform.SetParent(transform);
         inventory.AddSpell(spellIndex, spawnedSpell.GetComponent<SpellController>());
 
         spellIndex++;
+    }
+    public void SpawnPassiveItem(GameObject passiveItem)
+    {
+        //checking if the slots are full, and returning if it is
+        if (passiveItemIndex >= inventory.passiveItemSlots.Count - 1)
+        {
+            Debug.LogError("Inventory slots already full");
+            return;
+        }
+
+        GameObject spawnedPassiveItem = Instantiate(passiveItem, transform.position, Quaternion.identity);
+        spawnedPassiveItem.transform.SetParent(transform);
+        inventory.AddPassiveItem(passiveItemIndex, spawnedPassiveItem.GetComponent<PassiveItem>());
+
+        passiveItemIndex++;
     }
 }
