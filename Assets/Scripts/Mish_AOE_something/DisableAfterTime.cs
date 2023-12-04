@@ -31,7 +31,7 @@ public class DisableAfterTime : MonoBehaviour
             if(Input.GetKey("space")){
                 if((gameObject.activeSelf == true)){
 
-                    // aoeCircle.SetActive(false);
+                    aoeCircle.SetActive(false);
                     timer = cooldown;
                 }
                 
