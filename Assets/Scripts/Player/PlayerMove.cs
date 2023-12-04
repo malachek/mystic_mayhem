@@ -54,15 +54,16 @@ public class PlayerMove : MonoBehaviour
             spriteRenderer.flipX = true;
         }
 
-        
+        // Decrement Dash Timer if necessary...
+        if (timer_dash > 0)
+        {
+            timer_dash -= Time.deltaTime;
+        }
+
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            if (timer_dash > 0)
-            {
-                timer_dash -= Time.deltaTime;
-            }
-        
-            else
+            if (timer_dash <= 0) // if the cooldown is over...
             {
                 timer_dash = characterStats.currentMaxDashCooldown;
                 Debug.Log("TP ACTIVATE!");
@@ -114,5 +115,10 @@ public class PlayerMove : MonoBehaviour
     public Vector3 GetMovementVector()
     {
         return movementVector;
+    }
+
+    public float GetDashTimer()
+    {
+        return timer_dash;
     }
 }
