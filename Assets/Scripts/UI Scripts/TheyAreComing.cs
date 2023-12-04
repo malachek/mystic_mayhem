@@ -11,6 +11,8 @@ public class TheyAreComing : MonoBehaviour
 
     [SerializeField] private float fadeSpeed;
 
+    [SerializeField] private AudioSource angrybird;
+
     // Start is called before the first frame update
     private void OnEnable()
     {
@@ -35,6 +37,7 @@ public class TheyAreComing : MonoBehaviour
 
     IEnumerator FadeFont()
     {
+        angrybird.Play();
         yield return new WaitForSeconds(2);
 
         fadingAlpha = true;
