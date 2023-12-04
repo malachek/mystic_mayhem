@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 public class UpgradeMenu : MonoBehaviour
 {
     public GameObject upgradeMenuUI;
+    public GameObject upgradePanelUI;
     public InventoryManager inventoryManager;
     public CharacterStats characterStats;
 
@@ -59,7 +60,8 @@ public class UpgradeMenu : MonoBehaviour
     void Update()
     {
         //testing only
-        /*
+        
+        
         if (Input.GetKeyDown("space"))
         {
             RandomizeUpgrades();
@@ -68,11 +70,12 @@ public class UpgradeMenu : MonoBehaviour
         {
             OpenUpgradeMenu();
         }
-        if (Input.GetKeyDown("n"))
+        
+        if (Input.GetKeyDown("x"))
         {
             CloseUpgradeMenu();
         }
-        */
+        
     }
 
 
@@ -173,7 +176,7 @@ public class UpgradeMenu : MonoBehaviour
 
     private void ClearUpgradePanel()
     {
-        foreach (Transform child in upgradeMenuUI.transform)
+        foreach (Transform child in upgradePanelUI.transform)
         {
             Destroy(child.gameObject);
         }
@@ -300,7 +303,7 @@ public class UpgradeMenu : MonoBehaviour
     private void CreateUpgradeButton(GameObject buttonPrefab, int upgradePosition)
     {
         GameObject upgradeButton = Instantiate(buttonPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-        upgradeButton.transform.SetParent(upgradeMenuUI.transform);
+        upgradeButton.transform.SetParent(upgradePanelUI.transform);
         upgradeButton.transform.localScale = new Vector3(1, 1, 1);
         var rectTransform = upgradeButton.GetComponent<RectTransform>();
         rectTransform.offsetMin = new Vector2(0, 0);
