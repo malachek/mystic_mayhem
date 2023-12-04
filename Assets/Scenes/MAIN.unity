@@ -9365,10 +9365,22 @@ PrefabInstance:
     - target: {fileID: 2662847963063978505, guid: c3aa554cf17b44c25a5b15ca8cd892f0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f8f22bc39cbf2a54a936e9fd4217a441, type: 3}
+      objectReference: {fileID: 21300000, guid: 6556eb3cd528f4a46a96b90b429c1991, type: 3}
     - target: {fileID: 4589165984700617184, guid: c3aa554cf17b44c25a5b15ca8cd892f0, type: 3}
       propertyPath: m_Name
       value: Key
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028358151388715497, guid: c3aa554cf17b44c25a5b15ca8cd892f0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028358151388715497, guid: c3aa554cf17b44c25a5b15ca8cd892f0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028358151388715497, guid: c3aa554cf17b44c25a5b15ca8cd892f0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5028358151388715497, guid: c3aa554cf17b44c25a5b15ca8cd892f0, type: 3}
       propertyPath: m_LocalPosition.x
