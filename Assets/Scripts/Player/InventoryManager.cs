@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     public List<SpellController> spellSlots = new List<SpellController>(6);
+    public List<string> spellStrings = new List<string>(6);
     public int[] spellLevels = new int[6];
     public List<Image> spellUISlots = new List<Image>(6);
     
     public List<PassiveItem> passiveItemSlots = new List<PassiveItem>(6);
+    public List<string> passiveItemStrings = new List<string>(6);
     public int[] passiveItemLevels = new int[6];
     public List<Image> passiveItemUISlots = new List<Image>(6);
 
@@ -18,6 +20,7 @@ public class InventoryManager : MonoBehaviour
     public void AddSpell(int slotIndex, SpellController spell) //Add a spell to a specific slot
     {
         spellSlots[slotIndex] = spell;
+        spellStrings[slotIndex] = spell.name;
         spellLevels[slotIndex] = spell.spellData.Level;
         spellUISlots[slotIndex].enabled = true;
         spellUISlots[slotIndex].sprite = spell.spellData.Icon;
@@ -44,6 +47,7 @@ public class InventoryManager : MonoBehaviour
     public void AddPassiveItem(int slotIndex, PassiveItem passiveItem) //Add a spell to a specific slot
     {
         passiveItemSlots[slotIndex] = passiveItem;
+        passiveItemStrings[slotIndex] = passiveItem.name;
         passiveItemLevels[slotIndex] = passiveItem.passiveItemData.Level;
         passiveItemUISlots[slotIndex].enabled = true;
         passiveItemUISlots[slotIndex].sprite = passiveItem.passiveItemData.Icon;

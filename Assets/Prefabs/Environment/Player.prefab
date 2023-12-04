@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 1776288175255134501}
   - component: {fileID: 901423730686246309}
   - component: {fileID: 5082153452915701855}
+  - component: {fileID: -6863830775468270576}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -294,9 +295,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e7200088bbac34aa94aae98374e00e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_speed: 20
+  characterStats: {fileID: 1776288175255134501}
   animator: {fileID: 5082153452915701855}
   spriteRenderer: {fileID: 8619093998600582224}
+  dashDistance: 0
+  ignoreRay:
+    serializedVersion: 2
+    m_Bits: 0
+  rayStartPoint: {fileID: 0}
 --- !u!50 &8340296211201250325
 Rigidbody2D:
   serializedVersion: 4
@@ -423,7 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc16750af4b4914f8446ded4c3d991e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 0}
+  playerMove: {fileID: 0}
 --- !u!114 &1776288175255134501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,7 +442,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643b4d9ab8012c846bc0fe6407d69f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 10
+  stats: {fileID: 0}
+  sprite: {fileID: 8619093998600582224}
+  spawner: {fileID: 0}
+  currentPower: 0
+  currentArmor: 0
+  currentMaxHealth: 0
+  currentHealthRegen: 0
+  currentMaxDashCooldown: 0
+  currentProjectileSpeed: 0
+  currentMoveSpeed: 0
+  currentProjectileAmount: 0
+  currentExperienceModifier: 0
+  currentHealth: 0
+  Xp: 0
+  MaxXp: 0
+  Level: 1
+  spell2: {fileID: 0}
+  spell3: {fileID: 0}
+  spell4: {fileID: 0}
+  passiveItem1: {fileID: 0}
+  passiveItem2: {fileID: 0}
+  spellIndex: 0
+  passiveItemIndex: 0
 --- !u!114 &901423730686246309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,6 +503,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-6863830775468270576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4155674760868063437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91381ba4460bc40e38d8abacdaf4b38f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellSlots: []
+  spellStrings: []
+  spellLevels: 000000000000000000000000000000000000000000000000
+  spellUISlots: []
+  passiveItemSlots: []
+  passiveItemLevels: 000000000000000000000000000000000000000000000000
+  passiveItemUISlots: []
 --- !u!1 &6917450697173208697
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +567,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 0}
-  spawnArea: {x: 20, y: 20}
+  monster2: {fileID: 0}
+  scaleability: 0
   spawnAmount: 10
+  monster2_amt: 0
+  spawnlimit: 0
   spawnTimer: 5
+  start_spawning_2: 0
