@@ -9306,7 +9306,7 @@ MonoBehaviour:
   MaxHP: 20
   isBoss: 0
   StoppingDistance: 2
-  EXP: 30
+  EXP: 1
   strength: 1
   killCounter: {fileID: 345185136}
   player: {fileID: 520359214}

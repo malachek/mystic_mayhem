@@ -20,7 +20,7 @@ public class InventoryManager : MonoBehaviour
     public void AddSpell(int slotIndex, SpellController spell) //Add a spell to a specific slot
     {
         spellSlots[slotIndex] = spell;
-        spellStrings[slotIndex] = spell.name;
+        //spellStrings[slotIndex] = spell.name;
         spellLevels[slotIndex] = spell.spellData.Level;
         spellUISlots[slotIndex].enabled = true;
         spellUISlots[slotIndex].sprite = spell.spellData.Icon;
@@ -47,7 +47,7 @@ public class InventoryManager : MonoBehaviour
     public void AddPassiveItem(int slotIndex, PassiveItem passiveItem) //Add a spell to a specific slot
     {
         passiveItemSlots[slotIndex] = passiveItem;
-        passiveItemStrings[slotIndex] = passiveItem.name;
+        //passiveItemStrings[slotIndex] = passiveItem.name;
         passiveItemLevels[slotIndex] = passiveItem.passiveItemData.Level;
         passiveItemUISlots[slotIndex].enabled = true;
         passiveItemUISlots[slotIndex].sprite = passiveItem.passiveItemData.Icon;
