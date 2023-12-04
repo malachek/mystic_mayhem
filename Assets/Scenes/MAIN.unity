@@ -4623,7 +4623,7 @@ MonoBehaviour:
   Level: 1
   spell2: {fileID: 3727632707740787714, guid: 268ae330e6b64496aa6122b6e77f4523, type: 3}
   spell3: {fileID: 3346097846772020503, guid: 6a9fdd8a1aac24227aab5baeb80dd891, type: 3}
-  spell4: {fileID: 3346097846772020503, guid: e671ac125bdc19b4783cf473cf18d727, type: 3}
+  spell4: {fileID: 3346097846772020503, guid: b679acdfcbe99499fa65662d97411af7, type: 3}
   passiveItem1: {fileID: 1856627016860400445, guid: 400c149439b19ec42ba66ec376976830, type: 3}
   passiveItem2: {fileID: 8793461204860982612, guid: 3adacaade7c253749b714902e6d28088, type: 3}
   spellIndex: 0

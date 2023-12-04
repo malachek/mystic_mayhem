@@ -15,8 +15,8 @@ MonoBehaviour:
   description: Increase Damage
   prefab: {fileID: 7191764902000688093, guid: aaca4582a2b7a5b4f8667fe3e55088c5, type: 3}
   damage: 10
-  speed: 30
-  maxCooldownDuration: 0.5
+  speed: 15
+  maxCooldownDuration: 1
   pierce: 5
   slow: 0
   slowDuration: 0

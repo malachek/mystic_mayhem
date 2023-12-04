@@ -102,7 +102,7 @@ public class LightningBehavior : ProjectileSpellBehavior
         if (OtherEnemies.Length == 0) return null;
 
         Enemy NearestEnemy = null;
-        float NearestDistance = float.MaxValue;
+        float NearestDistance = 10f;
         float minimumDistance = .2f;
 
         foreach (GameObject enemyGameObject in OtherEnemies)
