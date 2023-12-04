@@ -29,7 +29,7 @@ public class KillCount : MonoBehaviour
     void Update()
     {
         //changes kills_amt in the enemyfunctionality class, whenever an enemy is killed
-        textmeshpro_kills_text.text = "Kills: " + kills_amt;
+        textmeshpro_kills_text.text = "total xp: " + kills_amt;
     }
 
 }

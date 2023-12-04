@@ -1156,9 +1156,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeMenuUI: {fileID: 1358830953}
   inventoryManager: {fileID: 0}
-  upgradeFireball: {fileID: 0}
-  upgradeAK: {fileID: 0}
-  upgradeGarlic: {fileID: 0}
+  characterStats: {fileID: 0}
+  possibleSpells: []
+  possiblePassiveItems: []
+  upgradeButtonAk: {fileID: 0}
+  upgradeButtonFireball: {fileID: 0}
+  upgradeButtonGarlic: {fileID: 0}
+  upgradeButtonIce: {fileID: 0}
+  upgradeButtonLightning: {fileID: 0}
+  upgradeButtonBulkup: {fileID: 0}
+  upgradeButtonDrinkbooze: {fileID: 0}
+  upgradeButtonPutonmorerobes: {fileID: 0}
+  upgradeButtonStimulants: {fileID: 0}
+  AKprefab: {fileID: 0}
+  Fireballprefab: {fileID: 0}
+  Garlicprefab: {fileID: 0}
+  Iceprefab: {fileID: 0}
+  Lightningprefab: {fileID: 0}
+  Bulkupprefab: {fileID: 0}
+  Drinkboozeprefab: {fileID: 0}
+  Putonmorerobesprefab: {fileID: 0}
+  Stimulantsprefab: {fileID: 0}
 --- !u!114 &124058427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4671,6 +4689,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  spellStrings: []
   spellLevels: 000000000000000000000000000000000000000000000000
   spellUISlots:
   - {fileID: 1035179173}
@@ -4686,6 +4705,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  passiveItemStrings: []
   passiveItemLevels: 000000000000000000000000000000000000000000000000
   passiveItemUISlots:
   - {fileID: 1950199429}
@@ -9143,10 +9163,10 @@ MonoBehaviour:
   PlayerTarget: {fileID: 520359206}
   sprite: {fileID: 1094830609}
   LiveHP: 0
-  MaxHP: 25
+  MaxHP: 20
   isBoss: 0
   StoppingDistance: 2
-  EXP: 1
+  EXP: 30
   strength: 1
   killCounter: {fileID: 345185136}
   player: {fileID: 520359214}
@@ -11848,11 +11868,11 @@ MonoBehaviour:
   PlayerTarget: {fileID: 520359206}
   sprite: {fileID: 1432085661}
   LiveHP: 0
-  MaxHP: 60
+  MaxHP: 50
   isBoss: 0
   StoppingDistance: 2
   EXP: 2
-  strength: 3
+  strength: 4
   killCounter: {fileID: 345185136}
   player: {fileID: 520359214}
 --- !u!114 &1432085660
