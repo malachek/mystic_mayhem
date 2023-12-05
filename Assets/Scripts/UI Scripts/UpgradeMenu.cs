@@ -134,8 +134,6 @@ public class UpgradeMenu : MonoBehaviour
             if (possibleSpells == null) { rand_num = 1; Debug.Log("null"); }
             if (possiblePassiveItems == null) { rand_num = 0; Debug.Log("null"); }
 
-            //rand_num override replace here!!!
-            rand_num = 0;
 
             if (rand_num == 0)
             {

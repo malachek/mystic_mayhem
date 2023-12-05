@@ -142,8 +142,15 @@ public class CharacterStats : MonoBehaviour
         Debug.Log(gameObject);
         GameObject spawnedSpell = Instantiate(spell, transform.position, Quaternion.identity,transform);
 
-        InventoryManager.instance.AddSpell(spellIndex, spawnedSpell.GetComponent<SpellController>());
+        if (spawnedSpell.GetComponent<SpellController>() != null)
+        {
+            InventoryManager.instance.AddSpell(spellIndex, spawnedSpell.GetComponent<SpellController>());
+        }
+        else
+        {
+            InventoryManager.instance.AddPassiveItem(spellIndex, spawnedSpell.GetComponent<PassiveItem>());
 
+        }
         spellIndex++;
         
     }
