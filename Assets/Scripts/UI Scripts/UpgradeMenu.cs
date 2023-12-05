@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.Text.RegularExpressions;
-
-
+using Unity.VisualScripting;
 
 public class UpgradeMenu : MonoBehaviour
 {
+    public static UpgradeMenu instance;
     public GameObject upgradeMenuUI;
     public GameObject upgradePanelUI;
 
@@ -53,8 +53,11 @@ public class UpgradeMenu : MonoBehaviour
     public GameObject upgradeButtonPutonmorerobes;
     public GameObject upgradeButtonStimulants;
 
+    private void Start()
+    {
+        instance = this;
+    }
 
-    
     void Update()
     {
         //testing only
@@ -68,6 +71,12 @@ public class UpgradeMenu : MonoBehaviour
             OpenUpgradeMenu();
         }
         
+        /*if(personalWantCloseDebugWhatever!= WantCloseDebugWhatever)
+        {
+            personalWantCloseDebugWhatever = WantCloseDebugWhatever;
+            CloseUpgradeMenu();
+        }
+        */
         if (Input.GetKeyDown("x"))
         {
             CloseUpgradeMenu();
@@ -79,13 +88,20 @@ public class UpgradeMenu : MonoBehaviour
     // opens the upgrade menu which is closed automatically after an ugrade is selected
     public void OpenUpgradeMenu()
     {
+        Debug.Log("Opening");
         RandomizeUpgrades();
         PauseManager.Pause();
         upgradeMenuUI.SetActive(true);
     }
+    int personalWantCloseDebugWhatever;
+    public static int WantCloseDebugWhatever;//IDEK just making this bs work :(.
     public void CloseUpgradeMenu()
     {
+        instance.ClearUpgradePanel();
+        Debug.Log("Closing"+ upgradeMenuUI);
+        WantCloseDebugWhatever++;
         PauseManager.Unpause();
+        instance.upgradeMenuUI.SetActive(false);
         upgradeMenuUI.SetActive(false);
     }
 
@@ -175,6 +191,7 @@ public class UpgradeMenu : MonoBehaviour
     {
         foreach (Transform child in upgradePanelUI.transform)
         {
+            Debug.Log("Clearing away" + child.gameObject.name);
             Destroy(child.gameObject);
         }
     }
@@ -324,6 +341,7 @@ public class UpgradeMenu : MonoBehaviour
         {
             CharacterStats.Instance.SpawnSpell(AKprefab);
         }
+        CloseUpgradeMenu();
     }
     public GameObject Fireballprefab;
     public void Fireball()
@@ -337,6 +355,7 @@ public class UpgradeMenu : MonoBehaviour
         {
             CharacterStats.Instance.SpawnSpell(Fireballprefab);
         }
+        CloseUpgradeMenu();
     }
     public GameObject Garlicprefab;
     public void Garlic()
@@ -350,6 +369,7 @@ public class UpgradeMenu : MonoBehaviour
         {
             CharacterStats.Instance.SpawnSpell(Garlicprefab);
         }
+        CloseUpgradeMenu();
     }
     public GameObject Iceprefab;
     public void Ice()
@@ -363,6 +383,7 @@ public class UpgradeMenu : MonoBehaviour
         {
             CharacterStats.Instance.SpawnSpell(Iceprefab);
         }
+        CloseUpgradeMenu();
     }
     public GameObject Lightningprefab;
     public void Lightning()
@@ -376,6 +397,7 @@ public class UpgradeMenu : MonoBehaviour
         {
             CharacterStats.Instance.SpawnSpell(Lightningprefab);
         }
+        CloseUpgradeMenu();
     }
     [Header("Passive Item Controller Prefabs")]
     public GameObject Bulkupprefab;
@@ -390,6 +412,7 @@ public class UpgradeMenu : MonoBehaviour
         {
             CharacterStats.Instance.SpawnSpell(Bulkupprefab);
         }
+        CloseUpgradeMenu();
     }
     public GameObject Drinkboozeprefab;
     public void Drinkbooze()
@@ -403,6 +426,7 @@ public class UpgradeMenu : MonoBehaviour
         {
             CharacterStats.Instance.SpawnSpell(Drinkboozeprefab);
         }
+        CloseUpgradeMenu();
     }
     public GameObject Putonmorerobesprefab;
     public void Putonmorerobes()
@@ -416,6 +440,7 @@ public class UpgradeMenu : MonoBehaviour
         {
             CharacterStats.Instance.SpawnSpell(Putonmorerobesprefab);
         }
+        CloseUpgradeMenu();
     }
     public GameObject Stimulantsprefab;
     public void Stimulants()
@@ -429,5 +454,6 @@ public class UpgradeMenu : MonoBehaviour
         {
             CharacterStats.Instance.SpawnSpell(Stimulantsprefab);
         }
+        CloseUpgradeMenu();
     }
 }

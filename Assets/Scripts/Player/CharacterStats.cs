@@ -145,6 +145,7 @@ public class CharacterStats : MonoBehaviour
         InventoryManager.instance.AddSpell(spellIndex, spawnedSpell.GetComponent<SpellController>());
 
         spellIndex++;
+        
     }
     public void SpawnPassiveItem(GameObject passiveItem)
     {
