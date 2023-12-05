@@ -879,7 +879,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &6550506503246218437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -940,8 +940,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeMenuUI: {fileID: 7539346544440830534}
   upgradePanelUI: {fileID: 797877295548916589}
-  inventoryManager: {fileID: 0}
-  characterStats: {fileID: 0}
   possibleSpells:
   - {fileID: 2176598081067240509, guid: be7fa4c1f211343c5a0f5cc2c12024ab, type: 3}
   - {fileID: 3455014460147144380, guid: b679acdfcbe99499fa65662d97411af7, type: 3}

@@ -22,4 +22,4 @@ MonoBehaviour:
   slowDuration: 1
   level: 2
   nextLevelPrefab: {fileID: 3346097846772020503, guid: 15122f2b5db29b44abb5cf17ec0f41aa, type: 3}
-  icon: {fileID: -116596015, guid: 347f46dd41a4e5f41b6be72dee926bef, type: 3}
+  icon: {fileID: 21300000, guid: 43cf0d5cf7d691646ac88f8715c1f91c, type: 3}
