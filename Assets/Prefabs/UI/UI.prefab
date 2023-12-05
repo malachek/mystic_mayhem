@@ -940,8 +940,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeMenuUI: {fileID: 7539346544440830534}
   upgradePanelUI: {fileID: 797877295548916589}
-  inventoryManager: {fileID: -6863830775468270576, guid: 2755fbe5a9a546d498637d21599440e1, type: 3}
-  characterStats: {fileID: 1776288175255134501, guid: 2755fbe5a9a546d498637d21599440e1, type: 3}
+  inventoryManager: {fileID: 0}
+  characterStats: {fileID: 0}
   possibleSpells:
   - {fileID: 2176598081067240509, guid: be7fa4c1f211343c5a0f5cc2c12024ab, type: 3}
   - {fileID: 3455014460147144380, guid: b679acdfcbe99499fa65662d97411af7, type: 3}
@@ -2378,7 +2378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3636059608114998624
 RectTransform:
   m_ObjectHideFlags: 0

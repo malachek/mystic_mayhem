@@ -10,8 +10,6 @@ public class UpgradeMenu : MonoBehaviour
 {
     public GameObject upgradeMenuUI;
     public GameObject upgradePanelUI;
-    public InventoryManager inventoryManager;
-    public CharacterStats characterStats;
 
     /*
     ATTENTION
@@ -60,7 +58,6 @@ public class UpgradeMenu : MonoBehaviour
     void Update()
     {
         //testing only
-        
         
         if (Input.GetKeyDown("space"))
         {
@@ -216,17 +213,17 @@ public class UpgradeMenu : MonoBehaviour
     {
         for (int i = 0; i < possibleSpells.Count; i++)
         {
-            for (int j = 0; j < inventoryManager.spellSlots.Count; j++)
+            for (int j = 0; j < InventoryManager.instance.spellSlots.Count; j++)
             {
-                //var prefabGameObject = PrefabUtility.GetPrefabInstanceHandle(inventoryManager.spellSlots[1]);
+                //var prefabGameObject = PrefabUtility.GetPrefabInstanceHandle(InventoryManager.instance.spellSlots[1]);
                 //Debug.Log(prefabGameObject);
                 // im trying to find a way to test if a prefab is a clone. this is super scuffed, so rn im taking the name
                 // of the spell and just comparing it. not good. 
 
                 // the player already has the spell. put the upgraded version of the spell into the upgrade pool replacing the old one
-                if (possibleSpells[i] != null && inventoryManager.spellSlots[j] != null)
+                if (possibleSpells[i] != null && InventoryManager.instance.spellSlots[j] != null)
                 {
-                    if (possibleSpells[i].name.Substring(0, 10) == inventoryManager.spellSlots[j].name.Substring(0, 10) && UpgradeLevelChangeNeeded(possibleSpells[i].name, inventoryManager.spellSlots[j].name))
+                    if (possibleSpells[i].name.Substring(0, 10) == InventoryManager.instance.spellSlots[j].name.Substring(0, 10) && UpgradeLevelChangeNeeded(possibleSpells[i].name, InventoryManager.instance.spellSlots[j].name))
                     {
                         //Debug.Log(possibleSpells[i]);
                         SpellController spell = possibleSpells[i];
@@ -250,17 +247,17 @@ public class UpgradeMenu : MonoBehaviour
     {
         for (int i = 0; i < possiblePassiveItems.Count; i++)
         {
-            for (int j = 0; j < inventoryManager.passiveItemSlots.Count; j++)
+            for (int j = 0; j < InventoryManager.instance.passiveItemSlots.Count; j++)
             {
-                //var prefabGameObject = PrefabUtility.GetPrefabInstanceHandle(inventoryManager.spellSlots[1]);
+                //var prefabGameObject = PrefabUtility.GetPrefabInstanceHandle(InventoryManager.instance.spellSlots[1]);
                 //Debug.Log(prefabGameObject);
                 // im trying to find a way to test if a prefab is a clone. this is super scuffed, so rn im taking the name
                 // of the spell and just comparing it. not good. 
 
                 // the player already has the spell. put the upgraded version of the spell into the upgrade pool replacing the old one
-                if (possiblePassiveItems[i] != null && inventoryManager.passiveItemSlots[j] != null)
+                if (possiblePassiveItems[i] != null && InventoryManager.instance.passiveItemSlots[j] != null)
                 {
-                    if (possiblePassiveItems[i].name.Substring(0, 10) == inventoryManager.passiveItemSlots[j].name.Substring(0, 10) && UpgradeLevelChangeNeeded(possiblePassiveItems[i].name, inventoryManager.passiveItemSlots[j].name))
+                    if (possiblePassiveItems[i].name.Substring(0, 10) == InventoryManager.instance.passiveItemSlots[j].name.Substring(0, 10) && UpgradeLevelChangeNeeded(possiblePassiveItems[i].name, InventoryManager.instance.passiveItemSlots[j].name))
                     {
                         //Debug.Log(possibleSpells[i]);
                         PassiveItem passiveItem = possiblePassiveItems[i];
@@ -318,119 +315,119 @@ public class UpgradeMenu : MonoBehaviour
     public GameObject AKprefab;
     public void AK()
     {
-        int index = inventoryManager.spellStrings.IndexOf("AK Controller Level 1");
+        int index = InventoryManager.instance.spellStrings.IndexOf("AK Controller Level 1");
         if (index >= 0)
         {
-            inventoryManager.LevelUpSpell(index);
+            InventoryManager.instance.LevelUpSpell(index);
         }
         else
         {
-            characterStats.SpawnSpell(AKprefab);
+            CharacterStats.Instance.SpawnSpell(AKprefab);
         }
     }
     public GameObject Fireballprefab;
     public void Fireball()
     {
-        int index = inventoryManager.spellStrings.IndexOf("Fireball Controller Level 1");
+        int index = InventoryManager.instance.spellStrings.IndexOf("Fireball Controller Level 1");
         if (index >= 0)
         {
-            inventoryManager.LevelUpSpell(index);
+            InventoryManager.instance.LevelUpSpell(index);
         }
         else
         {
-            characterStats.SpawnSpell(Fireballprefab);
+            CharacterStats.Instance.SpawnSpell(Fireballprefab);
         }
     }
     public GameObject Garlicprefab;
     public void Garlic()
     {
-        int index = inventoryManager.spellStrings.IndexOf("Garlic Controller Level 1");
+        int index = InventoryManager.instance.spellStrings.IndexOf("Garlic Controller Level 1");
         if (index >= 0)
         {
-            inventoryManager.LevelUpSpell(index);
+            InventoryManager.instance.LevelUpSpell(index);
         }
         else
         {
-            characterStats.SpawnSpell(Garlicprefab);
+            CharacterStats.Instance.SpawnSpell(Garlicprefab);
         }
     }
     public GameObject Iceprefab;
     public void Ice()
     {
-        int index = inventoryManager.spellStrings.IndexOf("Ice Controller Level 1");
+        int index = InventoryManager.instance.spellStrings.IndexOf("Ice Controller Level 1");
         if (index >= 0)
         {
-            inventoryManager.LevelUpSpell(index);
+            InventoryManager.instance.LevelUpSpell(index);
         }
         else
         {
-            characterStats.SpawnSpell(Iceprefab);
+            CharacterStats.Instance.SpawnSpell(Iceprefab);
         }
     }
     public GameObject Lightningprefab;
     public void Lightning()
     {
-        int index = inventoryManager.spellStrings.IndexOf("Lightning Controller Level 1");
+        int index = InventoryManager.instance.spellStrings.IndexOf("Lightning Controller Level 1");
         if (index >= 0)
         {
-            inventoryManager.LevelUpSpell(index);
+            InventoryManager.instance.LevelUpSpell(index);
         }
         else
         {
-            characterStats.SpawnSpell(Lightningprefab);
+            CharacterStats.Instance.SpawnSpell(Lightningprefab);
         }
     }
     [Header("Passive Item Controller Prefabs")]
     public GameObject Bulkupprefab;
     public void Bulkup()
     {
-        int index = inventoryManager.passiveItemStrings.IndexOf("Bulk Up Level 1");
+        int index = InventoryManager.instance.passiveItemStrings.IndexOf("Bulk Up Level 1");
         if (index >= 0)
         {
-            inventoryManager.LevelUpSpell(index);
+            InventoryManager.instance.LevelUpSpell(index);
         }
         else
         {
-            characterStats.SpawnSpell(Bulkupprefab);
+            CharacterStats.Instance.SpawnSpell(Bulkupprefab);
         }
     }
     public GameObject Drinkboozeprefab;
     public void Drinkbooze()
     {
-        int index = inventoryManager.passiveItemStrings.IndexOf("Drink Booze Level 1");
+        int index = InventoryManager.instance.passiveItemStrings.IndexOf("Drink Booze Level 1");
         if (index >= 0)
         {
-            inventoryManager.LevelUpSpell(index);
+            InventoryManager.instance.LevelUpSpell(index);
         }
         else
         {
-            characterStats.SpawnSpell(Drinkboozeprefab);
+            CharacterStats.Instance.SpawnSpell(Drinkboozeprefab);
         }
     }
     public GameObject Putonmorerobesprefab;
     public void Putonmorerobes()
     {
-        int index = inventoryManager.passiveItemStrings.IndexOf("Put On More Robes Level 1");
+        int index = InventoryManager.instance.passiveItemStrings.IndexOf("Put On More Robes Level 1");
         if (index >= 0)
         {
-            inventoryManager.LevelUpSpell(index);
+            InventoryManager.instance.LevelUpSpell(index);
         }
         else
         {
-            characterStats.SpawnSpell(Putonmorerobesprefab);
+            CharacterStats.Instance.SpawnSpell(Putonmorerobesprefab);
         }
     }
     public GameObject Stimulantsprefab;
     public void Stimulants()
     {
-        int index = inventoryManager.passiveItemStrings.IndexOf("Stimulants Level 1");
+        int index = InventoryManager.instance.passiveItemStrings.IndexOf("Stimulants Level 1");
         if (index >= 0)
         {
-            inventoryManager.LevelUpSpell(index);
+            InventoryManager.instance.LevelUpSpell(index);
         }
         else
         {
-            characterStats.SpawnSpell(Stimulantsprefab);
+            CharacterStats.Instance.SpawnSpell(Stimulantsprefab);
         }
     }
 }

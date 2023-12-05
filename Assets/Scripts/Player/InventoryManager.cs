@@ -16,6 +16,11 @@ public class InventoryManager : MonoBehaviour
     public List<Image> passiveItemUISlots = new List<Image>(6);
 
 
+    public static InventoryManager instance;
+    private void Start()
+    {
+        instance = this;
+    }
 
     public void AddSpell(int slotIndex, SpellController spell) //Add a spell to a specific slot
     {

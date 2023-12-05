@@ -116,7 +116,7 @@ public class Monster1Manager : MonoBehaviour
 
             //isPosOk checks to see if the position is not out of bounds or in a wall
             //PositionCanSeePlayer forces the enemy to spawn with beeline capablities to the player (For no lag)
-            if (WorldGrid.isPosOk(position) && PositionCanSeePlayer(position))
+            if (WorldGrid.isPosOk(position) && PositionCanSeePlayer(position)&&Vector2.Distance(position,Player.transform.position)>10)
             {
                 GameObject newEnemy = Instantiate(the_monster);
                 newEnemy.SetActive(true);
@@ -140,7 +140,7 @@ public class Monster1Manager : MonoBehaviour
                     break;
                 }
             }
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForFixedUpdate();
         }
 
     }

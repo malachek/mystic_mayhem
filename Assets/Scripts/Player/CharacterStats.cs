@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.U2D;
 
 public class CharacterStats : MonoBehaviour
 {
+    public static CharacterStats Instance;
     [SerializeField] public CharacterStatsScriptableObject stats;
     [SerializeField] SpriteRenderer sprite; // to turn red when taking damage
 
@@ -43,7 +45,6 @@ public class CharacterStats : MonoBehaviour
 
     //public List<GameObject> spawnedSpells;
 
-    InventoryManager inventory;
     public int spellIndex;
     public int passiveItemIndex;
 
@@ -65,21 +66,23 @@ public class CharacterStats : MonoBehaviour
          currentProjectileAmount = stats.ProjectileAmount;
          currentExperienceModifier = stats.ExperienceModifier;
 
-        inventory = GetComponent<InventoryManager>();
 
         SpawnSpell(currentStartingSpell);
 
 
         //TESTING
+        /*
         SpawnSpell(spell2);
         SpawnSpell(spell3);
         SpawnSpell(spell4);
 
         SpawnPassiveItem(passiveItem1);
         SpawnPassiveItem(passiveItem2);
+        */
     }
     void Start()
     {
+        Instance = this;
         Xp = 0;
         MaxXp = 20;
     }
@@ -105,7 +108,7 @@ public class CharacterStats : MonoBehaviour
     public void TakeDamage(int damage){
         StartCoroutine(ShowRedOnHit());
         currentHealth -= (int)(damage / currentArmor);
-        Debug.Log("Player takes a hit.\n");
+     //   Debug.Log("Player takes a hit.\n");
         //Debug.Log(currentHealth);
         //if(currentHealth > stats.MaxHealth)
 
@@ -127,31 +130,35 @@ public class CharacterStats : MonoBehaviour
 
     public void SpawnSpell(GameObject spell)
     {
+        if(InventoryManager.instance==null)
+            InventoryManager.instance = GetComponent<InventoryManager>();
         //checking if the slots are full, and returning if it is
-        if(spellIndex >= inventory.spellSlots.Count -1)
+        if (spellIndex >= InventoryManager.instance.spellSlots.Capacity -1)
         {
             Debug.LogError("Inventory slots already full");
             return;
         }
 
-        GameObject spawnedSpell = Instantiate(spell, transform.position, Quaternion.identity);
-        spawnedSpell.transform.SetParent(transform);
-        inventory.AddSpell(spellIndex, spawnedSpell.GetComponent<SpellController>());
+        Debug.Log(gameObject);
+        GameObject spawnedSpell = Instantiate(spell, transform.position, Quaternion.identity,transform);
+
+        InventoryManager.instance.AddSpell(spellIndex, spawnedSpell.GetComponent<SpellController>());
 
         spellIndex++;
     }
     public void SpawnPassiveItem(GameObject passiveItem)
     {
+        if (InventoryManager.instance == null)
+            InventoryManager.instance = GetComponent<InventoryManager>();
         //checking if the slots are full, and returning if it is
-        if (passiveItemIndex >= inventory.passiveItemSlots.Count - 1)
+        if (passiveItemIndex >= InventoryManager.instance.passiveItemSlots.Capacity - 1)
         {
             Debug.LogError("Inventory slots already full");
             return;
         }
 
-        GameObject spawnedPassiveItem = Instantiate(passiveItem, transform.position, Quaternion.identity);
-        spawnedPassiveItem.transform.SetParent(transform);
-        inventory.AddPassiveItem(passiveItemIndex, spawnedPassiveItem.GetComponent<PassiveItem>());
+        GameObject spawnedPassiveItem = Instantiate(passiveItem, transform.position, Quaternion.identity,transform);
+        InventoryManager.instance.AddPassiveItem(passiveItemIndex, spawnedPassiveItem.GetComponent<PassiveItem>());
 
         passiveItemIndex++;
     }

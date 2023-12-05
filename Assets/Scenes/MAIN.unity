@@ -669,7 +669,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 8.799988}
+  m_AnchoredPosition: {x: 0, y: -291}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &63456172
@@ -716,7 +716,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 520359216}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
         m_MethodName: LevelUpSpell
         m_Mode: 3
@@ -2681,7 +2681,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -92.4, y: 8.799988}
+  m_AnchoredPosition: {x: -92.4, y: -291}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &326611796
@@ -2728,7 +2728,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 520359216}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
         m_MethodName: LevelUpSpell
         m_Mode: 3
@@ -2908,7 +2908,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 736536639}
+  - {fileID: 1404341746481778176}
   - {fileID: 124058423}
   - {fileID: 588844801}
   - {fileID: 369665090}
@@ -4331,7 +4331,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.2, y: 31.099976}
+  m_AnchoredPosition: {x: 0.2, y: -268.7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &514036006
@@ -4378,7 +4378,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 520359216}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
         m_MethodName: LevelUpPassiveItem
         m_Mode: 3
@@ -4438,7 +4438,6 @@ GameObject:
   m_Component:
   - component: {fileID: 520359207}
   - component: {fileID: 520359214}
-  - component: {fileID: 520359216}
   - component: {fileID: 520359211}
   - component: {fileID: 520359210}
   - component: {fileID: 520359208}
@@ -4447,6 +4446,7 @@ GameObject:
   - component: {fileID: 520359215}
   - component: {fileID: 520359217}
   - component: {fileID: 520359218}
+  - component: {fileID: 520359219}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4653,6 +4653,7 @@ MonoBehaviour:
   spell4: {fileID: 3346097846772020503, guid: b679acdfcbe99499fa65662d97411af7, type: 3}
   passiveItem1: {fileID: 1856627016860400445, guid: 400c149439b19ec42ba66ec376976830, type: 3}
   passiveItem2: {fileID: 8793461204860982612, guid: 3adacaade7c253749b714902e6d28088, type: 3}
+  inventory: {fileID: 0}
   spellIndex: 0
   passiveItemIndex: 0
 --- !u!114 &520359215
@@ -4672,50 +4673,6 @@ MonoBehaviour:
   aoeCircle: {fileID: 1646951876}
   circleRadius: 3.385
   circleDMG: 10
---- !u!114 &520359216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520359206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91381ba4460bc40e38d8abacdaf4b38f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spellSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  spellStrings: []
-  spellLevels: 000000000000000000000000000000000000000000000000
-  spellUISlots:
-  - {fileID: 1035179173}
-  - {fileID: 1558577529}
-  - {fileID: 261858674}
-  - {fileID: 875909167}
-  - {fileID: 2019764980}
-  - {fileID: 2083906417}
-  passiveItemSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  passiveItemStrings: []
-  passiveItemLevels: 000000000000000000000000000000000000000000000000
-  passiveItemUISlots:
-  - {fileID: 1950199429}
-  - {fileID: 1615979221}
-  - {fileID: 1266761189}
-  - {fileID: 1015794562}
-  - {fileID: 1774168291}
-  - {fileID: 164910590}
 --- !u!95 &520359217
 Animator:
   serializedVersion: 5
@@ -4833,6 +4790,50 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &520359219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520359206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91381ba4460bc40e38d8abacdaf4b38f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spellStrings: []
+  spellLevels: 000000000000000000000000000000000000000000000000
+  spellUISlots:
+  - {fileID: 1035179173}
+  - {fileID: 1558577529}
+  - {fileID: 261858674}
+  - {fileID: 875909167}
+  - {fileID: 2019764980}
+  - {fileID: 2083906417}
+  passiveItemSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  passiveItemStrings: []
+  passiveItemLevels: 000000000000000000000000000000000000000000000000
+  passiveItemUISlots:
+  - {fileID: 1950199429}
+  - {fileID: 1615979221}
+  - {fileID: 1266761189}
+  - {fileID: 1015794562}
+  - {fileID: 1774168291}
+  - {fileID: 164910590}
 --- !u!1 &531481667
 GameObject:
   m_ObjectHideFlags: 0
@@ -6345,7 +6346,7 @@ PrefabInstance:
     - target: {fileID: 530743404484476435, guid: de8b97e7bc981434caa25cec6290abb8, type: 3}
       propertyPath: inventoryManager
       value: 
-      objectReference: {fileID: 520359216}
+      objectReference: {fileID: 520359219}
     - target: {fileID: 764298323895153662, guid: de8b97e7bc981434caa25cec6290abb8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6452,6 +6453,10 @@ PrefabInstance:
       objectReference: {fileID: 520359214}
     - target: {fileID: 7539346544440830534, guid: de8b97e7bc981434caa25cec6290abb8, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8018793427914168195, guid: de8b97e7bc981434caa25cec6290abb8, type: 3}
+      propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6631,11 +6636,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723149971}
   m_CullTransparentMesh: 1
---- !u!224 &736536639 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1404341745834776231, guid: de8b97e7bc981434caa25cec6290abb8, type: 3}
-  m_PrefabInstance: {fileID: 704092327}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &762539929
 GameObject:
   m_ObjectHideFlags: 0
@@ -7299,7 +7299,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 90.1, y: 8.799988}
+  m_AnchoredPosition: {x: 90.1, y: -291}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &839079938
@@ -7346,7 +7346,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 520359216}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
         m_MethodName: LevelUpSpell
         m_Mode: 3
@@ -8328,7 +8328,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -92.3, y: 30.599976}
+  m_AnchoredPosition: {x: -92.3, y: -269.2}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &987150285
@@ -8375,7 +8375,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 520359216}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
         m_MethodName: LevelUpPassiveItem
         m_Mode: 3
@@ -11044,7 +11044,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 182.7, y: 8.799988}
+  m_AnchoredPosition: {x: 182.7, y: -291}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1363006357
@@ -11091,7 +11091,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 520359216}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
         m_MethodName: LevelUpSpell
         m_Mode: 3
@@ -13444,7 +13444,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554748873}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
@@ -14821,7 +14821,7 @@ MonoBehaviour:
   spawnAmount: 12
   monster2_amt: 4
   spawnlimit: 5
-  spawnTimer: 5
+  spawnTimer: 7
   start_spawning_2: 0
 --- !u!1 &1809415517
 GameObject:
@@ -17232,6 +17232,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142209811}
   m_CullTransparentMesh: 1
+--- !u!224 &1404341746481778176 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1404341745834776231, guid: de8b97e7bc981434caa25cec6290abb8, type: 3}
+  m_PrefabInstance: {fileID: 704092327}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
