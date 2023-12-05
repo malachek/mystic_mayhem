@@ -61,7 +61,7 @@ public class UpgradeMenu : MonoBehaviour
     void Update()
     {
         //testing only
-        
+        /*
         if (Input.GetKeyDown("space"))
         {
             RandomizeUpgrades();
@@ -70,6 +70,7 @@ public class UpgradeMenu : MonoBehaviour
         {
             OpenUpgradeMenu();
         }
+        */
         
         /*if(personalWantCloseDebugWhatever!= WantCloseDebugWhatever)
         {
@@ -132,6 +133,10 @@ public class UpgradeMenu : MonoBehaviour
             int rand_num = rd.Next(0, 2);
             if (possibleSpells == null) { rand_num = 1; Debug.Log("null"); }
             if (possiblePassiveItems == null) { rand_num = 0; Debug.Log("null"); }
+
+            //rand_num override replace here!!!
+            rand_num = 0;
+
             if (rand_num == 0)
             {
                 string spellName = null;

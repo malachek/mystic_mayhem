@@ -24,6 +24,7 @@ public class InventoryManager : MonoBehaviour
 
     public void AddSpell(int slotIndex, SpellController spell) //Add a spell to a specific slot
     {
+        Debug.Log(slotIndex);
         spellSlots[slotIndex] = spell;
         //spellStrings[slotIndex] = spell.name;
         spellLevels[slotIndex] = spell.spellData.Level;
