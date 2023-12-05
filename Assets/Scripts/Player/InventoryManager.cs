@@ -26,7 +26,8 @@ public class InventoryManager : MonoBehaviour
     {
         Debug.Log(slotIndex);
         spellSlots[slotIndex] = spell;
-        //spellStrings[slotIndex] = spell.name;
+        Debug.Log(spell.name);
+        spellStrings.Add(spell.name);
         spellLevels[slotIndex] = spell.spellData.Level;
         spellUISlots[slotIndex].enabled = true;
         spellUISlots[slotIndex].sprite = spell.spellData.Icon;
@@ -37,6 +38,7 @@ public class InventoryManager : MonoBehaviour
         if(spellSlots.Count > slotIndex)
         {
             SpellController spell = spellSlots[slotIndex];
+            Debug.Log(spell);
             if(!spell.spellData.NextLevelPrefab) //Checks if there is a next level for the current passive item
             {
                 Debug.LogError("NO NEXT LEVEL FOR " + spell.name);
@@ -53,7 +55,7 @@ public class InventoryManager : MonoBehaviour
     public void AddPassiveItem(int slotIndex, PassiveItem passiveItem) //Add a spell to a specific slot
     {
         passiveItemSlots[slotIndex] = passiveItem;
-        //passiveItemStrings[slotIndex] = passiveItem.name;
+        passiveItemStrings.Add(passiveItem.name);
         passiveItemLevels[slotIndex] = passiveItem.passiveItemData.Level;
         passiveItemUISlots[slotIndex].enabled = true;
         passiveItemUISlots[slotIndex].sprite = passiveItem.passiveItemData.Icon;

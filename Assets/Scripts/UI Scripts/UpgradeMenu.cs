@@ -335,7 +335,9 @@ public class UpgradeMenu : MonoBehaviour
     public GameObject AKprefab;
     public void AK()
     {
-        int index = InventoryManager.instance.spellStrings.IndexOf("AK Controller Level 1");
+        int index = InventoryManager.instance.spellStrings.IndexOf("AK Controller Level 1(Clone)");
+        Debug.Log(index);
+
         if (index >= 0)
         {
             InventoryManager.instance.LevelUpSpell(index);
@@ -349,7 +351,9 @@ public class UpgradeMenu : MonoBehaviour
     public GameObject Fireballprefab;
     public void Fireball()
     {
-        int index = InventoryManager.instance.spellStrings.IndexOf("Fireball Controller Level 1");
+        int index = InventoryManager.instance.spellStrings.IndexOf("Fireball Controller Level 1(Clone)");
+        Debug.Log(index);
+
         if (index >= 0)
         {
             InventoryManager.instance.LevelUpSpell(index);
@@ -363,7 +367,9 @@ public class UpgradeMenu : MonoBehaviour
     public GameObject Garlicprefab;
     public void Garlic()
     {
-        int index = InventoryManager.instance.spellStrings.IndexOf("Garlic Controller Level 1");
+        int index = InventoryManager.instance.spellStrings.IndexOf("Garlic Controller Level 1(Clone)");
+        Debug.Log(index);
+
         if (index >= 0)
         {
             InventoryManager.instance.LevelUpSpell(index);
@@ -377,7 +383,8 @@ public class UpgradeMenu : MonoBehaviour
     public GameObject Iceprefab;
     public void Ice()
     {
-        int index = InventoryManager.instance.spellStrings.IndexOf("Ice Controller Level 1");
+        int index = InventoryManager.instance.spellStrings.IndexOf("Ice Controller Level 1(Clone)");
+        Debug.Log(index);
         if (index >= 0)
         {
             InventoryManager.instance.LevelUpSpell(index);
@@ -391,7 +398,9 @@ public class UpgradeMenu : MonoBehaviour
     public GameObject Lightningprefab;
     public void Lightning()
     {
-        int index = InventoryManager.instance.spellStrings.IndexOf("Lightning Controller Level 1");
+        int index = InventoryManager.instance.spellStrings.IndexOf("Lightning Controller Level 1(Clone)");
+        Debug.Log(index);
+
         if (index >= 0)
         {
             InventoryManager.instance.LevelUpSpell(index);
@@ -406,56 +415,60 @@ public class UpgradeMenu : MonoBehaviour
     public GameObject Bulkupprefab;
     public void Bulkup()
     {
-        int index = InventoryManager.instance.passiveItemStrings.IndexOf("Bulk Up Level 1");
+        int index = InventoryManager.instance.passiveItemStrings.IndexOf("Bulk Up Level 1(Clone)");
+        Debug.Log(index);
         if (index >= 0)
         {
-            InventoryManager.instance.LevelUpSpell(index);
+            InventoryManager.instance.LevelUpPassiveItem(index);
         }
         else
         {
-            CharacterStats.Instance.SpawnSpell(Bulkupprefab);
+            CharacterStats.Instance.SpawnPassiveItem(Bulkupprefab);
         }
         CloseUpgradeMenu();
     }
     public GameObject Drinkboozeprefab;
     public void Drinkbooze()
     {
-        int index = InventoryManager.instance.passiveItemStrings.IndexOf("Drink Booze Level 1");
+        int index = InventoryManager.instance.passiveItemStrings.IndexOf("Drink Booze Level 1(Clone)");
+        Debug.Log(index);
         if (index >= 0)
         {
-            InventoryManager.instance.LevelUpSpell(index);
+            InventoryManager.instance.LevelUpPassiveItem(index);
         }
         else
         {
-            CharacterStats.Instance.SpawnSpell(Drinkboozeprefab);
+            CharacterStats.Instance.SpawnPassiveItem(Drinkboozeprefab);
         }
         CloseUpgradeMenu();
     }
     public GameObject Putonmorerobesprefab;
     public void Putonmorerobes()
     {
-        int index = InventoryManager.instance.passiveItemStrings.IndexOf("Put On More Robes Level 1");
+        int index = InventoryManager.instance.passiveItemStrings.IndexOf("Put On More Robes Level 1(Clone)");
+        print(index);
         if (index >= 0)
         {
-            InventoryManager.instance.LevelUpSpell(index);
+            InventoryManager.instance.LevelUpPassiveItem(index);
         }
         else
         {
-            CharacterStats.Instance.SpawnSpell(Putonmorerobesprefab);
+            CharacterStats.Instance.SpawnPassiveItem(Putonmorerobesprefab);
         }
         CloseUpgradeMenu();
     }
     public GameObject Stimulantsprefab;
     public void Stimulants()
     {
-        int index = InventoryManager.instance.passiveItemStrings.IndexOf("Stimulants Level 1");
+        int index = InventoryManager.instance.passiveItemStrings.IndexOf("Stimulants Level 1(Clone)");
+        Debug.Log(index);
         if (index >= 0)
         {
-            InventoryManager.instance.LevelUpSpell(index);
+            InventoryManager.instance.LevelUpPassiveItem(index);
         }
         else
         {
-            CharacterStats.Instance.SpawnSpell(Stimulantsprefab);
+            CharacterStats.Instance.SpawnPassiveItem(Stimulantsprefab);
         }
         CloseUpgradeMenu();
     }
