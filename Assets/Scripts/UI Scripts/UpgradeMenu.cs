@@ -88,7 +88,7 @@ public class UpgradeMenu : MonoBehaviour
     // opens the upgrade menu which is closed automatically after an ugrade is selected
     public void OpenUpgradeMenu()
     {
-        Debug.Log("Opening");
+     //   Debug.Log("Opening");
         RandomizeUpgrades();
         PauseManager.Pause();
         upgradeMenuUI.SetActive(true);
@@ -98,7 +98,7 @@ public class UpgradeMenu : MonoBehaviour
     public void CloseUpgradeMenu()
     {
         instance.ClearUpgradePanel();
-        Debug.Log("Closing"+ upgradeMenuUI);
+        //Debug.Log("Closing"+ upgradeMenuUI);
         WantCloseDebugWhatever++;
         PauseManager.Unpause();
         instance.upgradeMenuUI.SetActive(false);
@@ -191,7 +191,7 @@ public class UpgradeMenu : MonoBehaviour
     {
         foreach (Transform child in upgradePanelUI.transform)
         {
-            Debug.Log("Clearing away" + child.gameObject.name);
+            //Debug.Log("Clearing away" + child.gameObject.name);
             Destroy(child.gameObject);
         }
     }
